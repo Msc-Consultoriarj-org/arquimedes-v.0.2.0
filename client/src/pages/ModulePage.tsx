@@ -32,7 +32,7 @@ export default function ModulePage() {
   );
 
   // Fetch progress
-  const { data: allProgress = [] } = trpc.progress.getAll.useQuery(undefined, {
+  const { data: allProgress = [] } = trpc.moduleProgress.getAll.useQuery(undefined, {
     enabled: isAuthenticated,
   });
 

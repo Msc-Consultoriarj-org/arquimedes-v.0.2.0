@@ -1,4 +1,4 @@
-import { eq, and, desc, asc } from "drizzle-orm";
+import { eq, and, desc, asc, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { 
   InsertUser, users,
@@ -339,4 +339,54 @@ export async function getUserAchievements(userId: number): Promise<Achievement[]
   return await db.select().from(achievements)
     .where(eq(achievements.userId, userId))
     .orderBy(desc(achievements.createdAt));
+}
+
+// ============= PROGRESS OPERATIONS =============
+
+export async function getModuleProgress(userId: number, moduleId: number): Promise<{ completed: number; total: number; percentage: number }> {
+  const db = await getDb();
+  if (!db) return { completed: 0, total: 0, percentage: 0 };
+  
+  // Get all pages in the module
+  const modulePages = await db.select().from(pages)
+    .where(eq(pages.moduleId, moduleId));
+  
+  const total = modulePages.length;
+  
+  if (total === 0) {
+    return { completed: 0, total: 0, percentage: 0 };
+  }
+  
+  // Get completed pages for this user in this module
+  const pageIds = modulePages.map(p => p.id);
+  const completedPages = await db.select().from(pageProgress)
+    .where(
+      and(
+        eq(pageProgress.userId, userId),
+        eq(pageProgress.completed, true),
+        sql`${pageProgress.pageId} IN (${pageIds.join(',')})`
+      )
+    );
+  
+  const completed = completedPages.length;
+  const percentage = Math.round((completed / total) * 100);
+  
+  return { completed, total, percentage };
+}
+
+export async function getAllModulesProgress(userId: number): Promise<Map<number, { completed: number; total: number; percentage: number }>> {
+  const db = await getDb();
+  if (!db) return new Map();
+  
+  // Get all modules
+  const allModules = await db.select().from(modules);
+  
+  const progressMap = new Map<number, { completed: number; total: number; percentage: number }>();
+  
+  for (const module of allModules) {
+    const progress = await getModuleProgress(userId, module.id);
+    progressMap.set(module.id, progress);
+  }
+  
+  return progressMap;
 }

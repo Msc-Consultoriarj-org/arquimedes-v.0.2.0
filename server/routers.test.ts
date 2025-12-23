@@ -242,7 +242,7 @@ describe("Progress Router", () => {
       slug: "o-que-e-adicionar",
     });
 
-    const result = await caller.progress.updatePage({
+    const result = await caller.moduleProgress.updatePage({
       pageId: page!.id,
       completed: true,
       score: 100,
@@ -256,7 +256,7 @@ describe("Progress Router", () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
-    const progress = await caller.progress.getAll();
+    const progress = await caller.moduleProgress.getAll();
 
     expect(progress).toBeDefined();
     expect(Array.isArray(progress)).toBe(true);

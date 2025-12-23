@@ -205,7 +205,7 @@ Retorne APENAS um JSON com:
   }),
 
   // ============= PROGRESS =============
-  progress: router({
+  moduleProgress: router({
     getByPage: protectedProcedure
       .input(z.object({ pageId: z.number() }))
       .query(async ({ ctx, input }) => {
@@ -215,6 +215,23 @@ Retorne APENAS um JSON com:
     getAll: protectedProcedure.query(async ({ ctx }) => {
       return await db.getAllUserProgress(ctx.user.id);
     }),
+    
+    byModule: protectedProcedure
+      .input(z.object({ moduleId: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getModuleProgress(ctx.user.id, input.moduleId);
+      }),
+    
+    allModules: protectedProcedure
+      .query(async ({ ctx }) => {
+        const progressMap = await db.getAllModulesProgress(ctx.user.id);
+        // Convert Map to object for JSON serialization
+        const progressObj: Record<number, { completed: number; total: number; percentage: number }> = {};
+        progressMap.forEach((value, key) => {
+          progressObj[key] = value;
+        });
+        return progressObj;
+      }),
     
     updatePage: protectedProcedure
       .input(z.object({

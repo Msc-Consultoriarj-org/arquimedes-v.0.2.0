@@ -49,7 +49,7 @@ export default function LessonPage() {
   );
 
   // Fetch progress
-  const { data: progress } = trpc.progress.getByPage.useQuery(
+  const { data: progress } = trpc.moduleProgress.getByPage.useQuery(
     { pageId: page?.id || 0 },
     { enabled: !!page && isAuthenticated }
   );
@@ -60,7 +60,7 @@ export default function LessonPage() {
     { enabled: !!module }
   );
 
-  const updateProgressMutation = trpc.progress.updatePage.useMutation({
+  const updateProgressMutation = trpc.moduleProgress.updatePage.useMutation({
     onSuccess: () => {
       toast.success("Progresso salvo!");
     },

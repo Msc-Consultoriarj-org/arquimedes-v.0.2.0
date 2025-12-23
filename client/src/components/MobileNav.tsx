@@ -21,6 +21,9 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const { data: disciplines = [] } = trpc.disciplines.list.useQuery();
+  const { data: modulesProgress = {} } = trpc.moduleProgress.allModules.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
 
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
@@ -91,6 +94,7 @@ export function MobileNav() {
                   <DisciplineAccordion
                     key={discipline.id}
                     discipline={discipline}
+                    modulesProgress={modulesProgress}
                     onNavigate={() => setOpen(false)}
                   />
                 ))}
@@ -127,9 +131,11 @@ export function MobileNav() {
 
 function DisciplineAccordion({
   discipline,
+  modulesProgress,
   onNavigate,
 }: {
   discipline: { id: number; name: string; slug: string };
+  modulesProgress: Record<number, { completed: number; total: number; percentage: number }>;
   onNavigate: () => void;
 }) {
   const { data: modules = [] } = trpc.modules.listByDiscipline.useQuery({
@@ -157,6 +163,19 @@ function DisciplineAccordion({
                   {getModuleIcon(module.name, { size: 16 })}
                 </div>
                 <span className="text-left flex-1">{module.name}</span>
+                {modulesProgress[module.id] && (
+                  <span 
+                    className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                      modulesProgress[module.id].percentage === 100
+                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                        : modulesProgress[module.id].percentage >= 31
+                        ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                        : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                    }`}
+                  >
+                    {modulesProgress[module.id].percentage}%
+                  </span>
+                )}
               </Button>
             </Link>
           ))}

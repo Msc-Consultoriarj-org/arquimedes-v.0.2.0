@@ -182,3 +182,15 @@
 - [x] Integrar MobileNav no LessonPage
 - [ ] Testar gestos de swipe para fechar
 - [ ] Adicionar MobileNav em outras páginas
+
+
+## Indicador de Progresso no Menu
+- [x] Criar query tRPC para calcular progresso por módulo
+- [x] Adicionar helper no db.ts para contar páginas completadas
+- [x] Calcular porcentagem (páginas completadas / total de páginas)
+- [x] Atualizar MobileNav para buscar progresso
+- [x] Exibir porcentagem ao lado do nome do módulo
+- [x] Adicionar badge visual colorido (0-30% vermelho, 31-70% amarelo, 71-100% verde)
+- [ ] Adicionar ícone de check para módulos 100% completos
+- [ ] Testar cálculos com diferentes estados de progresso
+- [x] Adicionar loading state durante fetch de progresso (enabled: isAuthenticated)
