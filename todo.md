@@ -890,3 +890,11 @@
 - [ ] Validar Desafio do Dia
 - [ ] Validar Sala de Exercícios
 - [ ] Validar Sala de Vídeos
+
+
+## Correção Rota /disciplinas (v2.18.1)
+- [x] Criar página DisciplinesPage.tsx
+- [x] Adicionar rota /disciplinas no App.tsx
+- [x] Adicionar rota /minhas-disciplinas no App.tsx
+- [x] Listar todas as disciplinas disponíveis
+- [x] Design responsivo com cards
