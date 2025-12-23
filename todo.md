@@ -804,3 +804,12 @@
 - [x] Exercícios vinculados à disciplina Aritmética
 - [x] Sistema de pontos integrado (5/10/15 pts)
 - [x] Conteúdo pronto para uso
+
+
+## Deploy na VPS Hostinger (v2.16.0)
+- [ ] Criar ecosystem.config.cjs para PM2
+- [ ] Criar script deploy/setup_vps.sh
+- [ ] Criar configuração deploy/nginx.conf
+- [ ] Adicionar HOSTINGER.md ao .gitignore
+- [ ] Fazer commit no repositório GitHub
+- [ ] Documentar processo de deploy
