@@ -71,3 +71,16 @@
 - [ ] Criar checkpoint final
 - [ ] Verificar todas as funcionalidades
 - [ ] Preparar documentação de uso
+
+
+## Preparação do Repositório GitHub
+- [ ] Criar README.md completo com arquitetura e documentação
+- [ ] Adicionar CONTRIBUTING.md com guia de contribuição
+- [ ] Criar LICENSE (MIT)
+- [ ] Adicionar .github/workflows para CI/CD
+- [ ] Criar ARCHITECTURE.md com diagramas
+- [ ] Adicionar DATABASE.md com guia de acesso ao banco
+- [ ] Gerar screenshots da aplicação
+- [ ] Criar .gitignore apropriado
+- [ ] Inicializar repositório Git
+- [ ] Fazer commit inicial
