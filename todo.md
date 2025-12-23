@@ -486,3 +486,14 @@
 - [x] Estilizar com design consistente (glass effect)
 - [x] Testar funcionamento no navegador
 - [x] Relógio mostra hora, minuto, segundo e data (dia da semana + dia/mês)
+
+
+### 📋 Planejamento Curricular Completo (Concluído - 23/12/2025)
+- [x] Criar estrutura de Aritmética (Básico, Intermediário, Avançado) - 15 módulos, 65 aulas, ~60h
+- [x] Criar estrutura de Álgebra (Básico, Intermediário, Avançado) - 15 módulos, 63 aulas, ~58h
+- [x] Criar estrutura de Geometria (Básico, Intermediário, Avançado) - 15 módulos, 64 aulas, ~59h
+- [x] Criar estrutura de Cálculo (Básico, Intermediário, Avançado) - 15 módulos, 66 aulas, ~64h
+- [x] Revisar progressão pedagógica entre níveis
+- [x] Validar carga horária total: 258 aulas, ~241 horas
+- [x] Criar documento consolidado VISAO_GERAL.md
+- [x] Total: 12 cursos, 60 módulos, 258 aulas estruturadas
