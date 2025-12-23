@@ -3,6 +3,7 @@ import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
 import { sdk } from "./sdk";
+import { ENV } from "./env";
 
 function getQueryParam(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -50,4 +51,42 @@ export function registerOAuthRoutes(app: Express) {
       res.status(500).json({ error: "OAuth callback failed" });
     }
   });
+
+  // Rota de Login para Desenvolvimento (Bypass OAuth)
+  if (!ENV.isProduction) {
+    app.get("/api/dev/login", async (req: Request, res: Response) => {
+      try {
+        console.log("[Dev] Iniciando login de desenvolvimento...");
+        
+        const mockUser = {
+          openId: "dev-user-id",
+          name: "Desenvolvedor",
+          email: "dev@arquimedes.com",
+          loginMethod: "dev",
+        };
+
+        // 1. Criar ou atualizar usuário no banco
+        await db.upsertUser({
+          ...mockUser,
+          lastSignedIn: new Date(),
+        });
+
+        // 2. Gerar token de sessão
+        const sessionToken = await sdk.createSessionToken(mockUser.openId, {
+          name: mockUser.name,
+          expiresInMs: ONE_YEAR_MS,
+        });
+
+        // 3. Definir cookie
+        const cookieOptions = getSessionCookieOptions(req);
+        res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+
+        console.log("[Dev] Login realizado com sucesso para:", mockUser.name);
+        res.redirect(302, "/dashboard");
+      } catch (error) {
+        console.error("[Dev] Falha no login de desenvolvimento", error);
+        res.status(500).json({ error: "Dev login failed" });
+      }
+    });
+  }
 }

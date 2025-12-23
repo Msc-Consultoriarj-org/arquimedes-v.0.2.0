@@ -3,7 +3,7 @@
  * Compatível com o schema MySQL existente
  */
 
-import { pgTable, serial, varchar, text, timestamp, integer, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, serial, varchar, text, timestamp, integer, pgEnum, json } from "drizzle-orm/pg-core";
 
 // Enum para roles
 export const roleEnum = pgEnum('role', ['user', 'admin']);
@@ -32,6 +32,7 @@ export const disciplines = pgTable("disciplines", {
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   description: text("description"),
   icon: varchar("icon", { length: 50 }),
+  orderIndex: integer("orderIndex").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
@@ -57,11 +58,14 @@ export const pages = pgTable("pages", {
   title: varchar("title", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull(),
   mainText: text("mainText"),
+  conceptSummary: text("conceptSummary"),
+  diagrams: json("diagrams"),
   videoUrl: varchar("videoUrl", { length: 500 }),
   imageUrl: varchar("imageUrl", { length: 500 }),
   orderIndex: integer("orderIndex").notNull().default(0),
   estimatedMinutes: integer("estimatedMinutes").default(15),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
 
 /**
@@ -72,6 +76,7 @@ export const exercises = pgTable("exercises", {
   pageId: integer("pageId").notNull().references(() => pages.id),
   question: text("question").notNull(),
   correctAnswer: varchar("correctAnswer", { length: 500 }).notNull(),
+  alternativeAnswers: json("alternativeAnswers"),
   type: varchar("type", { length: 50 }).notNull().default('simple'),
   orderIndex: integer("orderIndex").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
