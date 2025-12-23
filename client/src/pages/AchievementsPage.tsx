@@ -1,5 +1,6 @@
 import { trpc } from "@/lib/trpc";
 import { MobileNav } from "@/components/MobileNav";
+import { Sidebar } from "@/components/Sidebar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -44,7 +45,8 @@ export default function AchievementsPage() {
     return (
       <>
         <MobileNav />
-        <div className="min-h-screen bg-muted/30 flex items-center justify-center">
+        <Sidebar />
+        <div className="lg:ml-72 min-h-screen bg-muted/30 flex items-center justify-center">
           <Card className="max-w-md mx-4">
             <CardHeader>
               <CardTitle>Acesso Restrito</CardTitle>
@@ -67,7 +69,8 @@ export default function AchievementsPage() {
     return (
       <>
         <MobileNav />
-        <div className="min-h-screen bg-muted/30">
+        <Sidebar />
+        <div className="lg:ml-72 min-h-screen bg-muted/30">
           <div className="container max-w-6xl py-8 space-y-6">
             <Skeleton className="h-12 w-64" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -104,7 +107,8 @@ export default function AchievementsPage() {
   return (
     <>
       <MobileNav />
-      <div className="min-h-screen bg-muted/30">
+      <Sidebar />
+      <div className="lg:ml-72 min-h-screen bg-muted/30">
         {/* Header */}
         <div className="bg-background border-b">
           <div className="container max-w-6xl py-8">

@@ -1418,9 +1418,16 @@
 - [ ] Validar fluxo completo: cadastro → inscrição automática → primeira aula → exercícios → level up
 - [ ] Testar em diferentes dispositivos
 
+### Consistência de Navegação - Sidebar
+- [x] Adicionar Sidebar na página DisciplinesPage.tsx (Minhas Disciplinas)
+- [x] Adicionar Sidebar na página ExerciseRoomPage.tsx (Sala de Exercícios)
+- [x] Adicionar Sidebar na página AchievementsPage.tsx (Conquistas)
+- [x] Aplicar margin-left lg:ml-72 para compensar sidebar
+- [x] Adicionar Sidebar em todos os estados (loading, não autenticado, principal)
+
 ### Testes e Documentação
 - [ ] Testar Sala de Exercícios com todos os componentes
 - [ ] Testar progressão de level com novos valores de XP
 - [ ] Testar inscrição automática em novo usuário
 - [ ] Testar barra de progresso em diferentes módulos
-- [ ] Salvar checkpoint v2.39.0
+- [ ] Salvar checkpoint v2.40.0

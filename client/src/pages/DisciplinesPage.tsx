@@ -6,6 +6,7 @@ import { BookOpen, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { MobileNav } from "@/components/MobileNav";
+import { Sidebar } from "@/components/Sidebar";
 
 export default function DisciplinesPage() {
   const { data: disciplines, isLoading } = trpc.disciplines.list.useQuery();
@@ -14,7 +15,8 @@ export default function DisciplinesPage() {
     return (
       <>
         <MobileNav />
-        <div className="min-h-screen bg-muted/30">
+        <Sidebar />
+        <div className="lg:ml-72 min-h-screen bg-muted/30">
           <div className="container max-w-6xl py-8">
             <Skeleton className="h-12 w-64 mb-8" />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -31,12 +33,13 @@ export default function DisciplinesPage() {
   return (
     <>
       <MobileNav />
+      <Sidebar />
       <SEO
         title="Minhas Disciplinas - Arquimedes"
         description="Explore todas as disciplinas de matemática disponíveis na plataforma Arquimedes"
         keywords="disciplinas, matemática, aritmética, geometria, álgebra, cálculo"
       />
-      <div className="min-h-screen bg-muted/30">
+      <div className="lg:ml-72 min-h-screen bg-muted/30">
         {/* Header */}
         <div className="bg-background border-b">
           <div className="container max-w-6xl py-8">
