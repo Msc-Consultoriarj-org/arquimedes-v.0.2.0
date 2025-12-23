@@ -9,6 +9,7 @@ import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { OnboardingTour } from "@/components/OnboardingTour";
 import { motion } from "framer-motion";
+import { Clock } from "@/components/Clock";
 
 // Variantes de animação
 const fadeInUp = {
@@ -130,15 +131,26 @@ export default function Dashboard() {
             className="max-w-3xl"
             {...fadeInUp}
           >
-            <motion.div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Sparkles className="h-4 w-4 text-yellow-300" />
-              <span className="text-sm font-medium text-white">Nível {xpData?.level || 1}</span>
-            </motion.div>
+            <div className="flex items-center justify-between mb-6">
+              <motion.div 
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Sparkles className="h-4 w-4 text-yellow-300" />
+                <span className="text-sm font-medium text-white">Nível {xpData?.level || 1}</span>
+              </motion.div>
+              
+              <motion.div
+                className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Clock />
+              </motion.div>
+            </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
               {greeting}, {firstName}! 👋

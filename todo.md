@@ -477,3 +477,12 @@
 - [x] Validar escaneabilidade e elementos visuais
 - [x] Corrigir títulos e ordem das páginas no banco
 - [x] Total: 6 páginas com ~11.000 palavras de conteúdo educacional
+
+
+### ⏰ Adicionar Relógio Digital no Dashboard (Concluído - 23/12/2025)
+- [x] Criar componente Clock.tsx com horário de Brasília (GMT-3)
+- [x] Implementar atualização automática a cada segundo
+- [x] Integrar relógio no Dashboard (header hero section)
+- [x] Estilizar com design consistente (glass effect)
+- [x] Testar funcionamento no navegador
+- [x] Relógio mostra hora, minuto, segundo e data (dia da semana + dia/mês)
