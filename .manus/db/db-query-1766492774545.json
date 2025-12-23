@@ -1,0 +1,90 @@
+{
+  "query": "SELECT m.id, m.name, m.slug FROM modules m JOIN disciplines d ON m.disciplineId = d.id WHERE d.slug = 'aritmetica' ORDER BY m.order",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT m.id, m.name, m.slug FROM modules m JOIN disciplines d ON m.disciplineId = d.id WHERE d.slug = 'aritmetica' ORDER BY m.order",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição e Subtração",
+      "slug": "adicao-subtracao"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao"
+    },
+    {
+      "id": "60001",
+      "name": "Frações",
+      "slug": "fracoes"
+    },
+    {
+      "id": "60002",
+      "name": "Decimais",
+      "slug": "decimais"
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem"
+    },
+    {
+      "id": "60004",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao"
+    },
+    {
+      "id": "60005",
+      "name": "Potenciação",
+      "slug": "potenciacao"
+    },
+    {
+      "id": "60006",
+      "name": "Radiciação",
+      "slug": "radiciacao"
+    },
+    {
+      "id": "60007",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros"
+    },
+    {
+      "id": "60008",
+      "name": "Múltiplos e Divisores",
+      "slug": "multiplos-divisores"
+    },
+    {
+      "id": "60009",
+      "name": "Números Primos",
+      "slug": "numeros-primos"
+    },
+    {
+      "id": "60010",
+      "name": "Expressões Numéricas",
+      "slug": "expressoes-numericas"
+    },
+    {
+      "id": "60011",
+      "name": "Sistemas de Medidas",
+      "slug": "sistemas-medidas"
+    },
+    {
+      "id": "60012",
+      "name": "Matemática Financeira Básica",
+      "slug": "matematica-financeira"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tAdição e Subtração\tadicao-subtracao\n2\tMultiplicação\tmultiplicacao\n3\tDivisão\tdivisao\n30001\tDivisão\tdivisao\n60001\tFrações\tfracoes\n60002\tDecimais\tdecimais\n60003\tPorcentagem\tporcentagem\n60004\tRazão e Proporção\trazao-proporcao\n60005\tPotenciação\tpotenciacao\n60006\tRadiciação\tradiciacao\n60007\tNúmeros Inteiros\tnumeros-inteiros\n60008\tMúltiplos e Divisores\tmultiplos-divisores\n60009\tNúmeros Primos\tnumeros-primos\n60010\tExpressões Numéricas\texpressoes-numericas\n60011\tSistemas de Medidas\tsistemas-medidas\n60012\tMatemática Financeira Básica\tmatematica-financeira\n",
+  "stderr": "",
+  "execution_time_ms": 93
+}

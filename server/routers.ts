@@ -470,6 +470,12 @@ Retorne APENAS um JSON com:
         return await db.getStandaloneExercisesByDifficulty(input.difficulty);
       }),
     
+    getByModule: publicProcedure
+      .input(z.object({ moduleId: z.number() }))
+      .query(async ({ input }) => {
+        return await db.getStandaloneExercisesByModule(input.moduleId);
+      }),
+    
     submit: protectedProcedure
       .input(z.object({
         exerciseId: z.number(),

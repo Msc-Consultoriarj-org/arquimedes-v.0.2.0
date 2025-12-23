@@ -949,6 +949,15 @@ export async function getStandaloneExercisesByDifficulty(difficulty: "easy" | "m
     .where(eq(standaloneExercises.difficulty, difficulty));
 }
 
+export async function getStandaloneExercisesByModule(moduleId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db
+    .select()
+    .from(standaloneExercises)
+    .where(eq(standaloneExercises.moduleId, moduleId));
+}
+
 export async function submitStandaloneExercise(
   userId: number,
   exerciseId: number,

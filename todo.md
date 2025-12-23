@@ -839,3 +839,16 @@
 - [x] Corrigir parse de exercise.options no ExerciseRoomPage
 - [x] Corrigir parse de exercise.options no DailyChallengePage
 - [x] Adicionar helper parseOptions() para parse seguro de JSON
+
+
+## Integração Sala de Exercícios/Vídeos com Módulos (v2.17.0)
+- [x] Campo `moduleId` já existia nas tabelas
+- [x] Criar helper `getStandaloneExercisesByModule` no db.ts
+- [x] Helper `getStandaloneVideosByModule` já existia
+- [x] Criar procedure `getByModule` em standaloneExercises
+- [x] Procedure `getByModule` em standaloneVideos já existia
+- [x] Refatorar ExerciseRoomPage com Tabs por módulo
+- [x] Refatorar VideoRoomPage com Tabs por módulo
+- [x] Vincular 145 exercícios aos módulos (script automático)
+- [x] Vincular 86 vídeos aos módulos (script automático)
+- [x] Distribuição: 9 módulos com conteúdo, 7 módulos pendentes

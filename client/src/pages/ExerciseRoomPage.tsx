@@ -2,26 +2,31 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { CheckCircle2, XCircle, Trophy, Target, TrendingUp } from "lucide-react";
+import { CheckCircle2, XCircle, Trophy, Target, TrendingUp, BookOpen } from "lucide-react";
 
 export default function ExerciseRoomPage() {
-  const [selectedDiscipline, setSelectedDiscipline] = useState<number | null>(null);
-  const [selectedDifficulty, setSelectedDifficulty] = useState<"easy" | "moderate" | "hard" | null>(null);
-  const [currentAnswer, setCurrentAnswer] = useState<string>("");
-  const [feedback, setFeedback] = useState<{ exerciseId: number; isCorrect: boolean; points: number } | null>(null);
+  const [currentAnswer, setCurrentAnswer] = useState<Record<number, string>>({});
+  const [feedback, setFeedback] = useState<Record<number, { isCorrect: boolean; points: number }>>({});
 
   // Queries
   const { data: disciplines } = trpc.disciplines.list.useQuery();
+  const aritmeticaId = disciplines?.find((d) => d.slug === "aritmetica")?.id;
+  
+  const { data: modules } = trpc.modules.listByDiscipline.useQuery(
+    { disciplineId: aritmeticaId! },
+    { enabled: !!aritmeticaId }
+  );
+  
   const { data: allExercises } = trpc.standaloneExercises.getAll.useQuery();
   const { data: stats } = trpc.standaloneExercises.getStats.useQuery();
 
   // Mutations
   const submitMutation = trpc.standaloneExercises.submit.useMutation({
     onSuccess: (data, variables) => {
-      setFeedback({ exerciseId: variables.exerciseId, isCorrect: data.isCorrect, points: data.points });
-      setCurrentAnswer("");
+      setFeedback((prev) => ({ ...prev, [variables.exerciseId]: { isCorrect: data.isCorrect, points: data.points } }));
+      setCurrentAnswer((prev) => ({ ...prev, [variables.exerciseId]: "" }));
       
       // Refetch stats after submission
       setTimeout(() => {
@@ -30,15 +35,14 @@ export default function ExerciseRoomPage() {
     },
   });
 
-  // Filter exercises
-  const filteredExercises = allExercises?.filter((ex) => {
-    if (selectedDiscipline && ex.disciplineId !== selectedDiscipline) return false;
-    if (selectedDifficulty && ex.difficulty !== selectedDifficulty) return false;
-    return true;
-  });
+  // Group exercises by module
+  const exercisesByModule = modules?.map((module) => ({
+    module,
+    exercises: allExercises?.filter((ex) => ex.moduleId === module.id) || [],
+  })) || [];
 
   const handleSubmit = (exerciseId: number) => {
-    const answer = parseInt(currentAnswer);
+    const answer = parseInt(currentAnswer[exerciseId] || "");
     if (isNaN(answer)) {
       alert("Por favor, insira um número válido");
       return;
@@ -93,7 +97,7 @@ export default function ExerciseRoomPage() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Sala de Exercícios</h1>
           <p className="text-lg text-gray-600">
-            Pratique suas habilidades matemáticas com exercícios de múltipla escolha
+            Pratique suas habilidades matemáticas organizadas por módulo
           </p>
         </div>
 
@@ -116,7 +120,7 @@ export default function ExerciseRoomPage() {
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4" />
-                  Respostas Corretas
+                  Acertos
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -138,185 +142,169 @@ export default function ExerciseRoomPage() {
           </div>
         )}
 
-        {/* Filters */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Filtros</CardTitle>
-            <CardDescription>Filtre os exercícios por disciplina e dificuldade</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Disciplina</label>
-                <Select
-                  value={selectedDiscipline?.toString() || "all"}
-                  onValueChange={(value) => setSelectedDiscipline(value === "all" ? null : parseInt(value))}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Todas as disciplinas" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todas as disciplinas</SelectItem>
-                    {disciplines?.map((d) => (
-                      <SelectItem key={d.id} value={d.id.toString()}>
-                        {d.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+        {/* Modules Tabs */}
+        {modules && modules.length > 0 ? (
+          <Tabs defaultValue={modules[0]?.id.toString()} className="w-full">
+            <TabsList className="w-full flex-wrap h-auto gap-2 bg-white p-2 rounded-lg shadow-sm">
+              {modules.map((module) => {
+                const exerciseCount = allExercises?.filter((ex) => ex.moduleId === module.id).length || 0;
+                return (
+                  <TabsTrigger
+                    key={module.id}
+                    value={module.id.toString()}
+                    className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    {module.name}
+                    <span className="ml-1 text-xs opacity-75">({exerciseCount})</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Dificuldade</label>
-                <Select
-                  value={selectedDifficulty || "all"}
-                  onValueChange={(value) => setSelectedDifficulty(value === "all" ? null : value as any)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Todas as dificuldades" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todas as dificuldades</SelectItem>
-                    <SelectItem value="easy">Fácil (5 pts)</SelectItem>
-                    <SelectItem value="moderate">Moderado (10 pts)</SelectItem>
-                    <SelectItem value="hard">Difícil (15 pts)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Exercises Grid */}
-        <div className="grid grid-cols-1 gap-6">
-          {filteredExercises && filteredExercises.length > 0 ? (
-            filteredExercises.map((exercise) => {
-              const hasFeedback = feedback?.exerciseId === exercise.id;
-              const isCorrect = hasFeedback && feedback.isCorrect;
-              const isIncorrect = hasFeedback && !feedback.isCorrect;
-
-              return (
-                <Card
-                  key={exercise.id}
-                  className={`transition-all ${
-                    isCorrect
-                      ? "border-green-500 bg-green-50"
-                      : isIncorrect
-                      ? "border-red-500 bg-red-50"
-                      : ""
-                  }`}
-                >
+            {exercisesByModule.map(({ module, exercises }) => (
+              <TabsContent key={module.id} value={module.id.toString()} className="mt-6">
+                <Card className="mb-6">
                   <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">{exercise.question}</CardTitle>
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getDifficultyColor(
-                              exercise.difficulty
-                            )}`}
-                          >
-                            {getDifficultyLabel(exercise.difficulty)}
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-sm text-gray-600">
-                            <Trophy className="h-4 w-4" />
-                            {exercise.points} pontos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <CardTitle className="text-2xl">{module.name}</CardTitle>
+                    <CardDescription>{module.description}</CardDescription>
                   </CardHeader>
-
                   <CardContent>
-                    <div className="space-y-4">
-                      {/* Options */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {parseOptions(exercise.options).map((option: string, index: number) => (
-                          <div
-                            key={index}
-                            className="p-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 transition-colors"
-                          >
-                            <span className="font-medium text-gray-700">
-                              {String.fromCharCode(65 + index)}) {option}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Answer Input */}
-                      {!hasFeedback && (
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Input
-                            type="number"
-                            placeholder="Digite sua resposta..."
-                            value={currentAnswer}
-                            onChange={(e) => setCurrentAnswer(e.target.value)}
-                            className="flex-1"
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleSubmit(exercise.id);
-                              }
-                            }}
-                          />
-                          <Button
-                            onClick={() => handleSubmit(exercise.id)}
-                            disabled={submitMutation.isPending || !currentAnswer}
-                            className="w-full sm:w-auto"
-                          >
-                            {submitMutation.isPending ? "Enviando..." : "Enviar Resposta"}
-                          </Button>
-                        </div>
-                      )}
-
-                      {/* Feedback */}
-                      {hasFeedback && (
-                        <div
-                          className={`p-4 rounded-lg border-2 ${
-                            isCorrect
-                              ? "bg-green-100 border-green-500 text-green-800"
-                              : "bg-red-100 border-red-500 text-red-800"
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 mb-2">
-                            {isCorrect ? (
-                              <CheckCircle2 className="h-5 w-5" />
-                            ) : (
-                              <XCircle className="h-5 w-5" />
-                            )}
-                            <span className="font-bold">
-                              {isCorrect ? "Correto!" : "Incorreto"}
-                            </span>
-                          </div>
-                          <p className="text-sm">
-                            {isCorrect
-                              ? `Parabéns! Você ganhou ${feedback.points} pontos.`
-                              : "Tente novamente em outro exercício."}
-                          </p>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="mt-3"
-                            onClick={() => setFeedback(null)}
-                          >
-                            Próximo Exercício
-                          </Button>
-                        </div>
-                      )}
-                    </div>
+                    <p className="text-sm text-gray-600">
+                      {exercises.length} exercício{exercises.length !== 1 ? "s" : ""} disponível
+                      {exercises.length !== 1 ? "is" : ""}
+                    </p>
                   </CardContent>
                 </Card>
-              );
-            })
-          ) : (
-            <Card>
-              <CardContent className="py-12 text-center">
-                <p className="text-gray-500 text-lg">
-                  Nenhum exercício encontrado com os filtros selecionados.
-                </p>
-              </CardContent>
-            </Card>
-          )}
-        </div>
+
+                {/* Exercises Grid */}
+                <div className="grid grid-cols-1 gap-6">
+                  {exercises.length > 0 ? (
+                    exercises.map((exercise) => {
+                      const hasFeedback = feedback[exercise.id];
+                      const isCorrect = hasFeedback && feedback[exercise.id].isCorrect;
+                      const isIncorrect = hasFeedback && !feedback[exercise.id].isCorrect;
+
+                      return (
+                        <Card
+                          key={exercise.id}
+                          className={`transition-all ${
+                            isCorrect
+                              ? "border-green-500 bg-green-50"
+                              : isIncorrect
+                              ? "border-red-500 bg-red-50"
+                              : ""
+                          }`}
+                        >
+                          <CardHeader>
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <CardTitle className="text-xl mb-2">{exercise.question}</CardTitle>
+                                <div className="flex items-center gap-2">
+                                  <span
+                                    className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getDifficultyColor(
+                                      exercise.difficulty
+                                    )}`}
+                                  >
+                                    {getDifficultyLabel(exercise.difficulty)}
+                                  </span>
+                                  <span className="inline-flex items-center gap-1 text-sm text-gray-600">
+                                    <Trophy className="h-4 w-4" />
+                                    {exercise.points} pontos
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </CardHeader>
+
+                          <CardContent>
+                            <div className="space-y-4">
+                              {/* Options */}
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                {parseOptions(exercise.options).map((option: string, index: number) => (
+                                  <div
+                                    key={index}
+                                    className="p-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 transition-colors"
+                                  >
+                                    <span className="font-medium text-gray-700">
+                                      {String.fromCharCode(65 + index)}) {option}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Answer Input */}
+                              {!hasFeedback && (
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                  <Input
+                                    type="number"
+                                    placeholder="Digite sua resposta..."
+                                    value={currentAnswer[exercise.id] || ""}
+                                    onChange={(e) =>
+                                      setCurrentAnswer((prev) => ({ ...prev, [exercise.id]: e.target.value }))
+                                    }
+                                    className="flex-1"
+                                    onKeyDown={(e) => {
+                                      if (e.key === "Enter") {
+                                        handleSubmit(exercise.id);
+                                      }
+                                    }}
+                                  />
+                                  <Button
+                                    onClick={() => handleSubmit(exercise.id)}
+                                    disabled={submitMutation.isPending || !currentAnswer[exercise.id]}
+                                    className="w-full sm:w-auto"
+                                  >
+                                    {submitMutation.isPending ? "Enviando..." : "Enviar Resposta"}
+                                  </Button>
+                                </div>
+                              )}
+
+                              {/* Feedback */}
+                              {hasFeedback && (
+                                <div
+                                  className={`flex items-center gap-2 p-4 rounded-lg ${
+                                    isCorrect ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                                  }`}
+                                >
+                                  {isCorrect ? (
+                                    <>
+                                      <CheckCircle2 className="h-5 w-5" />
+                                      <span className="font-medium">
+                                        Correto! +{feedback[exercise.id].points} pontos
+                                      </span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <XCircle className="h-5 w-5" />
+                                      <span className="font-medium">Incorreto. Tente novamente!</span>
+                                    </>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })
+                  ) : (
+                    <Card>
+                      <CardContent className="py-12 text-center">
+                        <p className="text-gray-500">Nenhum exercício disponível para este módulo ainda.</p>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        ) : (
+          <Card>
+            <CardContent className="py-12 text-center">
+              <p className="text-gray-500">Carregando módulos...</p>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
