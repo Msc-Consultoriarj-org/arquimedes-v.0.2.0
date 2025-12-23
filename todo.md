@@ -639,3 +639,29 @@
 - [x] Redirecionar para primeira aula de Aritmética após onboarding
 - [x] Adicionar animações suaves entre etapas
 - [x] Testar fluxo completo de onboarding
+
+
+## Dashboard Personalizado e Sidebar
+- [ ] Criar tabela user_enrollments (userId, disciplineId, enrolledAt)
+- [ ] Implementar procedure enrollments.enroll (inscrever em disciplina)
+- [ ] Implementar procedure enrollments.list (listar disciplinas inscritas)
+- [ ] Adicionar métricas de desempenho (total de logins, streak, aulas concluídas)
+- [ ] Implementar procedure dashboard.stats (estatísticas práticas)
+- [ ] Redesenhar Dashboard mostrando apenas disciplinas inscritas
+- [ ] Adicionar seção de métricas práticas no Dashboard
+- [ ] Criar componente Sidebar com navegação principal
+- [ ] Adicionar links de navegação na Sidebar (Dashboard, Perfil, Configurações)
+- [ ] Integrar Sidebar no layout principal
+- [ ] Testar fluxo de inscrição e dashboard personalizado
+
+## Dashboard Personalizado e Sidebar (CONCLUÍDO)
+- [x] Criar tabela user_enrollments (userId, disciplineId, enrolledAt)
+- [x] Implementar procedure enrollments.enroll (inscrever em disciplina)
+- [x] Implementar procedure enrollments.list (listar disciplinas inscritas)
+- [x] Adicionar métricas de desempenho (total de logins, streak, aulas concluídas)
+- [x] Implementar procedure dashboard.stats (estatísticas práticas)
+- [x] Redesenhar Dashboard mostrando apenas disciplinas inscritas
+- [x] Adicionar seção de métricas práticas no Dashboard (4 cards)
+- [x] Adicionar card de pontos acumulados (hoje, semana, total)
+- [x] Inscrever automaticamente em Aritmética no onboarding
+- [x] Testar fluxo de inscrição e dashboard personalizado

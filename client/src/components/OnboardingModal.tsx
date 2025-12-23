@@ -30,6 +30,8 @@ export default function OnboardingModal({ isOpen, onComplete }: OnboardingModalP
   const utils = trpc.useUtils();
   const updateNameMutation = trpc.user.updateName.useMutation();
   const completeOnboardingMutation = trpc.user.completeOnboarding.useMutation();
+  const enrollMutation = trpc.enrollments.enroll.useMutation();
+  const { data: disciplines } = trpc.disciplines.list.useQuery();
 
   const handleNext = async () => {
     if (step === 2 && name.trim()) {
@@ -40,10 +42,18 @@ export default function OnboardingModal({ isOpen, onComplete }: OnboardingModalP
     }
 
     if (step === 4) {
+      // Inscrever automaticamente em Aritmética
+      const aritmetica = disciplines?.find(d => d.slug === "aritmetica");
+      if (aritmetica) {
+        await enrollMutation.mutateAsync({ disciplineId: aritmetica.id });
+      }
+      
       // Marcar onboarding como completo
       await completeOnboardingMutation.mutateAsync();
       // Invalidar cache do auth.me para atualizar hasCompletedOnboarding
       await utils.auth.me.invalidate();
+      // Invalidar cache de enrollments para mostrar Aritmética no dashboard
+      await utils.enrollments.list.invalidate();
       onComplete();
       // Redirecionar para primeira aula de Aritmética
       setLocation("/disciplina/aritmetica/modulo/adicao-subtracao/aula/o-que-e-adicionar");

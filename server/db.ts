@@ -13,7 +13,8 @@ import {
   streaks, Streak, InsertStreak,
   userXP, UserXP, InsertUserXP,
   xpTransactions, XPTransaction, InsertXPTransaction,
-  userPointsLog, UserPointsLog, InsertUserPointsLog
+  userPointsLog, UserPointsLog, InsertUserPointsLog,
+  userEnrollments, UserEnrollment, InsertUserEnrollment
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -718,4 +719,105 @@ export async function completeOnboarding(userId: number) {
   const db = await getDb();
   if (!db) return;
   await db.update(users).set({ hasCompletedOnboarding: true }).where(eq(users.id, userId));
+}
+
+
+// ============= USER ENROLLMENTS =============
+
+export async function enrollUserInDiscipline(userId: number, disciplineId: number) {
+  const db = await getDb();
+  if (!db) return;
+  
+  // Check if already enrolled
+  const existing = await db
+    .select()
+    .from(userEnrollments)
+    .where(and(
+      eq(userEnrollments.userId, userId),
+      eq(userEnrollments.disciplineId, disciplineId)
+    ))
+    .limit(1);
+  
+  if (existing.length === 0) {
+    await db.insert(userEnrollments).values({ userId, disciplineId });
+  }
+}
+
+export async function getUserEnrollments(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const enrollments = await db
+    .select({
+      id: disciplines.id,
+      name: disciplines.name,
+      slug: disciplines.slug,
+      description: disciplines.description,
+      order: disciplines.order,
+      enrolledAt: userEnrollments.enrolledAt,
+    })
+    .from(userEnrollments)
+    .innerJoin(disciplines, eq(userEnrollments.disciplineId, disciplines.id))
+    .where(eq(userEnrollments.userId, userId))
+    .orderBy(disciplines.order);
+  
+  return enrollments;
+}
+
+// ============= USER STATS =============
+
+export async function getUserStats(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  // Total logins (count distinct days from userPointsLog with action 'daily_login')
+  const loginResult = await db
+    .select({ count: sql<number>`COUNT(DISTINCT DATE(${userPointsLog.createdAt}))` })
+    .from(userPointsLog)
+    .where(and(
+      eq(userPointsLog.userId, userId),
+      eq(userPointsLog.action, "daily_login")
+    ));
+  
+  const totalLogins = loginResult[0]?.count || 0;
+  
+  // Current streak
+  const streakResult = await db
+    .select()
+    .from(streaks)
+    .where(eq(streaks.userId, userId))
+    .limit(1);
+  
+  const currentStreak = streakResult[0]?.currentStreak || 0;
+  
+  // Completed lessons (pages with 100% progress)
+  const lessonsResult = await db
+    .select({ count: sql<number>`COUNT(*)` })
+    .from(pageProgress)
+    .where(and(
+      eq(pageProgress.userId, userId),
+      eq(pageProgress.completed, true)
+    ));
+  
+  const completedLessons = lessonsResult[0]?.count || 0;
+  
+  // Exercise accuracy (correct attempts / total attempts)
+  const attemptsResult = await db
+    .select({
+      total: sql<number>`COUNT(*)`,
+      correct: sql<number>`SUM(CASE WHEN ${exerciseAttempts.isCorrect} = 1 THEN 1 ELSE 0 END)`,
+    })
+    .from(exerciseAttempts)
+    .where(eq(exerciseAttempts.userId, userId));
+  
+  const total = attemptsResult[0]?.total || 0;
+  const correct = attemptsResult[0]?.correct || 0;
+  const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+  
+  return {
+    totalLogins,
+    currentStreak,
+    completedLessons,
+    exerciseAccuracy: accuracy,
+  };
 }

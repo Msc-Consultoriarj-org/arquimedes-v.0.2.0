@@ -317,6 +317,10 @@ Retorne APENAS um JSON com:
   }),
   
   dashboard: router({
+    stats: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserStats(ctx.user.id);
+    }),
+    
     summary: protectedProcedure.query(async ({ ctx }) => {
       const allProgress = await db.getAllUserProgress(ctx.user.id);
       const achievements = await db.getUserAchievements(ctx.user.id);
@@ -377,6 +381,20 @@ Retorne APENAS um JSON com:
     }),
   }),
 
+  // ============= ENROLLMENTS =============
+  enrollments: router({
+    enroll: protectedProcedure
+      .input(z.object({ disciplineId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        await db.enrollUserInDiscipline(ctx.user.id, input.disciplineId);
+        return { success: true };
+      }),
+    
+    list: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserEnrollments(ctx.user.id);
+    }),
+  }),
+  
   // ============= POINTS =============
   points: router({
     addPoints: protectedProcedure

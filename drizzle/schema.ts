@@ -256,3 +256,17 @@ export const xpTransactions = mysqlTable("xpTransactions", {
 
 export type XPTransaction = typeof xpTransactions.$inferSelect;
 export type InsertXPTransaction = typeof xpTransactions.$inferInsert;
+
+
+/**
+ * User enrollments in disciplines
+ */
+export const userEnrollments = mysqlTable("userEnrollments", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  disciplineId: int("disciplineId").notNull(),
+  enrolledAt: timestamp("enrolledAt").defaultNow().notNull(),
+});
+
+export type UserEnrollment = typeof userEnrollments.$inferSelect;
+export type InsertUserEnrollment = typeof userEnrollments.$inferInsert;
