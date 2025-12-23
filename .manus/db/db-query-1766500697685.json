@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, slug, title, LENGTH(mainText) as content_length FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'multiplicacao') ORDER BY `order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, slug, title, LENGTH(mainText) as content_length FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'multiplicacao') ORDER BY `order`",
+  "rows": [
+    {
+      "id": "4",
+      "slug": "soma-repetida",
+      "title": "Multiplicação: Uma Forma Rápida de Somar",
+      "content_length": "9283"
+    },
+    {
+      "id": "5",
+      "slug": "tabuada",
+      "title": "A Tabuada: Entendendo o Padrão",
+      "content_length": "8876"
+    },
+    {
+      "id": "6",
+      "slug": "matrizes",
+      "title": "Visualização em Matrizes: A Conexão com a Área",
+      "content_length": "9394"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tcontent_length\n4\tsoma-repetida\tMultiplicação: Uma Forma Rápida de Somar\t9283\n5\ttabuada\tA Tabuada: Entendendo o Padrão\t8876\n6\tmatrizes\tVisualização em Matrizes: A Conexão com a Área\t9394\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

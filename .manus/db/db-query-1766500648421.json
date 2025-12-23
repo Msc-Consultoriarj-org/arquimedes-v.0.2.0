@@ -1,0 +1,28 @@
+{
+  "query": "SELECT p.id, p.slug, p.title, m.name as module_name FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.slug = 'multiplicacao' ORDER BY p.`order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.slug, p.title, m.name as module_name FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.slug = 'multiplicacao' ORDER BY p.`order`",
+  "rows": [
+    {
+      "id": "4",
+      "slug": "soma-repetida",
+      "title": "Multiplicação: Uma Forma Rápida de Somar",
+      "module_name": "Multiplicação"
+    },
+    {
+      "id": "5",
+      "slug": "tabuada",
+      "title": "A Tabuada: Entendendo o Padrão",
+      "module_name": "Multiplicação"
+    },
+    {
+      "id": "6",
+      "slug": "matrizes",
+      "title": "Visualização em Matrizes: A Conexão com a Área",
+      "module_name": "Multiplicação"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tmodule_name\n4\tsoma-repetida\tMultiplicação: Uma Forma Rápida de Somar\tMultiplicação\n5\ttabuada\tA Tabuada: Entendendo o Padrão\tMultiplicação\n6\tmatrizes\tVisualização em Matrizes: A Conexão com a Área\tMultiplicação\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

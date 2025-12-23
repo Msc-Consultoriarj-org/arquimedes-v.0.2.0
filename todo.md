@@ -392,7 +392,7 @@
 - [x] Expandir Multiplicação Página 2 (Tabuada) - ~1.850 palavras, 6 estratégias de memorização, 8 exercícios
 - [x] Expandir Multiplicação Página 3 (Avançada) - ~1.800 palavras, 5 aplicações práticas, 7 exercícios
 - [x] Criar documento completo em docs/conteudo/MULTIPLICACAO_EXPANDIDA.md
-- [ ] Aplicar conteúdo ao banco de dados
+- [x] Aplicar conteúdo ao banco de dados (3 páginas atualizadas com ~26.600 caracteres)
 
 ## Expansão de Conteúdo - Lote 2 (Próximas 4 páginas)
 - [ ] Expandir Subtração Página 2 (Movimento) - 5000+ palavras
