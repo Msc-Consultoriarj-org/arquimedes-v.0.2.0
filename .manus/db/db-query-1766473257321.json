@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, title, CHAR_LENGTH(mainText) as content_length FROM pages WHERE id IN (2, 3, 4);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, CHAR_LENGTH(mainText) as content_length FROM pages WHERE id IN (2, 3, 4);",
+  "rows": [
+    {
+      "id": "2",
+      "title": "A Reta Numérica: Visualizando o Movimento",
+      "content_length": "16436"
+    },
+    {
+      "id": "3",
+      "title": "O que é Subtrair (Separar e Comparar)",
+      "content_length": "14212"
+    },
+    {
+      "id": "4",
+      "title": "Multiplicação: Uma Forma Rápida de Somar",
+      "content_length": "12900"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tcontent_length\n2\tA Reta Numérica: Visualizando o Movimento\t16436\n3\tO que é Subtrair (Separar e Comparar)\t14212\n4\tMultiplicação: Uma Forma Rápida de Somar\t12900\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

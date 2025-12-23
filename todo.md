@@ -419,6 +419,12 @@
 - [x] Mover Home atual para Dashboard.tsx
 - [x] Ajustar rotas no App.tsx (/ = Login, /dashboard = Dashboard)
 - [x] Implementar proteção de rotas (redirect se não autenticado)
-- [ ] Testar fluxo de login com Google OAuth
-- [ ] Testar cadastro automático de novos usuários
+- [x] Testar fluxo de login com Google OAuth
+- [x] Testar cadastro automático de novos usuários
 - [x] Fazer commit no GitHub (commit local 9433654)
+
+## Inserção de Conteúdo Expandido no Banco
+- [x] Instalar mysql-connector-python
+- [x] Criar script Node.js para atualizar banco (update-content-db.mjs)
+- [x] Executar script e inserir 7.259 palavras no banco
+- [x] Verificar inserção (páginas 2, 3, 4 atualizadas)

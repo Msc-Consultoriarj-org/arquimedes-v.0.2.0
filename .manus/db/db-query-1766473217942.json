@@ -1,0 +1,46 @@
+{
+  "query": "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'pages' AND TABLE_SCHEMA = DATABASE();",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'pages' AND TABLE_SCHEMA = DATABASE();",
+  "rows": [
+    {
+      "COLUMN_NAME": "id"
+    },
+    {
+      "COLUMN_NAME": "moduleId"
+    },
+    {
+      "COLUMN_NAME": "title"
+    },
+    {
+      "COLUMN_NAME": "slug"
+    },
+    {
+      "COLUMN_NAME": "order"
+    },
+    {
+      "COLUMN_NAME": "mainText"
+    },
+    {
+      "COLUMN_NAME": "conceptSummary"
+    },
+    {
+      "COLUMN_NAME": "diagrams"
+    },
+    {
+      "COLUMN_NAME": "videoUrl"
+    },
+    {
+      "COLUMN_NAME": "estimatedMinutes"
+    },
+    {
+      "COLUMN_NAME": "createdAt"
+    },
+    {
+      "COLUMN_NAME": "updatedAt"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\nid\nmoduleId\ntitle\nslug\norder\nmainText\nconceptSummary\ndiagrams\nvideoUrl\nestimatedMinutes\ncreatedAt\nupdatedAt\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}
