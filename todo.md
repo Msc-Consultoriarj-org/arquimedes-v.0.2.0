@@ -380,3 +380,27 @@
 - [x] Integrar playLevelUp no XPDisplay
 - [x] Integrar playAchievement no AchievementsDisplay
 - [ ] Testar sons de gamificação
+
+
+## Expansão de Conteúdo - Lote 1 (Primeiras 3 páginas)
+- [x] Expandir Adição Página 2 (Reta Numérica) - 2.871 palavras
+- [x] Expandir Adição Página 3 (Exercícios) - 2.189 palavras
+- [x] Expandir Subtração Página 1 (Conceito) - 2.199 palavras
+
+## Expansão de Conteúdo - Lote 2 (Próximas 4 páginas)
+- [ ] Expandir Subtração Página 2 (Movimento) - 5000+ palavras
+- [ ] Expandir Subtração Página 3 (Exercícios) - 5000+ palavras
+- [ ] Expandir Multiplicação Página 1 (Soma Repetida) - 5000+ palavras
+- [ ] Expandir Multiplicação Página 2 (Tabuada) - 5000+ palavras
+
+## Expansão de Conteúdo - Lote 3 (Últimas 4 páginas)
+- [ ] Expandir Multiplicação Página 3 (Matrizes) - 5000+ palavras
+- [ ] Expandir Divisão Página 1 (Operação Inversa) - 5000+ palavras
+- [ ] Expandir Divisão Página 2 (Repartição) - 5000+ palavras
+- [ ] Expandir Divisão Página 3 (Resto) - 5000+ palavras
+
+## Componentes Interativos Avançados
+- [ ] Criar componente DragAndDrop para ordenação de números
+- [ ] Criar componente Slider para valores dinâmicos
+- [ ] Criar componente Canvas de exploração livre
+- [ ] Integrar componentes nas páginas de exercícios
