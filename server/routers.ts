@@ -363,6 +363,20 @@ Retorne APENAS um JSON com:
     }),
    }),
 
+  // ============= USER =============
+  user: router({    updateName: protectedProcedure
+      .input(z.object({ name: z.string().min(1).max(100) }))
+      .mutation(async ({ ctx, input }) => {
+        await db.updateUserName(ctx.user.id, input.name);
+        return { success: true };
+      }),
+    
+    completeOnboarding: protectedProcedure.mutation(async ({ ctx }) => {
+      await db.completeOnboarding(ctx.user.id);
+      return { success: true };
+    }),
+  }),
+
   // ============= POINTS =============
   points: router({
     addPoints: protectedProcedure

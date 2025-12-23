@@ -704,3 +704,18 @@ export async function hasEarnedPointsToday(
 
   return result.length > 0;
 }
+
+
+// ============= USER ONBOARDING =============
+
+export async function updateUserName(userId: number, name: string) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(users).set({ name }).where(eq(users.id, userId));
+}
+
+export async function completeOnboarding(userId: number) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(users).set({ hasCompletedOnboarding: true }).where(eq(users.id, userId));
+}

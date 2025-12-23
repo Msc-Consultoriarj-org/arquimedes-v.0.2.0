@@ -610,3 +610,32 @@
 - [x] Testar login com Google end-to-end
 - [x] Garantir redirecionamento para /dashboard após login bem-sucedido
 - [x] Remover logout forçado do LoginPage (sessionStorage.clear)
+
+
+## Onboarding para Novos Usuários
+- [ ] Criar componente OnboardingModal com 4 etapas
+- [ ] Etapa 1: Boas-vindas com animação
+- [ ] Etapa 2: Escolher nome (campo de texto)
+- [ ] Etapa 3: Tour do dashboard (XP, Pontos, Disciplinas)
+- [ ] Etapa 4: Apresentação da estrutura de Matemática (4 subcursos)
+- [ ] Adicionar campo hasCompletedOnboarding na tabela users
+- [ ] Implementar procedure user.updateName no backend
+- [ ] Implementar procedure user.completeOnboarding no backend
+- [ ] Detectar primeiro acesso e mostrar onboarding
+- [ ] Redirecionar para primeira aula de Aritmética após onboarding
+- [ ] Adicionar animações suaves entre etapas
+- [ ] Testar fluxo completo de onboarding
+
+## Onboarding para Novos Usuários (CONCLUÍDO)
+- [x] Criar componente OnboardingModal com 4 etapas
+- [x] Etapa 1: Boas-vindas com animação
+- [x] Etapa 2: Escolher nome (campo de texto)
+- [x] Etapa 3: Tour do dashboard (XP, Pontos, Disciplinas)
+- [x] Etapa 4: Apresentação da estrutura de Matemática (4 subcursos)
+- [x] Adicionar campo hasCompletedOnboarding na tabela users
+- [x] Implementar procedure user.updateName no backend
+- [x] Implementar procedure user.completeOnboarding no backend
+- [x] Detectar primeiro acesso e mostrar onboarding
+- [x] Redirecionar para primeira aula de Aritmética após onboarding
+- [x] Adicionar animações suaves entre etapas
+- [x] Testar fluxo completo de onboarding

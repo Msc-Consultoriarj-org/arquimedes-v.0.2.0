@@ -7,18 +7,29 @@ import { BookOpen, Trophy, Zap, ArrowRight, LogOut, TrendingUp } from "lucide-re
 import { getModuleIcon, getModuleColor } from "@/components/MathIcons";
 import { MobileNav } from "@/components/MobileNav";
 import { Link, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import OnboardingModal from "@/components/OnboardingModal";
 
 export default function Dashboard() {
-  const { user, isAuthenticated, logout } = useAuth();
   const [, setLocation] = useLocation();
+  const { data: user, isLoading: isLoadingAuth } = trpc.auth.me.useQuery();
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  
+  const isAuthenticated = !!user;
 
   // Redirect to login if not authenticated
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLoadingAuth && !isAuthenticated) {
       setLocation("/login");
     }
-  }, [isAuthenticated, setLocation]);
+  }, [isAuthenticated, isLoadingAuth, setLocation]);
+  
+  // Mostrar onboarding para novos usuários
+  useEffect(() => {
+    if (user && !user.hasCompletedOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, [user]);
 
   const { data: disciplines = [] } = trpc.disciplines.list.useQuery();
   const { data: xpData } = trpc.gamification.xp.useQuery(undefined, {
@@ -42,7 +53,6 @@ export default function Dashboard() {
 
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
-      logout();
       setLocation("/login");
     },
   });
@@ -207,6 +217,12 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      
+      {/* Onboarding Modal */}
+      <OnboardingModal 
+        isOpen={showOnboarding} 
+        onComplete={() => setShowOnboarding(false)}
+      />
     </div>
   );
 }

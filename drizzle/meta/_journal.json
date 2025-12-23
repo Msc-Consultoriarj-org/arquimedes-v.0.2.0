@@ -29,6 +29,13 @@
       "when": 1766478291013,
       "tag": "0003_sticky_apocalypse",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1766479755801,
+      "tag": "0004_thin_plazm",
+      "breakpoints": true
     }
   ]
 }
