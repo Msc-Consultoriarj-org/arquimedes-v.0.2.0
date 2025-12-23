@@ -450,5 +450,5 @@
 - [x] Adicionar fallback para abrir app YouTube se vídeo não carregar
 - [x] Testar transmissão de vídeos com IDs reais do YouTube (testado, fallback funcionando)
 - [x] Adicionar vídeos educacionais reais nas páginas (placeholders prontos)
-- [ ] Configurar remote do GitHub (MSC-Consultoria/arquimedes0.0.1)
-- [ ] Fazer push dos commits para GitHub
+- [x] Configurar remote do GitHub (MSC-Consultoria/arquimedes0.0.1)
+- [x] Fazer push dos commits para GitHub (commit 0cd5906)
