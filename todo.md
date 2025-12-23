@@ -274,10 +274,10 @@
   - [ ] Página 1: O que é Proporção
   - [ ] Página 2: Razão e Comparação
   - [ ] Página 3: Regra de Três Simples
-- [ ] Criar Módulo 6: Porcentagem
-  - [ ] Página 1: Conceito de Porcentagem
-  - [ ] Página 2: Cálculos de Porcentagem
-  - [ ] Página 3: Aplicações Práticas (descontos, juros)
+- [x] Criar Módulo 6: Porcentagem ✅ COMPLETO
+  - [x] Página 1: Conceito de Porcentagem (1500+ palavras, 4 exercícios)
+  - [x] Página 2: Cálculos de Porcentagem (2000+ palavras, 5 exercícios)
+  - [x] Página 3: Aplicações Práticas (2500+ palavras, 5 exercícios, descontos, juros)
 - [ ] Criar Módulo 7: Exponenciação
   - [ ] Página 1: Potências e Expoentes
   - [ ] Página 2: Propriedades das Potências
@@ -1165,3 +1165,75 @@
 - [x] Feedback integrado: sons, vibração, confete, partículas, animações CSS
 - [x] Todos os componentes com suporte a teclado (KeyboardSensor no dnd-kit)
 - [ ] Salvar checkpoint v2.33.0
+
+
+## 📚 Novos Módulos de Matemática (v2.34.0)
+
+### Módulo 5: Proporção e Razão
+- [ ] Criar estrutura do módulo no banco de dados
+- [ ] Página 1: O que é Proporção
+  - [ ] Conteúdo teórico com exemplos visuais
+  - [ ] Exercícios interativos (FillInBlanks, VisualMultipleChoice)
+  - [ ] Vídeo educacional
+- [ ] Página 2: Razão e Comparação
+  - [ ] Conteúdo teórico com exemplos práticos
+  - [ ] Exercícios de comparação (MatchingGame)
+  - [ ] Vídeo educacional
+- [ ] Página 3: Regra de Três Simples
+  - [ ] Conteúdo teórico com passo a passo
+  - [ ] Exercícios práticos (InteractiveSlider, FillInBlanks)
+  - [ ] Vídeo educacional
+
+### Módulo 6: Porcentagem
+- [ ] Criar estrutura do módulo no banco de dados
+- [ ] Página 1: Conceito de Porcentagem
+  - [ ] Conteúdo teórico com representações visuais
+  - [ ] Exercícios de conversão (FillInBlanks)
+  - [ ] Vídeo educacional
+- [ ] Página 2: Cálculos de Porcentagem
+  - [ ] Conteúdo teórico com fórmulas
+  - [ ] Exercícios de cálculo (InteractiveSlider, VisualMultipleChoice)
+  - [ ] Vídeo educacional
+- [ ] Página 3: Aplicações Práticas (descontos, juros)
+  - [ ] Conteúdo teórico com situações reais
+  - [ ] Exercícios práticos (FillInBlanks, MatchingGame)
+  - [ ] Vídeo educacional
+
+### Módulo 7: Exponenciação
+- [ ] Criar estrutura do módulo no banco de dados
+- [ ] Página 1: Potências e Expoentes
+  - [ ] Conteúdo teórico com notação
+  - [ ] Exercícios básicos (VisualMultipleChoice, FillInBlanks)
+  - [ ] Vídeo educacional
+- [ ] Página 2: Propriedades das Potências
+  - [ ] Conteúdo teórico com propriedades
+  - [ ] Exercícios de aplicação (MatchingGame, FillInBlanks)
+  - [ ] Vídeo educacional
+- [ ] Página 3: Notação Científica
+  - [ ] Conteúdo teórico com exemplos
+  - [ ] Exercícios de conversão (InteractiveSlider, FillInBlanks)
+  - [ ] Vídeo educacional
+
+### Módulo 8: Fatoração
+- [ ] Criar estrutura do módulo no banco de dados
+- [ ] Página 1: Números Primos
+  - [ ] Conteúdo teórico com definições
+  - [ ] Exercícios de identificação (VisualMultipleChoice, MatchingGame)
+  - [ ] Vídeo educacional
+- [ ] Página 2: Fatoração em Primos
+  - [ ] Conteúdo teórico com método
+  - [ ] Exercícios de fatoração (FillInBlanks, DragAndDrop)
+  - [ ] Vídeo educacional
+- [ ] Página 3: MDC e MMC
+  - [ ] Conteúdo teórico com algoritmos
+  - [ ] Exercícios práticos (InteractiveSlider, FillInBlanks)
+  - [ ] Vídeo educacional
+
+### Banco de Dados e Testes
+- [ ] Criar script de seed para popular módulos
+- [ ] Popular páginas com conteúdo completo
+- [ ] Popular exercícios interativos
+- [ ] Adicionar vídeos educacionais (placeholders)
+- [ ] Testar navegação entre módulos
+- [ ] Testar progresso do usuário
+- [ ] Salvar checkpoint v2.34.0

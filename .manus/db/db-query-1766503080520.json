@@ -1,0 +1,28 @@
+{
+  "query": "SELECT * FROM modules WHERE name LIKE '%Propor%' OR name LIKE '%Razão%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT * FROM modules WHERE name LIKE '%Propor%' OR name LIKE '%Razão%'",
+  "rows": [
+    {
+      "id": "60004",
+      "disciplineId": "1",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "description": "Relações entre quantidades e regra de três",
+      "order": "7",
+      "createdAt": "2025-12-23 07:53:13"
+    },
+    {
+      "id": "90001",
+      "disciplineId": "1",
+      "name": "Proporção e Razão",
+      "slug": "proporcao-e-razao",
+      "description": "Aprenda a comparar quantidades e resolver problemas com regra de três",
+      "order": "5",
+      "createdAt": "2025-12-23 15:17:08"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tdisciplineId\tname\tslug\tdescription\torder\tcreatedAt\n60004\t1\tRazão e Proporção\trazao-proporcao\tRelações entre quantidades e regra de três\t7\t2025-12-23 07:53:13\n90001\t1\tProporção e Razão\tproporcao-e-razao\tAprenda a comparar quantidades e resolver problemas com regra de três\t5\t2025-12-23 15:17:08\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

@@ -1,0 +1,13 @@
+{
+  "query": "SELECT id FROM modules WHERE slug = 'proporcao-e-razao'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id FROM modules WHERE slug = 'proporcao-e-razao'",
+  "rows": [
+    {
+      "id": "90001"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\n90001\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

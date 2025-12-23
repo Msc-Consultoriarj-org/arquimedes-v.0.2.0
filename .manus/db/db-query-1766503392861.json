@@ -1,0 +1,34 @@
+{
+  "query": "SELECT p.id, p.title, p.`order`, COUNT(e.id) as num_exercises\nFROM pages p\nLEFT JOIN exercises e ON p.id = e.pageId\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'porcentagem'\nGROUP BY p.id\nORDER BY p.`order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.`order`, COUNT(e.id) as num_exercises\nFROM pages p\nLEFT JOIN exercises e ON p.id = e.pageId\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'porcentagem'\nGROUP BY p.id\nORDER BY p.`order`",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "Conceito de Porcentagem",
+      "order": "1",
+      "num_exercises": "4"
+    },
+    {
+      "id": "90002",
+      "title": "Cálculos de Porcentagem",
+      "order": "2",
+      "num_exercises": "5"
+    },
+    {
+      "id": "90003",
+      "title": "Cálculos de Porcentagem",
+      "order": "2",
+      "num_exercises": "5"
+    },
+    {
+      "id": "90004",
+      "title": "Aplicações Práticas",
+      "order": "3",
+      "num_exercises": "5"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\torder\tnum_exercises\n90001\tConceito de Porcentagem\t1\t4\n90002\tCálculos de Porcentagem\t2\t5\n90003\tCálculos de Porcentagem\t2\t5\n90004\tAplicações Práticas\t3\t5\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

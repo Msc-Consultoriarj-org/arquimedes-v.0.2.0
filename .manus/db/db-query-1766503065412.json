@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, slug FROM modules WHERE `order` >= 5 ORDER BY `order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug FROM modules WHERE `order` >= 5 ORDER BY `order`",
+  "rows": [
+    {
+      "id": "60002",
+      "name": "Decimais",
+      "slug": "decimais"
+    },
+    {
+      "id": "90001",
+      "name": "Proporção e Razão",
+      "slug": "proporcao-e-razao"
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem"
+    },
+    {
+      "id": "60004",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao"
+    },
+    {
+      "id": "60005",
+      "name": "Potenciação",
+      "slug": "potenciacao"
+    },
+    {
+      "id": "60006",
+      "name": "Radiciação",
+      "slug": "radiciacao"
+    },
+    {
+      "id": "60007",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros"
+    },
+    {
+      "id": "60008",
+      "name": "Múltiplos e Divisores",
+      "slug": "multiplos-divisores"
+    },
+    {
+      "id": "60009",
+      "name": "Números Primos",
+      "slug": "numeros-primos"
+    },
+    {
+      "id": "60010",
+      "name": "Expressões Numéricas",
+      "slug": "expressoes-numericas"
+    },
+    {
+      "id": "60011",
+      "name": "Sistemas de Medidas",
+      "slug": "sistemas-medidas"
+    },
+    {
+      "id": "60012",
+      "name": "Matemática Financeira Básica",
+      "slug": "matematica-financeira"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n60002\tDecimais\tdecimais\n90001\tProporção e Razão\tproporcao-e-razao\n60003\tPorcentagem\tporcentagem\n60004\tRazão e Proporção\trazao-proporcao\n60005\tPotenciação\tpotenciacao\n60006\tRadiciação\tradiciacao\n60007\tNúmeros Inteiros\tnumeros-inteiros\n60008\tMúltiplos e Divisores\tmultiplos-divisores\n60009\tNúmeros Primos\tnumeros-primos\n60010\tExpressões Numéricas\texpressoes-numericas\n60011\tSistemas de Medidas\tsistemas-medidas\n60012\tMatemática Financeira Básica\tmatematica-financeira\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

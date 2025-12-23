@@ -1,0 +1,34 @@
+{
+  "query": "SELECT id, title, slug, `order` FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'porcentagem') ORDER BY `order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, slug, `order` FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'porcentagem') ORDER BY `order`",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "Conceito de Porcentagem",
+      "slug": "conceito-de-porcentagem",
+      "order": "1"
+    },
+    {
+      "id": "90002",
+      "title": "Cálculos de Porcentagem",
+      "slug": "calculos-de-porcentagem",
+      "order": "2"
+    },
+    {
+      "id": "90003",
+      "title": "Cálculos de Porcentagem",
+      "slug": "calculos-de-porcentagem",
+      "order": "2"
+    },
+    {
+      "id": "90004",
+      "title": "Aplicações Práticas",
+      "slug": "aplicacoes-praticas-porcentagem",
+      "order": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\torder\n90001\tConceito de Porcentagem\tconceito-de-porcentagem\t1\n90002\tCálculos de Porcentagem\tcalculos-de-porcentagem\t2\n90003\tCálculos de Porcentagem\tcalculos-de-porcentagem\t2\n90004\tAplicações Práticas\taplicacoes-praticas-porcentagem\t3\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}
