@@ -79,10 +79,6 @@ export default function DisciplinePage() {
           <h2 className="text-2xl font-bold">Módulos</h2>
           <div className="grid gap-6">
             {modules
-              .filter((module) => {
-                // Mostrar apenas módulos com conteúdo (IDs 1, 2, 3, 6)
-                return [1, 2, 3, 6].includes(module.id);
-              })
               .map((module, index) => (
                 <ModuleCard
                   key={module.id}
@@ -124,6 +120,11 @@ function ModuleCard({
   ).length;
   const progressPercentage = pages.length > 0 ? Math.round((completedPages / pages.length) * 100) : 0;
   const isModuleComplete = progressPercentage === 100;
+
+  // Ocultar módulos sem conteúdo
+  if (pages.length === 0) {
+    return null;
+  }
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
