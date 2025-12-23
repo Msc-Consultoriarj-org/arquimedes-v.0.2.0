@@ -387,10 +387,16 @@
 - [x] Expandir Adição Página 3 (Exercícios) - 2.189 palavras
 - [x] Expandir Subtração Página 1 (Conceito) - 2.199 palavras
 
+## Expansão de Conteúdo - Multiplicação (v2.29.0)
+- [x] Expandir Multiplicação Página 1 (Soma Repetida) - ~1.900 palavras, 5 exemplos práticos
+- [x] Expandir Multiplicação Página 2 (Tabuada) - ~1.850 palavras, 6 estratégias de memorização, 8 exercícios
+- [x] Expandir Multiplicação Página 3 (Avançada) - ~1.800 palavras, 5 aplicações práticas, 7 exercícios
+- [x] Criar documento completo em docs/conteudo/MULTIPLICACAO_EXPANDIDA.md
+- [ ] Aplicar conteúdo ao banco de dados
+
 ## Expansão de Conteúdo - Lote 2 (Próximas 4 páginas)
 - [ ] Expandir Subtração Página 2 (Movimento) - 5000+ palavras
 - [ ] Expandir Subtração Página 3 (Exercícios) - 5000+ palavras
-- [ ] Expandir Multiplicação Página 1 (Soma Repetida) - 5000+ palavras
 - [ ] Expandir Multiplicação Página 2 (Tabuada) - 5000+ palavras
 
 ## Expansão de Conteúdo - Lote 3 (Últimas 4 páginas)
@@ -1046,3 +1052,13 @@
 - [x] Documentar palavras-chave e volume de busca
 - [x] Criar pauta editorial com diretrizes de qualidade
 - [x] Criar estratégia de anúncios pagos com grupos e criativos
+
+
+## Expansão de Conteúdo - Multiplicação (v2.29.0)
+- [ ] Verificar páginas existentes de Multiplicação no banco
+- [ ] Expandir Multiplicação Página 1 (~1.800 palavras com contextos do cotidiano)
+- [ ] Expandir Multiplicação Página 2 (~1.800 palavras com estratégias de memorização)
+- [ ] Expandir Multiplicação Página 3 (~1.800 palavras com aplicações práticas)
+- [ ] Adicionar 20+ exercícios interativos progressivos
+- [ ] Incluir componentes visuais (MultiplicationMatrix, MultiplicationTable)
+- [ ] Testar conteúdo expandido
