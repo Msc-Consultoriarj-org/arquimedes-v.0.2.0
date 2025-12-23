@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail } from "lucide-react";
+import { Mail, Code } from "lucide-react";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 
@@ -75,6 +75,18 @@ export default function LoginPage() {
               <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
               Continuar com Google
             </Button>
+
+            {/* Botão de Login para Desenvolvimento */}
+            {import.meta.env.DEV && (
+              <Button
+                type="button"
+                onClick={() => (window.location.href = "/api/dev/login")}
+                className="w-full h-14 bg-gray-900 hover:bg-gray-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-base"
+              >
+                <Code className="w-5 h-5 mr-3 flex-shrink-0" />
+                Entrar como Desenvolvedor
+              </Button>
+            )}
 
             <p className="text-xs text-center text-gray-500">
               Ao continuar, você concorda com nossos Termos de Uso

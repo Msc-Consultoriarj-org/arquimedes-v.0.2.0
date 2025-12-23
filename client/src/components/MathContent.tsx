@@ -5,6 +5,7 @@ import katex from 'katex';
 import 'katex/dist/katex.min.css';
 import { Card } from './ui/card';
 import { YouTubeEmbed } from './YouTubeEmbed';
+import { extractYouTubeId } from '@/lib/youtube';
 
 interface MathContentProps {
   content: string;
@@ -21,12 +22,19 @@ export function MathContent({ content, className = "", videoUrl, videoTitle }: M
     .replace(/;\s*/g, '\n\n') // Substituir ; por quebras de linha duplas
     .replace(/\n{3,}/g, '\n\n') // Remover quebras excessivas
     .replace(/<ExerciseCard[\s\S]*?\/>/g, ''); // Remover ExerciseCard tags
-  
+
   // Dividir conteúdo em partes (antes e depois do vídeo)
-  const hasVideoPlaceholder = /<YouTubeEmbed[\s\S]*?\/>/.test(cleanContent);
+  const videoPlaceholderMatch = cleanContent.match(/<YouTubeEmbed([^>]*)\/>/);
+  const placeholderVideoId = extractAttribute(videoPlaceholderMatch?.[1], 'videoId');
+  const placeholderVideoTitle = extractAttribute(videoPlaceholderMatch?.[1], 'title');
+
+  const embedVideoId = extractYouTubeId(placeholderVideoId || videoUrl);
+  const embedVideoTitle = placeholderVideoTitle || videoTitle;
+
+  const hasVideoPlaceholder = /<YouTubeEmbed[\s\S]*?\/>/.test(cleanContent) && !!embedVideoId;
   let contentParts: string[] = [];
-  
-  if (hasVideoPlaceholder && videoUrl) {
+
+  if (hasVideoPlaceholder && embedVideoId) {
     contentParts = cleanContent.split(/<YouTubeEmbed[\s\S]*?\/>/);
   } else {
     contentParts = [cleanContent];
@@ -46,11 +54,11 @@ export function MathContent({ content, className = "", videoUrl, videoTitle }: M
       </ReactMarkdown>
       
       {/* Vídeo integrado naturalmente */}
-      {hasVideoPlaceholder && videoUrl && (
+      {hasVideoPlaceholder && embedVideoId && (
         <div className="my-8">
           <YouTubeEmbed
-            videoId={videoUrl}
-            title={videoTitle || "Vídeo Educacional"}
+            videoId={embedVideoId}
+            title={embedVideoTitle || "Vídeo Educacional"}
           />
         </div>
       )}
@@ -158,4 +166,10 @@ function processLatex(text: string): string {
   processed = processed.replace(/R__DOLLAR__/g, 'R$');
   
   return processed;
+}
+
+function extractAttribute(attrs?: string | null, key?: string | null) {
+  if (!attrs || !key) return null;
+  const match = attrs.match(new RegExp(`${key}="([^"]+)"`));
+  return match?.[1] || null;
 }
