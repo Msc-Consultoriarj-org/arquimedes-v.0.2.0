@@ -376,3 +376,35 @@ export type DailyChallengeAttempt = typeof dailyChallengeAttempts.$inferSelect;
 export type InsertDailyChallengeAttempt = typeof dailyChallengeAttempts.$inferInsert;
 
 
+/**
+ * Achievement Definitions (Definições de Conquistas)
+ * Define todas as conquistas disponíveis no sistema
+ */
+export const achievementDefinitions = mysqlTable("achievement_definitions", {
+  id: int("id").autoincrement().primaryKey(),
+  key: varchar("key", { length: 100 }).notNull().unique(), // Chave única (ex: "first_lesson", "streak_7_days")
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  icon: varchar("icon", { length: 50 }).notNull(), // Nome do ícone lucide-react
+  category: mysqlEnum("category", ["learning", "streak", "mastery", "practice"]).notNull(),
+  requirement: int("requirement").notNull(), // Quantidade necessária (ex: 1 aula, 7 dias, 50 exercícios)
+  order: int("order").notNull().default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type AchievementDefinition = typeof achievementDefinitions.$inferSelect;
+export type InsertAchievementDefinition = typeof achievementDefinitions.$inferInsert;
+
+/**
+ * User Achievements (Conquistas do Usuário)
+ * Rastreia quais conquistas cada usuário desbloqueou
+ */
+export const userAchievements = mysqlTable("user_achievements", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  achievementId: int("achievementId").notNull(), // Referência para achievement_definitions
+  unlockedAt: timestamp("unlockedAt").defaultNow().notNull(),
+});
+
+export type UserAchievement = typeof userAchievements.$inferSelect;
+export type InsertUserAchievement = typeof userAchievements.$inferInsert;

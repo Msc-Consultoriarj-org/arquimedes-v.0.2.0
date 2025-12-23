@@ -10,6 +10,8 @@ import {
   exerciseAttempts, ExerciseAttempt, InsertExerciseAttempt,
   generatedExercises, GeneratedExercise, InsertGeneratedExercise,
   achievements, Achievement, InsertAchievement,
+  achievementDefinitions, AchievementDefinition, InsertAchievementDefinition,
+  userAchievements, UserAchievement, InsertUserAchievement,
   streaks, Streak, InsertStreak,
   userXP, UserXP, InsertUserXP,
   xpTransactions, XPTransaction, InsertXPTransaction,
@@ -1253,4 +1255,214 @@ export async function autoEnrollInAritmetica(userId: number) {
   const ARITMETICA_DISCIPLINE_ID = 1; // ID da disciplina Aritmética
   await enrollUserInDiscipline(userId, ARITMETICA_DISCIPLINE_ID);
   console.log(`[AutoEnroll] User ${userId} enrolled in Aritmética`);
+}
+
+
+// ============= ACHIEVEMENTS =============
+
+/**
+ * Get all achievement definitions
+ */
+export async function getAllAchievementDefinitions() {
+  const db = await getDb();
+  if (!db) return [];
+
+  const definitions = await db
+    .select()
+    .from(achievementDefinitions)
+    .orderBy(achievementDefinitions.order);
+
+  return definitions;
+}
+
+/**
+ * Get user's unlocked achievement IDs
+ */
+export async function getUserUnlockedAchievements(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  const unlocked = await db
+    .select()
+    .from(userAchievements)
+    .where(eq(userAchievements.userId, userId));
+
+  return unlocked;
+}
+
+/**
+ * Check and award achievements based on user progress
+ * Returns newly unlocked achievements
+ */
+export async function checkAndAwardAchievements(userId: number): Promise<AchievementDefinition[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const definitions = await getAllAchievementDefinitions();
+  const unlocked = await getUserUnlockedAchievements(userId);
+  const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
+
+  const newlyUnlocked: AchievementDefinition[] = [];
+
+  for (const def of definitions) {
+    // Skip if already unlocked
+    if (unlockedIds.has(def.id)) continue;
+
+    let shouldUnlock = false;
+
+    switch (def.key) {
+      case "first_lesson": {
+        const progress = await db
+          .select()
+          .from(pageProgress)
+          .where(and(eq(pageProgress.userId, userId), eq(pageProgress.completed, true)))
+          .limit(1);
+        shouldUnlock = progress.length >= 1;
+        break;
+      }
+
+      case "dedicated_student": {
+        const progress = await db
+          .select()
+          .from(pageProgress)
+          .where(and(eq(pageProgress.userId, userId), eq(pageProgress.completed, true)));
+        shouldUnlock = progress.length >= 5;
+        break;
+      }
+
+      case "streak_3_days": {
+        const streak = await db
+          .select()
+          .from(streaks)
+          .where(eq(streaks.userId, userId))
+          .limit(1);
+        shouldUnlock = streak.length > 0 && streak[0].currentStreak >= 3;
+        break;
+      }
+
+      case "streak_7_days": {
+        const streak = await db
+          .select()
+          .from(streaks)
+          .where(eq(streaks.userId, userId))
+          .limit(1);
+        shouldUnlock = streak.length > 0 && streak[0].currentStreak >= 7;
+        break;
+      }
+
+      case "master_addition": {
+        // Module ID 1: Adição e Subtração
+        const modulePages = await db
+          .select()
+          .from(pages)
+          .where(eq(pages.moduleId, 1));
+        
+        const completedPages = await db
+          .select()
+          .from(pageProgress)
+          .where(
+            and(
+              eq(pageProgress.userId, userId),
+              eq(pageProgress.completed, true)
+            )
+          );
+
+        const completedPageIds = new Set(completedPages.map((p) => p.pageId));
+        const allModulePagesCompleted = modulePages.every((p) => completedPageIds.has(p.id));
+        shouldUnlock = modulePages.length > 0 && allModulePagesCompleted;
+        break;
+      }
+
+      case "master_multiplication": {
+        // Module ID 2: Multiplicação
+        const modulePages = await db
+          .select()
+          .from(pages)
+          .where(eq(pages.moduleId, 2));
+        
+        const completedPages = await db
+          .select()
+          .from(pageProgress)
+          .where(
+            and(
+              eq(pageProgress.userId, userId),
+              eq(pageProgress.completed, true)
+            )
+          );
+
+        const completedPageIds = new Set(completedPages.map((p) => p.pageId));
+        const allModulePagesCompleted = modulePages.every((p) => completedPageIds.has(p.id));
+        shouldUnlock = modulePages.length > 0 && allModulePagesCompleted;
+        break;
+      }
+
+      case "master_division": {
+        // Module ID 3: Divisão
+        const modulePages = await db
+          .select()
+          .from(pages)
+          .where(eq(pages.moduleId, 3));
+        
+        const completedPages = await db
+          .select()
+          .from(pageProgress)
+          .where(
+            and(
+              eq(pageProgress.userId, userId),
+              eq(pageProgress.completed, true)
+            )
+          );
+
+        const completedPageIds = new Set(completedPages.map((p) => p.pageId));
+        const allModulePagesCompleted = modulePages.every((p) => completedPageIds.has(p.id));
+        shouldUnlock = modulePages.length > 0 && allModulePagesCompleted;
+        break;
+      }
+
+      case "explorer": {
+        const views = await db
+          .select()
+          .from(standaloneVideoViews)
+          .where(eq(standaloneVideoViews.userId, userId));
+        shouldUnlock = views.length >= 10;
+        break;
+      }
+
+      case "practitioner": {
+        const attempts = await db
+          .select()
+          .from(standaloneExerciseAttempts)
+          .where(
+            and(
+              eq(standaloneExerciseAttempts.userId, userId),
+              eq(standaloneExerciseAttempts.isCorrect, true)
+            )
+          );
+        shouldUnlock = attempts.length >= 50;
+        break;
+      }
+
+      case "champion": {
+        const attempts = await db
+          .select()
+          .from(dailyChallengeAttempts)
+          .where(eq(dailyChallengeAttempts.userId, userId));
+        
+        // 3 exercícios por desafio, então 10 desafios = 30 tentativas
+        shouldUnlock = attempts.length >= 30;
+        break;
+      }
+    }
+
+    if (shouldUnlock) {
+      // Award achievement
+      await db.insert(userAchievements).values({
+        userId,
+        achievementId: def.id,
+      });
+      newlyUnlocked.push(def);
+    }
+  }
+
+  return newlyUnlocked;
 }

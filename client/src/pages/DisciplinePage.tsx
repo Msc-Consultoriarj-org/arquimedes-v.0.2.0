@@ -4,7 +4,8 @@ import { MobileNav } from "@/components/MobileNav";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, BookOpen, ArrowRight } from "lucide-react";
+import { ArrowLeft, BookOpen, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function DisciplinePage() {
   const params = useParams<{ disciplineSlug: string }>();
@@ -102,17 +103,38 @@ function ModuleCard({
   disciplineSlug: string;
   index: number;
 }) {
+  const { isAuthenticated } = useAuth();
   const { data: pages = [] } = trpc.pages.listByModule.useQuery({
     moduleId: module.id,
   });
+
+  // Fetch progress for this module
+  const { data: allProgress = [] } = trpc.moduleProgress.getAll.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+
+  // Calculate module completion
+  const completedPages = pages.filter((page) =>
+    allProgress.some((p) => p.pageId === page.id && p.completed)
+  ).length;
+  const progressPercentage = pages.length > 0 ? Math.round((completedPages / pages.length) * 100) : 0;
+  const isModuleComplete = progressPercentage === 100;
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <div className="text-sm font-medium text-muted-foreground mb-2">
-              Módulo {index + 1}
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-sm font-medium text-muted-foreground">
+                Módulo {index + 1}
+              </span>
+              {isModuleComplete && (
+                <div className="flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-medium">
+                  <CheckCircle2 className="h-3 w-3" />
+                  <span>Completo</span>
+                </div>
+              )}
             </div>
             <CardTitle className="text-2xl mb-2">{module.name}</CardTitle>
             {module.description && (
@@ -123,9 +145,16 @@ function ModuleCard({
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <p className="text-sm font-medium text-muted-foreground">
-            {pages.length} aulas disponíveis
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-medium text-muted-foreground">
+              {pages.length} aulas disponíveis
+            </p>
+            {isAuthenticated && pages.length > 0 && (
+              <p className="text-sm font-medium text-primary">
+                {progressPercentage}% concluído
+              </p>
+            )}
+          </div>
           {pages.slice(0, 3).map((page) => (
             <div key={page.id} className="flex items-center gap-2 text-sm">
               <BookOpen className="h-4 w-4 text-muted-foreground" />

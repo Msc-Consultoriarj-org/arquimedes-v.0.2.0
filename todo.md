@@ -1072,3 +1072,53 @@
 - [x] Adicionar 15 exercícios interativos progressivos
 - [x] Criar documento completo em docs/conteudo/DIVISAO_EXPANDIDA.md
 - [x] Aplicar conteúdo ao banco de dados (3 páginas atualizadas com ~29.944 caracteres)
+
+
+## 🎮 Melhorias de Gamificação e UX (v2.32.0)
+
+### Ícone de Check para Módulos Completos
+- [x] Adicionar helper getModuleCompletionPercentage no db.ts (usando query existente)
+- [x] Atualizar componente de módulo para mostrar ícone de check quando 100%
+- [x] Adicionar badge visual "Completo" em verde
+- [x] Adicionar porcentagem de progresso ao lado de "aulas disponíveis"
+- [ ] Testar com diferentes estados de progresso (0%, 50%, 100%)
+
+### Testes de Cálculos de Progresso
+- [x] Criar arquivo progress.test.ts
+- [x] Testar cálculo de progresso de módulo (0 aulas, 1 aula, todas as aulas)
+- [x] Testar cálculo de progresso de módulo (0%, 33%, 67%, 100%)
+- [x] Testar edge cases (módulo sem páginas, usuário sem progresso)
+- [x] Testar páginas incompletas não contam no progresso
+- [x] Testar progresso misto (completo + incompleto)
+- [x] Total: 10 testes passando (100%)
+
+### Sistema Completo de Conquistas
+- [x] Criar tabela achievementDefinitions no schema
+- [x] Criar tabela userAchievements no schema
+- [x] Aplicar migração no banco (pnpm db:push)
+- [x] Popular 10 conquistas iniciais via script seed
+- [x] Definir 10 conquistas iniciais (script seed-achievements.mjs):
+  * Primeira Aula, Estudante Dedicado (5 aulas)
+  * Sequência de 3 Dias, Sequência de 7 Dias
+  * Mestre da Adição, Multiplicação, Divisão
+  * Explorador (10 vídeos), Praticante (50 exercícios)
+  * Campeão (10 desafios)
+- [x] Criar helpers no db.ts (checkAndAwardAchievements, getUserUnlockedAchievements, getAllAchievementDefinitions)
+- [x] Criar router tRPC achievements (listAll, getUserAchievements, checkProgress)
+- [x] Criar página AchievementsPage.tsx com grid de conquistas
+- [x] Adicionar link "Conquistas" na Sidebar
+- [ ] Integrar verificação de conquistas após ações (completar aula, exercício, etc) [FUTURO]
+- [ ] Criar modal de celebração ao desbloquear conquista [FUTURO]
+
+### Animações de Level-Up
+- [ ] Criar componente LevelUpModal.tsx [FUTURO]
+- [ ] Adicionar animação de confete especial para level-up [FUTURO]
+- [ ] Adicionar som de level-up (opcional) [FUTURO]
+- [ ] Integrar no Dashboard quando XP atinge novo nível [FUTURO]
+- [ ] Mostrar benefícios do novo nível [FUTURO]
+
+### Testes e Documentação
+- [x] Criar testes de conquistas (achievements.test.ts - 6 testes)
+- [x] Executar todos os testes (66 testes passando - 100%)
+- [x] Verificar integração frontend/backend
+- [ ] Salvar checkpoint v2.32.0

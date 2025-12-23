@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
-import { ArrowLeft, BookOpen, CheckCircle2, Clock, Video } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle2, Clock, Video, Award } from "lucide-react";
 import YouTubePlayer from "@/components/YouTubePlayer";
 import { useAuth } from "@/_core/hooks/useAuth";
 
@@ -99,7 +99,15 @@ export default function ModulePage() {
             </Link>
           </Button>
 
-          <h1 className="text-3xl font-bold mb-2">{module.name}</h1>
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-3xl font-bold">{module.name}</h1>
+            {progressPercentage === 100 && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium">
+                <Award className="h-4 w-4" />
+                <span>Módulo Completo</span>
+              </div>
+            )}
+          </div>
           {module.description && (
             <p className="text-lg text-muted-foreground">{module.description}</p>
           )}

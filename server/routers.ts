@@ -282,14 +282,7 @@ Retorne APENAS um JSON com:
       }),
   }),
 
-  // ============= ACHIEVEMENTS =============
-  achievements: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
-      return await db.getUserAchievements(ctx.user.id);
-    }),
-  }),
-
-  // ============= DASHBOARD =============
+  // ============= STREAKS ===============
   gamification: router({
     streak: protectedProcedure.query(async ({ ctx }) => {
       const streak = await db.getUserStreak(ctx.user.id);
@@ -589,6 +582,30 @@ Retorne APENAS um JSON com:
 
     getStats: protectedProcedure.query(async ({ ctx }) => {
       return await db.getDailyChallengeStats(ctx.user.id);
+    }),
+  }),
+
+  // ============= ACHIEVEMENTS =============
+  achievements: router({
+    listAll: publicProcedure.query(async () => {
+      return await db.getAllAchievementDefinitions();
+    }),
+
+    getUserAchievements: protectedProcedure.query(async ({ ctx }) => {
+      const definitions = await db.getAllAchievementDefinitions();
+      const unlocked = await db.getUserUnlockedAchievements(ctx.user.id);
+      const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
+
+      return definitions.map((def) => ({
+        ...def,
+        unlocked: unlockedIds.has(def.id),
+        unlockedAt: unlocked.find((u) => u.achievementId === def.id)?.unlockedAt || null,
+      }));
+    }),
+
+    checkProgress: protectedProcedure.mutation(async ({ ctx }) => {
+      const newAchievements = await db.checkAndAwardAchievements(ctx.user.id);
+      return { newAchievements };
     }),
   }),
 });

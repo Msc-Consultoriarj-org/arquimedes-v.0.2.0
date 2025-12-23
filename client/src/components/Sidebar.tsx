@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Home, User, BookOpen, LogOut, Menu, X, Target, Video, Trophy } from "lucide-react";
+import { Home, User, BookOpen, LogOut, Menu, X, Target, Video, Trophy, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
 import { useState } from "react";
@@ -19,8 +19,9 @@ export function Sidebar() {
     { name: "Dashboard", href: "/dashboard", icon: Home },
     { name: "Perfil", href: "/perfil", icon: User },
     { name: "Desafio do Dia", href: "/desafio-do-dia", icon: Trophy },
-    { name: "Sala de Exercícios", href: "/exercicios", icon: Target },
-    { name: "Sala de Vídeos", href: "/videos", icon: Video },
+    { name: "Conquistas", href: "/conquistas", icon: Award },
+    { name: "Sala de Exercicios", href: "/exercicios", icon: Target },
+    { name: "Sala de Videos", href: "/videos", icon: Video },
     { name: "Minhas Disciplinas", href: "/disciplinas", icon: BookOpen },
   ];
 
@@ -31,7 +32,7 @@ export function Sidebar() {
       {/* Logo */}
       <div className="p-6 border-b">
         <h1 className="text-2xl font-bold text-primary">Arquimedes</h1>
-        <p className="text-sm text-muted-foreground">Matemática Descomplicada</p>
+        <p className="text-sm text-muted-foreground">Matematica Descomplicada</p>
       </div>
 
       {/* User Profile */}
@@ -45,7 +46,7 @@ export function Sidebar() {
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold truncate">{user.name || "Usuário"}</p>
+            <p className="font-semibold truncate">{user.name || "Usuario"}</p>
             <p className="text-sm text-muted-foreground truncate">{user.email}</p>
           </div>
         </div>
