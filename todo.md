@@ -428,3 +428,16 @@
 - [x] Criar script Node.js para atualizar banco (update-content-db.mjs)
 - [x] Executar script e inserir 7.259 palavras no banco
 - [x] Verificar inserção (páginas 2, 3, 4 atualizadas)
+
+
+## Expansão de Exercícios - Foco em Qualidade
+- [x] Subtração Página 2 (Movimento na Reta) - 25 exercícios (1.508 palavras)
+- [x] Subtração Página 3 (Exercícios Práticos) - 30 exercícios (1.296 palavras)
+- [x] Multiplicação Página 1 (Soma Repetida) - 30 exercícios (1.332 palavras)
+- [x] Multiplicação Página 2 (Tabuada) - 30 exercícios (1.741 palavras)
+- [x] Multiplicação Página 3 (Exercícios Práticos) - 30 exercícios (1.338 palavras)
+- [x] Divisão Página 1 (Conceito) - 30 exercícios (1.284 palavras)
+- [x] Divisão Página 2 (Divisão com Resto) - 30 exercícios (1.379 palavras)
+- [x] Divisão Página 3 (Exercícios Práticos) - 30 exercícios (1.316 palavras)
+- [x] Inserir todo conteúdo expandido no banco (12 páginas, 18.330 palavras, 235 exercícios)
+- [x] Testar exercícios interativos (19/19 testes passando)
