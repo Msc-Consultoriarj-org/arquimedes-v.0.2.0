@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, slug FROM modules WHERE slug IN ('subtracao', 'porcentagem') AND disciplineId = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug FROM modules WHERE slug IN ('subtracao', 'porcentagem') AND disciplineId = 1;",
+  "rows": [
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao"
+    },
+    {
+      "id": "120006",
+      "name": "Porcentagem",
+      "slug": "porcentagem"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n90002\tSubtração\tsubtracao\n120006\tPorcentagem\tporcentagem\n",
+  "stderr": "",
+  "execution_time_ms": 849
+}

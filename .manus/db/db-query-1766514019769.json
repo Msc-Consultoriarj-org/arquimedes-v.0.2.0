@@ -1,0 +1,45 @@
+{
+  "query": "SELECT id, title, slug, estimatedMinutes, `order` \nFROM pages \nWHERE moduleId = (SELECT id FROM modules WHERE slug = 'subtracao' AND disciplineId = 1)\nORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, slug, estimatedMinutes, `order` \nFROM pages \nWHERE moduleId = (SELECT id FROM modules WHERE slug = 'subtracao' AND disciplineId = 1)\nORDER BY `order`;",
+  "rows": [
+    {
+      "id": "120001",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair",
+      "estimatedMinutes": "20",
+      "order": "1"
+    },
+    {
+      "id": "120002",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair",
+      "estimatedMinutes": "20",
+      "order": "1"
+    },
+    {
+      "id": "120003",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair",
+      "estimatedMinutes": "20",
+      "order": "1"
+    },
+    {
+      "id": "120004",
+      "title": "Subtração com Empréstimo",
+      "slug": "subtracao-com-emprestimo",
+      "estimatedMinutes": "25",
+      "order": "2"
+    },
+    {
+      "id": "120005",
+      "title": "Aplicações Práticas da Subtração",
+      "slug": "aplicacoes-praticas-subtracao",
+      "estimatedMinutes": "20",
+      "order": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\testimatedMinutes\torder\n120001\tO que é Subtrair?\to-que-e-subtrair\t20\t1\n120002\tO que é Subtrair?\to-que-e-subtrair\t20\t1\n120003\tO que é Subtrair?\to-que-e-subtrair\t20\t1\n120004\tSubtração com Empréstimo\tsubtracao-com-emprestimo\t25\t2\n120005\tAplicações Práticas da Subtração\taplicacoes-praticas-subtracao\t20\t3\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

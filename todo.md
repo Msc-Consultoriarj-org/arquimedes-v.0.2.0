@@ -432,3 +432,20 @@
 - [x] Atualizar descrição de Porcentagem (incluir proporções e regra de três)
 - [x] Criar novos módulos 6-10 (Frações, Decimais, Razão, Potenciação, Inteiros)
 - [x] Testar navegação com nova estrutura de 10 módulos
+
+
+### 📚 Criação de Conteúdo - Módulos 2 e 5 (23/12/2025)
+- [ ] Planejar estrutura das 3-4 aulas de Subtração
+- [ ] Criar Aula 1: O que é Subtrair (Conceito Fundamental)
+- [ ] Criar Aula 2: Subtração com Empréstimo/Reagrupamento
+- [ ] Criar Aula 3: Aplicações Práticas da Subtração
+- [ ] Criar Aula 4 (opcional): Subtração e a Reta Numérica
+- [ ] Expandir aulas existentes de Porcentagem
+- [ ] Criar nova aula: Regra de Três Simples
+- [ ] Criar nova aula: Proporções e Razões
+- [ ] Inserir todas as aulas no banco de dados
+- [ ] Testar navegação e progressão
+- [ ] Salvar checkpoint final
+- [x] Bug #5: Escaneabilidade do conteúdo melhorada (ícones, seções, blockquotes, listas)
+- [x] Criação: 3 aulas de Subtração inseridas
+- [x] Criação: 6 aulas de Porcentagem (3 antigas + 3 novas)

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO pages (moduleId, title, slug, mainText, estimatedMinutes, `order`, createdAt, updatedAt)\nSELECT id, 'O que é Subtrair?', 'o-que-e-subtrair', LOAD_FILE('/tmp/subtracao_aula1.md'), 20, 1, NOW(), NOW()\nFROM modules WHERE slug = 'subtracao' AND disciplineId = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute INSERT INTO pages (moduleId, title, slug, mainText, estimatedMinutes, `order`, createdAt, updatedAt)\nSELECT id, 'O que é Subtrair?', 'o-que-e-subtrair', LOAD_FILE('/tmp/subtracao_aula1.md'), 20, 1, NOW(), NOW()\nFROM modules WHERE slug = 'subtracao' AND disciplineId = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 74
+}

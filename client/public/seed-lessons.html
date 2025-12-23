@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Lessons - Arquimedes</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Inserir Aulas no Banco de Dados</h1>
+        <p>Clique no botão abaixo para inserir automaticamente:</p>
+        <ul>
+            <li><strong>3 aulas de Subtração</strong> (Módulo 2)</li>
+            <li><strong>3 aulas de Porcentagem</strong> (Módulo 5)</li>
+        </ul>
+        <button id="seedBtn" onclick="seedLessons()">🚀 Inserir Aulas Agora</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function seedLessons() {
+            const btn = document.getElementById('seedBtn');
+            const result = document.getElementById('result');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ Inserindo aulas...';
+            result.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/trpc/admin.seedLessons', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({})
+                });
+                
+                const data = await response.json();
+                
+                if (data.result?.data?.success) {
+                    result.className = 'success';
+                    result.innerHTML = `
+                        <strong>✅ Sucesso!</strong><br>
+                        ${data.result.data.message}
+                    `;
+                } else if (data.result?.data?.error) {
+                    result.className = 'error';
+                    result.innerHTML = `
+                        <strong>❌ Erro:</strong><br>
+                        ${data.result.data.error}
+                    `;
+                } else {
+                    result.className = 'info';
+                    result.innerHTML = `
+                        <strong>ℹ️ Resposta:</strong><br>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+                
+                result.style.display = 'block';
+                btn.textContent = '✅ Concluído';
+            } catch (error) {
+                result.className = 'error';
+                result.innerHTML = `
+                    <strong>❌ Erro de Conexão:</strong><br>
+                    ${error.message}
+                `;
+                result.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = '🔄 Tentar Novamente';
+            }
+        }
+    </script>
+</body>
+</html>
