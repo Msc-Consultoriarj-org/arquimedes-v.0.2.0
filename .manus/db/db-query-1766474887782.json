@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, title, videoUrl FROM pages ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, videoUrl FROM pages ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "O que é Adicionar (Combinar)",
+      "videoUrl": "25MKvVixayM"
+    },
+    {
+      "id": "2",
+      "title": "A Reta Numérica: Visualizando o Movimento",
+      "videoUrl": "1e8qtYBvcmo"
+    },
+    {
+      "id": "3",
+      "title": "O que é Subtrair (Separar e Comparar)",
+      "videoUrl": "HjyCT6K5O1I"
+    },
+    {
+      "id": "4",
+      "title": "Multiplicação: Uma Forma Rápida de Somar",
+      "videoUrl": "d2sBQS4wVYI"
+    },
+    {
+      "id": "5",
+      "title": "A Tabuada: Entendendo o Padrão",
+      "videoUrl": "2qLW90Fi7G4"
+    },
+    {
+      "id": "6",
+      "title": "Visualização em Matrizes: A Conexão com a Área",
+      "videoUrl": "cJl92_ytkz0"
+    },
+    {
+      "id": "7",
+      "title": "Divisão: A Operação Inversa da Multiplicação",
+      "videoUrl": "izaSmMXZRgk"
+    },
+    {
+      "id": "8",
+      "title": "Repartição Justa (O Quociente)",
+      "videoUrl": "dSvQnPtKiVg"
+    },
+    {
+      "id": "9",
+      "title": "O Conceito de Resto",
+      "videoUrl": "BetgRvNQEC0"
+    },
+    {
+      "id": "30001",
+      "title": "Divisão - Conceito de Repartição",
+      "videoUrl": "NULL"
+    },
+    {
+      "id": "30002",
+      "title": "Divisão com Resto",
+      "videoUrl": "NULL"
+    },
+    {
+      "id": "30003",
+      "title": "Exercícios Práticos de Divisão",
+      "videoUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tvideoUrl\n1\tO que é Adicionar (Combinar)\t25MKvVixayM\n2\tA Reta Numérica: Visualizando o Movimento\t1e8qtYBvcmo\n3\tO que é Subtrair (Separar e Comparar)\tHjyCT6K5O1I\n4\tMultiplicação: Uma Forma Rápida de Somar\td2sBQS4wVYI\n5\tA Tabuada: Entendendo o Padrão\t2qLW90Fi7G4\n6\tVisualização em Matrizes: A Conexão com a Área\tcJl92_ytkz0\n7\tDivisão: A Operação Inversa da Multiplicação\tizaSmMXZRgk\n8\tRepartição Justa (O Quociente)\tdSvQnPtKiVg\n9\tO Conceito de Resto\tBetgRvNQEC0\n30001\tDivisão - Conceito de Repartição\tNULL\n30002\tDivisão com Resto\tNULL\n30003\tExercícios Práticos de Divisão\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

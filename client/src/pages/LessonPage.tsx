@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { MathContent } from "@/components/MathContent";
 import { ExerciseCard } from "@/components/ExerciseCard";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { ArrowLeft, ArrowRight, BookOpen, Clock, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -185,6 +186,16 @@ export default function LessonPage() {
 
       {/* Content */}
       <div className="container max-w-4xl py-4 sm:py-6 md:py-8 space-y-4 sm:space-y-6 md:space-y-8">
+        {/* Video */}
+        {page.videoUrl && (
+          <div className="space-y-2">
+            <YouTubeEmbed
+              videoId={page.videoUrl}
+              title={`Vídeo: ${page.title}`}
+            />
+          </div>
+        )}
+
         {/* Main Text */}
         {page.mainText && (
           <Card>

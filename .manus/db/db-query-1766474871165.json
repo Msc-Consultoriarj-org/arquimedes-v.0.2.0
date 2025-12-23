@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE pages SET videoUrl = CASE id\n  WHEN 1 THEN '25MKvVixayM'\n  WHEN 2 THEN '1e8qtYBvcmo'\n  WHEN 3 THEN 'HjyCT6K5O1I'\n  WHEN 4 THEN 'd2sBQS4wVYI'\n  WHEN 5 THEN '2qLW90Fi7G4'\n  WHEN 6 THEN 'cJl92_ytkz0'\n  WHEN 7 THEN 'izaSmMXZRgk'\n  WHEN 8 THEN 'dSvQnPtKiVg'\n  WHEN 9 THEN 'BetgRvNQEC0'\n  WHEN 10 THEN '61S-Rayhc7c'\n  WHEN 11 THEN '7np0ToPuDuM'\n  WHEN 12 THEN 'SCAXCtGlgK8'\nEND\nWHERE id BETWEEN 1 AND 12;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE pages SET videoUrl = CASE id\n  WHEN 1 THEN '25MKvVixayM'\n  WHEN 2 THEN '1e8qtYBvcmo'\n  WHEN 3 THEN 'HjyCT6K5O1I'\n  WHEN 4 THEN 'd2sBQS4wVYI'\n  WHEN 5 THEN '2qLW90Fi7G4'\n  WHEN 6 THEN 'cJl92_ytkz0'\n  WHEN 7 THEN 'izaSmMXZRgk'\n  WHEN 8 THEN 'dSvQnPtKiVg'\n  WHEN 9 THEN 'BetgRvNQEC0'\n  WHEN 10 THEN '61S-Rayhc7c'\n  WHEN 11 THEN '7np0ToPuDuM'\n  WHEN 12 THEN 'SCAXCtGlgK8'\nEND\nWHERE id BETWEEN 1 AND 12;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 71
+}

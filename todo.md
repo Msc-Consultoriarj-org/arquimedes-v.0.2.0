@@ -452,3 +452,21 @@
 - [x] Adicionar vídeos educacionais reais nas páginas (placeholders prontos)
 - [x] Configurar remote do GitHub (MSC-Consultoria/arquimedes0.0.1)
 - [x] Fazer push dos commits para GitHub (commit 0cd5906)
+
+
+## Busca de Vídeos Educacionais do YouTube
+- [x] Buscar vídeo para Adição Página 1 (Conceito Básico) - 25MKvVixayM
+- [x] Buscar vídeo para Adição Página 2 (Reta Numérica) - 1e8qtYBvcmo
+- [x] Buscar vídeo para Adição Página 3 (Exercícios) - HjyCT6K5O1I
+- [x] Buscar vídeo para Subtração Página 1 (Conceito) - d2sBQS4wVYI
+- [x] Buscar vídeo para Subtração Página 2 (Movimento na Reta) - 2qLW90Fi7G4
+- [x] Buscar vídeo para Subtração Página 3 (Exercícios) - cJl92_ytkz0
+- [x] Buscar vídeo para Multiplicação Página 1 (Soma Repetida) - izaSmMXZRgk
+- [x] Buscar vídeo para Multiplicação Página 2 (Tabuada) - dSvQnPtKiVg
+- [x] Buscar vídeo para Multiplicação Página 3 (Exercícios) - BetgRvNQEC0
+- [x] Buscar vídeo para Divisão Página 1 (Conceito) - 61S-Rayhc7c
+- [x] Buscar vídeo para Divisão Página 2 (Divisão com Resto) - 7np0ToPuDuM
+- [x] Buscar vídeo para Divisão Página 3 (Exercícios) - SCAXCtGlgK8
+- [x] Atualizar arquivos .md com IDs de vídeos reais
+- [x] Atualizar banco de dados com vídeos reais (12 vídeos)
+- [x] Testar todos os vídeos no navegador (YouTubeEmbed integrado no LessonPage)
