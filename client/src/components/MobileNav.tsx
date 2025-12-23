@@ -18,6 +18,13 @@ import { getLoginUrl } from "@/const";
 import { getModuleIcon, getModuleColor } from "./MathIcons";
 import { Input } from "@/components/ui/input";
 
+const normalizeString = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[^\p{ASCII}]/gu, "")
+    .trim();
+
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,9 +105,22 @@ export function MobileNav() {
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
                     placeholder="Buscar módulo..."
-                    className="pl-9"
+                    className="pl-9 pr-9"
                     aria-label="Buscar módulo"
+                    type="search"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
                   />
+                  {searchTerm && (
+                    <button
+                      onClick={() => setSearchTerm("")}
+                      className="absolute right-3 top-2.5 text-muted-foreground hover:text-foreground"
+                      aria-label="Limpar busca"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
                 </div>
               </div>
               <Accordion type="single" collapsible className="w-full">
@@ -160,10 +180,10 @@ function DisciplineAccordion({
   });
 
   const filteredModules = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
+    const normalizedSearch = normalizeString(searchTerm);
     if (!normalizedSearch) return modules;
 
-    return modules.filter((module) => module.name.toLowerCase().includes(normalizedSearch));
+    return modules.filter((module) => normalizeString(module.name).includes(normalizedSearch));
   }, [modules, searchTerm]);
 
   return (
