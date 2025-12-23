@@ -133,3 +133,19 @@
 - [x] Atualizar lang para pt-BR
 - [ ] Adicionar structured data (Schema.org)
 - [ ] Criar imagem og-image.png para compartilhamento social
+
+
+## Design Visual e Brand Guidelines
+- [x] Criar paleta de cores expandida (primária, secundária, neutros, feedback)
+- [x] Definir sistema de tipografia (tamanhos, pesos, line-heights)
+- [x] Implementar ícones customizados para cada módulo
+- [x] Criar componentes visuais reutilizáveis
+- [x] Melhorar layout da página inicial
+- [x] Adicionar ilustrações matemáticas SVG
+- [x] Implementar animações e transições suaves
+- [ ] Criar guia de estilo visual documentado
+- [x] Adicionar gradientes e efeitos visuais
+- [x] Melhorar cards e componentes de UI
+- [x] Adicionar hover effects e elevação aos cards
+- [x] Criar ícones SVG customizados (Adição, Subtração, Multiplicação, Divisão)
+- [x] Implementar cores específicas por módulo (verde, laranja, roxo, cyan)

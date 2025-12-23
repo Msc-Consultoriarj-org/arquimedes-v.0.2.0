@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
-import { BookOpen, Target, TrendingUp, Award, ArrowRight, LogOut } from "lucide-react";
+import { BookOpen, Target, TrendingUp, Award, ArrowRight, LogOut, Sparkles } from "lucide-react";
+import { getModuleIcon, getModuleColor } from "@/components/MathIcons";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -27,13 +28,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
       {/* Hero Section */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container py-16 md:py-24">
+      <div className="gradient-primary text-primary-foreground relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl" />
+        </div>
+        <div className="container py-16 md:py-24 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
               Arquimedes: Matemática Descomplicada
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
+            <p className="text-xl md:text-2xl mb-8 text-white/95 drop-shadow-md">
               Aprenda matemática básica de forma clara, prática e sem infantilização. 
               Educação de qualidade para adultos.
             </p>
@@ -67,8 +73,8 @@ export default function Home() {
       <div className="container py-12 space-y-12">
         {/* Dashboard for authenticated users */}
         {isAuthenticated && dashboard && (
-          <div className="grid gap-6 md:grid-cols-3">
-            <Card>
+          <div className="grid gap-6 md:grid-cols-3 animate-fade-in">
+            <Card className="shadow-lg border-none hover:shadow-xl transition-shadow">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Aulas Concluídas</CardTitle>
                 <BookOpen className="h-4 w-4 text-muted-foreground" />
@@ -78,20 +84,20 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="shadow-lg border-none hover:shadow-xl transition-shadow">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Pontuação Média</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                <TrendingUp className="h-4 w-4 text-green-600" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{dashboard.averageScore}%</div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="shadow-lg border-none hover:shadow-xl transition-shadow">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Conquistas</CardTitle>
-                <Award className="h-4 w-4 text-muted-foreground" />
+                <Award className="h-4 w-4 text-amber-600" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{dashboard.totalAchievements}</div>
@@ -102,7 +108,7 @@ export default function Home() {
 
         {/* Next Recommended Lesson */}
         {isAuthenticated && recommendation && (
-          <Card className="border-primary/50 bg-accent/10">
+          <Card className="shadow-lg border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Target className="h-5 w-5 text-primary" />
@@ -187,7 +193,7 @@ function DisciplineCard({ discipline }: { discipline: { id: number; name: string
   });
 
   return (
-    <Card className="hover:shadow-lg transition-shadow">
+    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-200 border-none shadow-md">
       <CardHeader>
         <CardTitle className="text-2xl">{discipline.name}</CardTitle>
         {discipline.description && (
@@ -200,9 +206,11 @@ function DisciplineCard({ discipline }: { discipline: { id: number; name: string
             {modules.length} módulos disponíveis
           </p>
           {modules.slice(0, 3).map((module) => (
-            <div key={module.id} className="flex items-center gap-2 text-sm">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span>{module.name}</span>
+            <div key={module.id} className="flex items-center gap-3 text-sm p-2 rounded-lg hover:bg-muted/50 transition-colors">
+              <div className={getModuleColor(module.name)}>
+                {getModuleIcon(module.name, { size: 20 })}
+              </div>
+              <span className="font-medium">{module.name}</span>
             </div>
           ))}
         </div>

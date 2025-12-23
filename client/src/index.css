@@ -43,6 +43,18 @@
 }
 
 :root {
+  /* Cores expandidas para módulos */
+  --color-addition: oklch(0.65 0.25 142); /* Verde para adição */
+  --color-subtraction: oklch(0.60 0.22 27); /* Laranja para subtração */
+  --color-multiplication: oklch(0.60 0.20 271); /* Roxo para multiplicação */
+  --color-division: oklch(0.55 0.18 220); /* Azul cyan para divisão */
+  
+  /* Cores de feedback */
+  --color-success: oklch(0.65 0.25 142);
+  --color-warning: oklch(0.75 0.15 85);
+  --color-error: oklch(0.60 0.24 27);
+  --color-info: oklch(0.60 0.20 220);
+  
   --primary: var(--color-blue-700);
   --primary-foreground: var(--color-blue-50);
   --sidebar-primary: var(--color-blue-600);
@@ -191,5 +203,36 @@
       padding-right: 2rem;
       max-width: 1280px; /* Standard content width */
     }
+  }
+  
+  /* Gradientes modernos */
+  .gradient-primary {
+    background: linear-gradient(135deg, oklch(0.55 0.22 259) 0%, oklch(0.45 0.20 259) 100%);
+  }
+  
+  .gradient-success {
+    background: linear-gradient(135deg, var(--color-success) 0%, oklch(0.55 0.23 142) 100%);
+  }
+  
+  .gradient-rainbow {
+    background: linear-gradient(135deg, 
+      var(--color-addition) 0%, 
+      var(--color-multiplication) 50%, 
+      var(--color-division) 100%
+    );
+  }
+  
+  /* Badge moderno */
+  .badge-modern {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium;
+    @apply bg-primary/10 text-primary;
+  }
+  
+  /* Text gradients */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, oklch(0.55 0.22 259) 0%, oklch(0.60 0.20 271) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
