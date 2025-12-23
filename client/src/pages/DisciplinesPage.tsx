@@ -54,12 +54,28 @@ export default function DisciplinesPage() {
         <div className="container max-w-6xl py-8">
           {disciplines && disciplines.length > 0 ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {disciplines.map((discipline) => (
-                <Card key={discipline.id} className="hover:shadow-lg transition-shadow">
+              {disciplines.map((discipline) => {
+                const isActive = discipline.slug === "aritmetica";
+                return (
+                <Card 
+                  key={discipline.id} 
+                  className={`hover:shadow-lg transition-shadow ${
+                    isActive 
+                      ? "border-2 border-green-500 bg-green-50/50" 
+                      : "opacity-60 border-gray-200"
+                  }`}
+                >
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">{discipline.name}</CardTitle>
+                        <CardTitle className="text-xl mb-2 flex items-center gap-2">
+                          {discipline.name}
+                          {isActive && (
+                            <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full">
+                              Cursando
+                            </span>
+                          )}
+                        </CardTitle>
                         <CardDescription className="line-clamp-2">
                           {discipline.description}
                         </CardDescription>
@@ -77,7 +93,15 @@ export default function DisciplinesPage() {
                       </div>
 
                       {/* Action Button */}
-                      <Button asChild className="w-full">
+                      <Button 
+                        asChild 
+                        className={`w-full ${
+                          isActive 
+                            ? "bg-green-600 hover:bg-green-700" 
+                            : "bg-gray-400 hover:bg-gray-500"
+                        }`}
+                        disabled={!isActive}
+                      >
                         <Link href={`/disciplina/${discipline.slug}`}>
                           Explorar Disciplina
                           <ArrowRight className="h-4 w-4 ml-2" />
@@ -86,7 +110,8 @@ export default function DisciplinesPage() {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="text-center py-16">

@@ -145,14 +145,14 @@ export default function ExerciseRoomPage() {
         {/* Modules Tabs */}
         {modules && modules.length > 0 ? (
           <Tabs defaultValue={modules[0]?.id.toString()} className="w-full">
-            <TabsList className="w-full flex-wrap h-auto gap-2 bg-white p-2 rounded-lg shadow-sm">
+            <TabsList className="w-full flex-wrap h-auto gap-2 bg-white p-2 rounded-lg shadow-sm overflow-x-auto">
               {modules.map((module) => {
                 const exerciseCount = allExercises?.filter((ex) => ex.moduleId === module.id).length || 0;
                 return (
                   <TabsTrigger
                     key={module.id}
                     value={module.id.toString()}
-                    className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                    className="flex items-center gap-2 whitespace-nowrap flex-shrink-0 min-w-fit px-4 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
                   >
                     <BookOpen className="h-4 w-4" />
                     {module.name}

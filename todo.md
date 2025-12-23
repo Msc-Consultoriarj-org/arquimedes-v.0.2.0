@@ -898,3 +898,12 @@
 - [x] Adicionar rota /minhas-disciplinas no App.tsx
 - [x] Listar todas as disciplinas disponíveis
 - [x] Design responsivo com cards
+
+
+## Correções de Layout Mobile (v2.18.2)
+- [x] Corrigir texto sobreposto/amontoado nas Tabs de módulos
+- [x] Corrigir layout da Sala de Vídeos no mobile (whitespace-nowrap, flex-shrink-0)
+- [x] Corrigir layout da Sala de Exercícios no mobile (whitespace-nowrap, flex-shrink-0)
+- [x] Destacar disciplina ativa (Aritmética) em verde com badge "Cursando"
+- [x] Disciplinas inativas em cor cinza com opacity reduzida
+- [x] Testar responsividade mobile

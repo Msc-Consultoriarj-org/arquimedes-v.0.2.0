@@ -22,7 +22,7 @@ const normalizeString = (value: string) =>
   value
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[^\p{ASCII}]/gu, "")
+    .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
 export function MobileNav() {
