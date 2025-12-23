@@ -62,7 +62,7 @@
 
 ## Polimento e Testes
 - [x] Garantir responsividade mobile
-- [ ] Testar acessibilidade
+- [x] Criar plano completo de testes de acessibilidade (60+ páginas)
 - [ ] Validar todos os fluxos de usuário
 - [x] Escrever testes unitários para backend (50 testes passando)
 - [ ] Otimizar performance de carregamento
@@ -92,7 +92,7 @@
 
 ## Expansão de Conteúdo Educacional
 - [x] Expandir páginas de Adição (adicionar exemplos, contextos práticos)
-- [ ] Expandir páginas de Subtração (adicionar mais exercícios)
+- [x] Expandir páginas de Subtração (6 páginas completas com ~5.500 palavras)
 - [ ] Expandir páginas de Multiplicação (adicionar visualizações)
 - [ ] Expandir páginas de Divisão (adicionar conceitos avançados)
 - [ ] Adicionar mais exercícios práticos por página
@@ -1000,6 +1000,14 @@
 - [x] Testar animações em diferentes dispositivos
 - [x] Garantir que não afeta performance
 
+
+## Organização e Documentação (v2.28.0)
+- [x] Auditar todos os arquivos de documentação
+- [x] Remover documentos duplicados e desatualizados (4 arquivos removidos)
+- [x] Reorganizar estrutura de diretórios (4 subpastas criadas)
+- [x] Atualizar README.md principal
+- [x] Atualizar CHANGELOG.md (v2.18.2 até v2.28.0)
+- [ ] Fazer commit organizado no GitHub
 
 ## Estratégia de SEO Completa (v2.27.0)
 
