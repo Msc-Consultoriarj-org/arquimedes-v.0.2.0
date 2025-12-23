@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X, Home, BookOpen, User, LogOut } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Menu, X, Home, BookOpen, User, LogOut, CheckCircle2, Search } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,9 +16,11 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { getModuleIcon, getModuleColor } from "./MathIcons";
+import { Input } from "@/components/ui/input";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const { user, isAuthenticated, logout } = useAuth();
   const { data: disciplines = [] } = trpc.disciplines.list.useQuery();
   const { data: modulesProgress = {} } = trpc.moduleProgress.allModules.useQuery(undefined, {
@@ -89,12 +91,25 @@ export function MobileNav() {
               <h3 className="text-sm font-semibold text-muted-foreground mb-3 px-2">
                 Disciplinas
               </h3>
+              <div className="px-2 pb-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    placeholder="Buscar módulo..."
+                    className="pl-9"
+                    aria-label="Buscar módulo"
+                  />
+                </div>
+              </div>
               <Accordion type="single" collapsible className="w-full">
                 {disciplines.map((discipline) => (
                   <DisciplineAccordion
                     key={discipline.id}
                     discipline={discipline}
                     modulesProgress={modulesProgress}
+                    searchTerm={searchTerm}
                     onNavigate={() => setOpen(false)}
                   />
                 ))}
@@ -132,15 +147,24 @@ export function MobileNav() {
 function DisciplineAccordion({
   discipline,
   modulesProgress,
+  searchTerm,
   onNavigate,
 }: {
   discipline: { id: number; name: string; slug: string };
   modulesProgress: Record<number, { completed: number; total: number; percentage: number }>;
+  searchTerm: string;
   onNavigate: () => void;
 }) {
   const { data: modules = [] } = trpc.modules.listByDiscipline.useQuery({
     disciplineId: discipline.id,
   });
+
+  const filteredModules = useMemo(() => {
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+    if (!normalizedSearch) return modules;
+
+    return modules.filter((module) => module.name.toLowerCase().includes(normalizedSearch));
+  }, [modules, searchTerm]);
 
   return (
     <AccordionItem value={`discipline-${discipline.id}`} className="border-none">
@@ -149,7 +173,7 @@ function DisciplineAccordion({
       </AccordionTrigger>
       <AccordionContent className="pb-0">
         <div className="space-y-1 pl-2 pt-2">
-          {modules.map((module) => (
+          {filteredModules.map((module) => (
             <Link
               key={module.id}
               href={`/disciplina/${discipline.slug}/modulo/${module.slug}`}
@@ -163,8 +187,11 @@ function DisciplineAccordion({
                   {getModuleIcon(module.name, { size: 16 })}
                 </div>
                 <span className="text-left flex-1">{module.name}</span>
+                {modulesProgress[module.id]?.percentage === 100 && (
+                  <CheckCircle2 className="h-4 w-4 text-green-600" aria-label="Módulo concluído" />
+                )}
                 {modulesProgress[module.id] && (
-                  <span 
+                  <span
                     className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
                       modulesProgress[module.id].percentage === 100
                         ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
@@ -179,9 +206,9 @@ function DisciplineAccordion({
               </Button>
             </Link>
           ))}
-          {modules.length === 0 && (
+          {(filteredModules.length === 0 || modules.length === 0) && (
             <p className="text-xs text-muted-foreground px-3 py-2">
-              Nenhum módulo disponível
+              {modules.length === 0 ? 'Nenhum módulo disponível' : 'Nenhum módulo encontrado para a busca'}
             </p>
           )}
         </div>

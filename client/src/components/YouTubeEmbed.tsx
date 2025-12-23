@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Play, ExternalLink, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import { extractYouTubeId } from "@/lib/youtube";
 
 interface YouTubeEmbedProps {
   videoId: string;
@@ -29,26 +30,35 @@ export function YouTubeEmbed({
   loop = false,
   className = "",
 }: YouTubeEmbedProps) {
+  const resolvedVideoId = extractYouTubeId(videoId);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  const isInvalidVideo = !resolvedVideoId;
+
   // Construir URL do embed com parâmetros
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?${new URLSearchParams({
+  const embedUrl = resolvedVideoId
+    ? `https://www.youtube.com/embed/${resolvedVideoId}?${new URLSearchParams({
     autoplay: autoplay ? "1" : "0",
     loop: loop ? "1" : "0",
-    playlist: loop ? videoId : "", // Necessário para loop funcionar
+    playlist: loop ? resolvedVideoId : "", // Necessário para loop funcionar
     rel: "0", // Não mostrar vídeos relacionados
     modestbranding: "1", // Logo menor do YouTube
-  }).toString()}`;
+  }).toString()}`
+    : "";
 
   // URL da thumbnail do vídeo
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const thumbnailUrl = resolvedVideoId
+    ? `https://img.youtube.com/vi/${resolvedVideoId}/maxresdefault.jpg`
+    : "";
 
   // URL para abrir no app YouTube
-  const youtubeAppUrl = `https://www.youtube.com/watch?v=${videoId}`;
+  const youtubeAppUrl = resolvedVideoId ? `https://www.youtube.com/watch?v=${resolvedVideoId}` : "";
 
   // Função para abrir vídeo no YouTube (app ou navegador)
   const openInYouTube = () => {
+    if (!youtubeAppUrl) return;
     window.open(youtubeAppUrl, '_blank');
   };
 
@@ -61,7 +71,7 @@ export function YouTubeEmbed({
     <div className={`relative w-full ${className}`}>
       {/* Container responsivo 16:9 */}
       <div className="relative w-full pb-[56.25%] bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-        {!isLoaded && !hasError && (
+        {!isLoaded && !hasError && !isInvalidVideo && (
           <>
             {/* Thumbnail de preview */}
             <img
@@ -90,7 +100,7 @@ export function YouTubeEmbed({
         )}
 
         {/* iFrame do YouTube (carregado apenas quando usuário clicar) */}
-        {isLoaded && !hasError && (
+        {isLoaded && !hasError && !isInvalidVideo && (
           <iframe
             src={embedUrl}
             title={title}
@@ -102,15 +112,16 @@ export function YouTubeEmbed({
         )}
 
         {/* Fallback: Erro ao carregar vídeo */}
-        {hasError && (
+        {(hasError || isInvalidVideo) && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 p-6 text-center">
             <AlertCircle className="w-16 h-16 text-yellow-500 mb-4" />
             <p className="text-white font-semibold text-lg mb-2">
               Não foi possível carregar o vídeo
             </p>
             <p className="text-gray-400 text-sm max-w-md mb-6">
-              O vídeo pode estar indisponível ou sua conexão pode estar instável.
-              Tente abrir diretamente no YouTube.
+              {isInvalidVideo
+                ? "ID ou link de vídeo inválido."
+                : "O vídeo pode estar indisponível ou sua conexão pode estar instável. Tente abrir diretamente no YouTube."}
             </p>
             <Button
               onClick={openInYouTube}
