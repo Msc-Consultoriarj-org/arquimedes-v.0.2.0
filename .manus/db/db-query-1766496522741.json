@@ -1,0 +1,34 @@
+{
+  "query": "SELECT \n  p.id,\n  p.title,\n  p.slug,\n  p.`order`,\n  LENGTH(p.mainText) as textLength,\n  ROUND(LENGTH(p.mainText) / 5) as estimatedWords\nFROM pages p\nWHERE p.moduleId = 1\nORDER BY p.`order`\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT \n  p.id,\n  p.title,\n  p.slug,\n  p.`order`,\n  LENGTH(p.mainText) as textLength,\n  ROUND(LENGTH(p.mainText) / 5) as estimatedWords\nFROM pages p\nWHERE p.moduleId = 1\nORDER BY p.`order`\nLIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "O que é Adicionar (Combinar)",
+      "slug": "o-que-e-adicionar",
+      "order": "1",
+      "textLength": "6286",
+      "estimatedWords": "1257"
+    },
+    {
+      "id": "2",
+      "title": "A Reta Numérica: Visualizando o Movimento",
+      "slug": "reta-numerica",
+      "order": "2",
+      "textLength": "6592",
+      "estimatedWords": "1318"
+    },
+    {
+      "id": "3",
+      "title": "O que é Subtrair (Separar e Comparar)",
+      "slug": "o-que-e-subtrair",
+      "order": "3",
+      "textLength": "11515",
+      "estimatedWords": "2303"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\torder\ttextLength\testimatedWords\n1\tO que é Adicionar (Combinar)\to-que-e-adicionar\t1\t6286\t1257\n2\tA Reta Numérica: Visualizando o Movimento\treta-numerica\t2\t6592\t1318\n3\tO que é Subtrair (Separar e Comparar)\to-que-e-subtrair\t3\t11515\t2303\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

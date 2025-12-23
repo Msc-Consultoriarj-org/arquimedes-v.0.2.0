@@ -939,3 +939,21 @@
 - [x] Criar loading states animados
 - [x] Adicionar empty states ilustrados
 - [x] Testar responsividade após mudanças
+
+
+## Expansão de Conteúdo - 4 Operações Básicas (v2.22.0)
+- [x] Expandir Adição Página 1 (4 exemplos práticos: compras, jogos, viagens, tempo)
+- [x] Expandir Adição Página 2 (exercícios interativos com ExerciseCard)
+- [x] Expandir Adição Página 3 (desafios progressivos com 3 níveis)
+- [x] Expandir Subtração Página 1 (~1.835 palavras com 3 interpretações e 5 exemplos)
+- [x] Expandir Subtração Página 2 (visualizações NumberLine e 4 exercícios interativos)
+- [x] Expandir Subtração Página 3 (~1.917 palavras com 9 exercícios em 3 níveis)
+- [ ] Expandir Multiplicação Página 1 (contextos do cotidiano e aplicações)
+- [ ] Expandir Multiplicação Página 2 (estratégias de memorização e truques)
+- [ ] Expandir Multiplicação Página 3 (aplicações práticas reais)
+
+## Criação de Novos Módulos (v2.22.0)
+- [x] Criar estrutura do Módulo 5: Proporção e Razão no banco (já existia)
+- [x] Criar estrutura do Módulo 6: Porcentagem no banco (já existia)
+- [x] Criar estrutura do Módulo 7: Exponenciação no banco (já existia)
+- [x] Criar estrutura do Módulo 8: Fatoração no banco (já existia)

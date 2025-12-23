@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, title, slug, `order` FROM pages WHERE moduleId IN (SELECT id FROM modules WHERE slug LIKE '%subtracao%') ORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, slug, `order` FROM pages WHERE moduleId IN (SELECT id FROM modules WHERE slug LIKE '%subtracao%') ORDER BY `order`;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "O que é Adicionar (Combinar)",
+      "slug": "o-que-e-adicionar",
+      "order": "1"
+    },
+    {
+      "id": "2",
+      "title": "A Reta Numérica: Visualizando o Movimento",
+      "slug": "reta-numerica",
+      "order": "2"
+    },
+    {
+      "id": "3",
+      "title": "O que é Subtrair (Separar e Comparar)",
+      "slug": "o-que-e-subtrair",
+      "order": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\torder\n1\tO que é Adicionar (Combinar)\to-que-e-adicionar\t1\n2\tA Reta Numérica: Visualizando o Movimento\treta-numerica\t2\n3\tO que é Subtrair (Separar e Comparar)\to-que-e-subtrair\t3\n",
+  "stderr": "",
+  "execution_time_ms": 65
+}

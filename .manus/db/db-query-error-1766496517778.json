@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  p.id,\n  p.title,\n  p.slug,\n  p.orderIndex,\n  LENGTH(p.mainText) as textLength,\n  ROUND(LENGTH(p.mainText) / 5) as estimatedWords\nFROM pages p\nWHERE p.moduleId = 1\nORDER BY p.orderIndex\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT \n  p.id,\n  p.title,\n  p.slug,\n  p.orderIndex,\n  LENGTH(p.mainText) as textLength,\n  ROUND(LENGTH(p.mainText) / 5) as estimatedWords\nFROM pages p\nWHERE p.moduleId = 1\nORDER BY p.orderIndex\nLIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'p.orderIndex' in 'order clause'"
+  ]
+}
