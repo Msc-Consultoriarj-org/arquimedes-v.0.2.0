@@ -78,14 +78,19 @@ export default function DisciplinePage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold">Módulos</h2>
           <div className="grid gap-6">
-            {modules.map((module, index) => (
-              <ModuleCard
-                key={module.id}
-                module={module}
-                disciplineSlug={discipline.slug}
-                index={index}
-              />
-            ))}
+            {modules
+              .filter((module) => {
+                // Mostrar apenas módulos com conteúdo (IDs 1, 2, 3, 6)
+                return [1, 2, 3, 6].includes(module.id);
+              })
+              .map((module, index) => (
+                <ModuleCard
+                  key={module.id}
+                  module={module}
+                  disciplineSlug={discipline.slug}
+                  index={index}
+                />
+              ))}
           </div>
         </div>
       </div>

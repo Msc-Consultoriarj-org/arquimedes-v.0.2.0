@@ -1,0 +1,146 @@
+{
+  "query": "SELECT \n  m.id as module_id,\n  m.name as module_name,\n  m.`order` as module_order,\n  COUNT(DISTINCT p.id) as total_pages,\n  COUNT(DISTINCT e.id) as total_exercises,\n  SUM(CASE WHEN p.mainText IS NOT NULL AND LENGTH(p.mainText) > 100 THEN 1 ELSE 0 END) as pages_with_content\nFROM modules m\nLEFT JOIN pages p ON m.id = p.moduleId\nLEFT JOIN exercises e ON p.id = e.pageId\nWHERE m.disciplineId = 1\nGROUP BY m.id, m.name, m.`order`\nORDER BY m.`order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT \n  m.id as module_id,\n  m.name as module_name,\n  m.`order` as module_order,\n  COUNT(DISTINCT p.id) as total_pages,\n  COUNT(DISTINCT e.id) as total_exercises,\n  SUM(CASE WHEN p.mainText IS NOT NULL AND LENGTH(p.mainText) > 100 THEN 1 ELSE 0 END) as pages_with_content\nFROM modules m\nLEFT JOIN pages p ON m.id = p.moduleId\nLEFT JOIN exercises e ON p.id = e.pageId\nWHERE m.disciplineId = 1\nGROUP BY m.id, m.name, m.`order`\nORDER BY m.`order`",
+  "rows": [
+    {
+      "module_id": "1",
+      "module_name": "Adição e Subtração",
+      "module_order": "1",
+      "total_pages": "6",
+      "total_exercises": "4",
+      "pages_with_content": "8"
+    },
+    {
+      "module_id": "2",
+      "module_name": "Multiplicação",
+      "module_order": "2",
+      "total_pages": "3",
+      "total_exercises": "2",
+      "pages_with_content": "4"
+    },
+    {
+      "module_id": "3",
+      "module_name": "Divisão",
+      "module_order": "3",
+      "total_pages": "3",
+      "total_exercises": "2",
+      "pages_with_content": "4"
+    },
+    {
+      "module_id": "60001",
+      "module_name": "Frações",
+      "module_order": "4",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "30001",
+      "module_name": "Divisão",
+      "module_order": "4",
+      "total_pages": "3",
+      "total_exercises": "0",
+      "pages_with_content": "3"
+    },
+    {
+      "module_id": "90001",
+      "module_name": "Proporção e Razão",
+      "module_order": "5",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60002",
+      "module_name": "Decimais",
+      "module_order": "5",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60003",
+      "module_name": "Porcentagem",
+      "module_order": "6",
+      "total_pages": "4",
+      "total_exercises": "19",
+      "pages_with_content": "19"
+    },
+    {
+      "module_id": "60004",
+      "module_name": "Razão e Proporção",
+      "module_order": "7",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60005",
+      "module_name": "Potenciação",
+      "module_order": "8",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60006",
+      "module_name": "Radiciação",
+      "module_order": "9",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60007",
+      "module_name": "Números Inteiros",
+      "module_order": "10",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60008",
+      "module_name": "Múltiplos e Divisores",
+      "module_order": "11",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60009",
+      "module_name": "Números Primos",
+      "module_order": "12",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60010",
+      "module_name": "Expressões Numéricas",
+      "module_order": "13",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60011",
+      "module_name": "Sistemas de Medidas",
+      "module_order": "14",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    },
+    {
+      "module_id": "60012",
+      "module_name": "Matemática Financeira Básica",
+      "module_order": "15",
+      "total_pages": "0",
+      "total_exercises": "0",
+      "pages_with_content": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "module_id\tmodule_name\tmodule_order\ttotal_pages\ttotal_exercises\tpages_with_content\n1\tAdição e Subtração\t1\t6\t4\t8\n2\tMultiplicação\t2\t3\t2\t4\n3\tDivisão\t3\t3\t2\t4\n60001\tFrações\t4\t0\t0\t0\n30001\tDivisão\t4\t3\t0\t3\n90001\tProporção e Razão\t5\t0\t0\t0\n60002\tDecimais\t5\t0\t0\t0\n60003\tPorcentagem\t6\t4\t19\t19\n60004\tRazão e Proporção\t7\t0\t0\t0\n60005\tPotenciação\t8\t0\t0\t0\n60006\tRadiciação\t9\t0\t0\t0\n60007\tNúmeros Inteiros\t10\t0\t0\t0\n60008\tMúltiplos e Divisores\t11\t0\t0\t0\n60009\tNúmeros Primos\t12\t0\t0\t0\n60010\tExpressões Numéricas\t13\t0\t0\t0\n60011\tSistemas de Medidas\t14\t0\t0\t0\n60012\tMatemática Financeira Básica\t15\t0\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

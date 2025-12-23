@@ -1237,3 +1237,55 @@
 - [ ] Testar navegação entre módulos
 - [ ] Testar progresso do usuário
 - [ ] Salvar checkpoint v2.34.0
+
+
+## 🎨 Atualização de UX/Marketing (v2.35.0)
+
+### Auditoria de Conteúdo
+- [x] Mapear todos os módulos existentes (17 módulos)
+- [x] Contar páginas e exercícios por módulo
+- [x] Identificar módulos completos (1, 2, 3, 6) vs. vazios
+- [x] Criar relatório CONTENT_AUDIT.md
+
+### Ocultar Sala de Vídeos
+- [x] Remover "Sala de Vídeos" da Sidebar (comentado)
+- [x] MobileNav não tem Sala de Vídeos (já mostra apenas disciplinas/módulos)
+- [x] Código mantido comentado para trabalhar depois
+
+### Simplificação de Textos (Marketing)
+- [x] Dashboard: Simplificado de "Continue sua jornada de aprendizado em matemática. Você está fazendo um ótimo progresso!" para "Continue sua jornada em matemática."
+- [x] Mensagem de boas-vindas já objetiva: "{greeting}, {firstName}! 👋"
+- [ ] Remover transições verbosas entre seções
+- [ ] Tornar CTAs mais diretos e objetivos
+- [ ] Reduzir textos explicativos desnecessários
+
+### Hierarquia Visual (H1/H2)
+- [x] H1: Criado .heading-primary com cor azul vibrante + sombra sutil
+- [x] H1: Criado .heading-primary-gradient com gradiente azul-roxo
+- [x] H2: Criado .heading-secondary com cor roxa + sombra leve
+- [x] H2: Criado .heading-secondary-muted com azul acinzentado
+- [x] Criar classes CSS reutilizáveis (9 variações)
+- [x] Aplicado em Dashboard (H1 gradient + H2 em seções)
+- [x] Contraste visual claro: H1 (azul/roxo, bold) vs H2 (roxo, semibold)
+- [x] H3 raramente usado (.heading-tertiary apenas quando essencial)
+
+### Interface Friend-Family
+- [ ] Reduzir elementos visuais desnecessários
+- [ ] Colocar ações principais em locais intuitivos
+- [ ] Aumentar uso de ícones vs. texto
+- [ ] Simplificar navegação (menos cliques)
+- [ ] Remover tooltips/hints excessivos
+- [ ] Focar em "mostrar, não explicar"
+
+### Otimização de Navegação
+- [x] Mostrar apenas módulos com conteúdo completo (1, 2, 3, 6)
+- [x] Ocultar módulos vazios (4, 5, 7, 8, 9-17) via filtro
+- [x] Simplificado texto "Explore todas as disciplinas de matemática disponíveis" para "Escolha sua disciplina"
+- [x] MobileNav já otimizado (mostra apenas disciplinas/módulos)
+- [x] Breadcrumb já compacto
+
+### Testes e Ajustes
+- [ ] Testar fluxo completo do usuário
+- [ ] Verificar responsividade mobile
+- [ ] Garantir acessibilidade (contraste, foco)
+- [ ] Salvar checkpoint v2.35.0

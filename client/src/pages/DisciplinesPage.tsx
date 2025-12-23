@@ -45,7 +45,7 @@ export default function DisciplinesPage() {
               <h1 className="text-3xl sm:text-4xl font-bold">Minhas Disciplinas</h1>
             </div>
             <p className="text-muted-foreground text-lg">
-              Explore todas as disciplinas de matemática disponíveis
+              Escolha sua disciplina
             </p>
           </div>
         </div>

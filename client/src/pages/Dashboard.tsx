@@ -128,11 +128,11 @@ export default function Dashboard() {
               <span className="text-sm font-medium text-white">Nível {xpData?.level || 1}</span>
             </motion.div>
             
-            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
               {greeting}, {firstName}! 👋
             </h1>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Continue sua jornada de aprendizado em matemática. Você está fazendo um ótimo progresso!
+              Continue sua jornada em matemática.
             </p>
             
             {/* Quick Stats no Hero */}

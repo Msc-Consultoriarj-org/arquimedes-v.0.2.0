@@ -21,7 +21,7 @@ export function Sidebar() {
     { name: "Desafio do Dia", href: "/desafio-do-dia", icon: Trophy },
     { name: "Conquistas", href: "/conquistas", icon: Award },
     { name: "Sala de Exercicios", href: "/exercicios", icon: Target },
-    { name: "Sala de Videos", href: "/videos", icon: Video },
+    // { name: "Sala de Videos", href: "/videos", icon: Video }, // Oculto temporariamente
     { name: "Minhas Disciplinas", href: "/disciplinas", icon: BookOpen },
   ];
 
