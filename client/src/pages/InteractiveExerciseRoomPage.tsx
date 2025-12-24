@@ -4,7 +4,8 @@ import { Sidebar } from "@/components/Sidebar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Target, Sparkles, Trophy } from "lucide-react";
+import { Target, Sparkles, Trophy, Info } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { FillInBlanks } from "@/components/interactive/FillInBlanks";
 import { InteractiveSlider } from "@/components/interactive/InteractiveSlider";
 import { MatchingGame } from "@/components/interactive/MatchingGame";
@@ -113,6 +114,20 @@ export default function InteractiveExerciseRoomPage() {
               Pratique com componentes interativos avançados e ganhe pontos!
             </p>
           </div>
+
+          {/* Info Alert */}
+          {completedExercises.size > 0 && (
+            <Alert className="mb-6 bg-blue-50 border-blue-200">
+              <Info className="h-4 w-4 text-blue-600" />
+              <AlertDescription className="text-blue-800">
+                Você já completou {completedExercises.size} exercício(s)! Para revisar suas respostas, acesse a página{" "}
+                <a href="/exercicios-resolvidos" className="font-semibold underline hover:text-blue-600">
+                  Exercícios Resolvidos
+                </a>
+                .
+              </AlertDescription>
+            </Alert>
+          )}
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

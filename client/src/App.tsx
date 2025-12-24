@@ -23,6 +23,7 @@ import DailyChallengePage from "./pages/DailyChallengePage";
 import DisciplinesPage from "./pages/DisciplinesPage";
 import AchievementsPage from "./pages/AchievementsPage";
 import AdminPage from "./pages/AdminPage";
+import ExercisesCompletedPage from "./pages/ExercisesCompletedPage";
 import { SoundToggle } from "./components/SoundToggle";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/perfil" component={ProfilePage} />
       <Route path="/exercicios" component={UnifiedExerciseRoomPage} />
             <Route path="/exercicios-interativos" component={InteractiveExerciseRoomPage} />
+            <Route path="/exercicios-resolvidos" component={ExercisesCompletedPage} />
             <Route path="/estatisticas" component={StatisticsPage} />
       <Route path="/videos" component={VideoRoomPage} />
       {/* <Route path="/desafio-do-dia" component={DailyChallengePage} /> */} {/* Oculto temporariamente - validar respostas */}

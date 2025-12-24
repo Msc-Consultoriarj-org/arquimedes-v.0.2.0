@@ -54,14 +54,18 @@ export default function UnifiedExerciseRoomPage() {
     }
   }, [completedDetails]);
 
-  // Filtrar exercícios
+  // IDs dos exercícios completados
+  const completedIds = new Set(completedDetails.map(d => d.exerciseId));
+
+  // Filtrar exercícios (remover completados)
   const filteredExercises = exercises?.filter((ex) => {
+    const isCompleted = completedIds.has(ex.id);
     const matchesType = filterType === "all" || ex.exerciseType === filterType;
     const matchesDifficulty = filterDifficulty === "all" || ex.difficulty === filterDifficulty;
     const matchesSearch = searchQuery === "" || 
       ex.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       ex.question.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesType && matchesDifficulty && matchesSearch;
+    return !isCompleted && matchesType && matchesDifficulty && matchesSearch;
   }) || [];
 
   // Estatísticas calculadas a partir dos exercícios completados
