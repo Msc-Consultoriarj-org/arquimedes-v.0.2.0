@@ -117,7 +117,10 @@ export default function Dashboard() {
       
       {/* Hero Section - Impactante */}
       <motion.div 
-        className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"
+        className="relative overflow-hidden"
+        style={{
+          background: `linear-gradient(to right, var(--header-gradient-start), var(--header-gradient-middle), var(--header-gradient-end))`
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -138,7 +141,7 @@ export default function Dashboard() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <Sparkles className="h-4 w-4 text-yellow-300" />
+                <Sparkles className="h-4 w-4" style={{ color: 'var(--badge-color)' }} />
                 <span className="text-sm font-medium text-white">Nível {xpData?.level || 1}</span>
               </motion.div>
               
@@ -164,7 +167,7 @@ export default function Dashboard() {
                 variants={scaleIn}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Flame className="h-5 w-5 text-orange-300" />
+                  <Flame className="h-5 w-5" style={{ color: 'var(--badge-color)' }} />
                   <span className="text-sm font-medium text-white/80">Sequência</span>
                 </div>
                 <p className="text-3xl font-bold text-white">{stats?.currentStreak || 0}</p>
@@ -176,7 +179,7 @@ export default function Dashboard() {
                 variants={scaleIn}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Trophy className="h-5 w-5 text-yellow-300" />
+                  <Trophy className="h-5 w-5" style={{ color: 'var(--badge-color)' }} />
                   <span className="text-sm font-medium text-white/80">Pontos</span>
                 </div>
                 <p className="text-3xl font-bold text-white">{pointsSummary?.today || 0}</p>
@@ -188,7 +191,7 @@ export default function Dashboard() {
                 variants={scaleIn}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Target className="h-5 w-5 text-green-300" />
+                  <Target className="h-5 w-5" style={{ color: 'var(--badge-color)' }} />
                   <span className="text-sm font-medium text-white/80">Aulas</span>
                 </div>
                 <p className="text-3xl font-bold text-white">{stats?.completedLessons || 0}</p>
@@ -200,7 +203,7 @@ export default function Dashboard() {
                 variants={scaleIn}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <Zap className="h-5 w-5 text-yellow-300" />
+                  <Zap className="h-5 w-5" style={{ color: 'var(--badge-color)' }} />
                   <span className="text-sm font-medium text-white/80">XP</span>
                 </div>
                 <p className="text-3xl font-bold text-white">{xpData?.totalXP || 0}</p>
@@ -218,11 +221,11 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="border-2 border-blue-200 shadow-lg bg-gradient-to-br from-white to-blue-50">
+          <Card className="border-2 shadow-lg" style={{ borderColor: 'var(--icon-color)', background: 'linear-gradient(to bottom right, white, hsl(var(--accent)))' }}>
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-xl">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Award className="h-6 w-6 text-blue-600" />
+                <div className="p-2 rounded-lg" style={{ backgroundColor: 'hsl(var(--accent))' }}>
+                  <Award className="h-6 w-6" style={{ color: 'var(--icon-color)' }} />
                 </div>
                 Progresso de Nível
               </CardTitle>
@@ -230,7 +233,7 @@ export default function Dashboard() {
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-3xl font-bold text-blue-600">Nível {xpData?.level || 1}</p>
+                  <p className="text-3xl font-bold" style={{ color: 'var(--icon-color)' }}>Nível {xpData?.level || 1}</p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {xpData?.totalXP || 0} / {(xpData?.totalXP || 0) + (xpData?.xpToNextLevel || 100)} XP
                   </p>
@@ -304,7 +307,7 @@ export default function Dashboard() {
           transition={{ delay: 0.5 }}
         >
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <TrendingUp className="h-6 w-6 text-blue-600" />
+            <TrendingUp className="h-6 w-6" style={{ color: 'var(--icon-color)' }} />
             Suas Estatísticas
           </h2>
           <motion.div 
@@ -318,7 +321,7 @@ export default function Dashboard() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                   <CardTitle className="text-sm font-medium text-muted-foreground">Total de Logins</CardTitle>
-                  <Calendar className="h-5 w-5 text-blue-500" />
+                  <Calendar className="h-5 w-5" style={{ color: 'var(--icon-color)' }} />
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-gray-900">{stats?.totalLogins || 0}</div>
@@ -334,7 +337,7 @@ export default function Dashboard() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                   <CardTitle className="text-sm font-medium text-muted-foreground">Sequência</CardTitle>
-                  <Flame className="h-5 w-5 text-orange-500" />
+                  <Flame className="h-5 w-5" style={{ color: 'var(--icon-color)' }} />
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-gray-900">🔥 {stats?.currentStreak || 0}</div>
@@ -350,7 +353,7 @@ export default function Dashboard() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                   <CardTitle className="text-sm font-medium text-muted-foreground">Aulas Concluídas</CardTitle>
-                  <Target className="h-5 w-5 text-green-500" />
+                  <Target className="h-5 w-5" style={{ color: 'var(--icon-color)' }} />
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-gray-900">{stats?.completedLessons || 0}</div>
@@ -366,7 +369,7 @@ export default function Dashboard() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                   <CardTitle className="text-sm font-medium text-muted-foreground">Pontos Hoje</CardTitle>
-                  <Trophy className="h-5 w-5 text-yellow-500" />
+                  <Trophy className="h-5 w-5" style={{ color: 'var(--icon-color)' }} />
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold text-gray-900">{pointsSummary?.today || 0}</div>
@@ -421,7 +424,7 @@ export default function Dashboard() {
             transition={{ delay: 0.7 }}
           >
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-purple-600" />
+              <BookOpen className="h-6 w-6" style={{ color: 'var(--icon-color)' }} />
               Minhas Disciplinas
             </h2>
             <motion.div 
@@ -437,9 +440,9 @@ export default function Dashboard() {
                   custom={index}
                 >
                   <Link href={`/disciplina/${discipline.slug}`}>
-                    <Card className="hover:shadow-xl transition-all cursor-pointer h-full border-2 hover:border-purple-300 group">
+                    <Card className="hover:shadow-xl transition-all cursor-pointer h-full border-2 group hover:border-primary">
                       <CardHeader className="pb-4">
-                        <CardTitle className="flex items-center gap-3 text-xl group-hover:text-purple-600 transition-colors">
+                        <CardTitle className="flex items-center gap-3 text-xl transition-colors group-hover:text-primary">
                           <span className="text-3xl">
                             {discipline.name === "Aritmética" && "🔢"}
                             {discipline.name === "Álgebra" && "📐"}
@@ -451,7 +454,7 @@ export default function Dashboard() {
                       </CardHeader>
                       <CardContent>
                         <p className="text-muted-foreground leading-relaxed">{discipline.description}</p>
-                        <div className="mt-4 flex items-center gap-2 text-purple-600 font-medium">
+                        <div className="mt-4 flex items-center gap-2 font-medium" style={{ color: 'var(--icon-color)' }}>
                           <span>Explorar</span>
                           <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
                         </div>

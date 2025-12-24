@@ -432,5 +432,14 @@
   .card-interactive:hover::before {
     left: 100%;
   }
+  
+  /* Hover dinâmico com variáveis de tema */
+  .group:hover .group-hover\:border-primary {
+    border-color: var(--icon-color) !important;
+  }
+  
+  .group:hover .group-hover\:text-primary {
+    color: var(--icon-color) !important;
+  }
 }
 

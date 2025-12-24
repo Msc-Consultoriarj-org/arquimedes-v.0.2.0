@@ -1257,3 +1257,16 @@
 - [x] Testar mudança de cor no Perfil (Vermelho selecionado)
 - [x] Verificar persistência no banco de dados
 - [ ] TODO FUTURO: Modificar header para usar variáveis CSS dinâmicas (atualmente hardcoded com gradiente roxo/azul fixo)
+
+## 🎨 Tornar Cores de Tema Visualmente Impactantes (24/12/2024)
+- [x] Analisar elementos com cores hardcoded (header, botões, badges, cards)
+- [x] Expandir mapeamento de cores no ThemeContext (adicionar gradientes, borders, backgrounds)
+- [x] Modificar header do Dashboard para usar variáveis CSS dinâmicas
+- [x] Modificar botões primários para usar var(--primary)
+- [x] Modificar badges de nível para usar var(--primary)
+- [x] Modificar cards de estatísticas para usar var(--primary)
+- [x] Modificar links e elementos de navegação para usar var(--primary)
+- [x] Modificar barras de progresso para usar var(--primary)
+- [x] Testar mudança de cor no Perfil (todas as 8 cores)
+- [x] Verificar contraste e legibilidade em todas as cores
+- [x] Salvar checkpoint com sistema de cores totalmente funcional
