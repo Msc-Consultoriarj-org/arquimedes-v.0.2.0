@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, name, email FROM users WHERE name LIKE '%Costa%' OR email LIKE '%costa%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, email FROM users WHERE name LIKE '%Costa%' OR email LIKE '%costa%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "270013",
+      "name": "Moises Costa",
+      "email": "moises.costa12345@gmail.com"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\n270013\tMoises Costa\tmoises.costa12345@gmail.com\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

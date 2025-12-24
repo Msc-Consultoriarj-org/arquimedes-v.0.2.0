@@ -1,0 +1,50 @@
+{
+  "query": "SELECT * FROM exercise_completions WHERE userId = 1 ORDER BY completedAt DESC LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT * FROM exercise_completions WHERE userId = 1 ORDER BY completedAt DESC LIMIT 10;",
+  "rows": [
+    {
+      "id": "90003",
+      "userId": "1",
+      "exerciseId": "2",
+      "isCorrect": "1",
+      "completedAt": "2025-12-24 19:35:28",
+      "selectedAnswer": "2",
+      "uniqueId": "NULL",
+      "pointsEarned": "0"
+    },
+    {
+      "id": "90002",
+      "userId": "1",
+      "exerciseId": "NULL",
+      "isCorrect": "1",
+      "completedAt": "2025-12-24 19:34:17",
+      "selectedAnswer": "NULL",
+      "uniqueId": "adicao-fill-2",
+      "pointsEarned": "5"
+    },
+    {
+      "id": "90001",
+      "userId": "1",
+      "exerciseId": "NULL",
+      "isCorrect": "1",
+      "completedAt": "2025-12-24 19:29:38",
+      "selectedAnswer": "NULL",
+      "uniqueId": "adicao-fill-1",
+      "pointsEarned": "0"
+    },
+    {
+      "id": "60001",
+      "userId": "1",
+      "exerciseId": "1",
+      "isCorrect": "1",
+      "completedAt": "2025-12-24 18:55:51",
+      "selectedAnswer": "1",
+      "uniqueId": "NULL",
+      "pointsEarned": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\texerciseId\tisCorrect\tcompletedAt\tselectedAnswer\tuniqueId\tpointsEarned\n90003\t1\t2\t1\t2025-12-24 19:35:28\t2\tNULL\t0\n90002\t1\tNULL\t1\t2025-12-24 19:34:17\tNULL\tadicao-fill-2\t5\n90001\t1\tNULL\t1\t2025-12-24 19:29:38\tNULL\tadicao-fill-1\t0\n60001\t1\t1\t1\t2025-12-24 18:55:51\t1\tNULL\t0\n",
+  "stderr": "",
+  "execution_time_ms": 95
+}

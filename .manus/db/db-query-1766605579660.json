@@ -1,0 +1,98 @@
+{
+  "query": "SELECT * FROM userPointsLog WHERE userId = 1 ORDER BY createdAt DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT * FROM userPointsLog WHERE userId = 1 ORDER BY createdAt DESC LIMIT 20;",
+  "rows": [
+    {
+      "id": "570003",
+      "userId": "1",
+      "action": "exercise_completed",
+      "points": "5",
+      "relatedId": "2",
+      "createdAt": "2025-12-24 19:35:27"
+    },
+    {
+      "id": "570002",
+      "userId": "1",
+      "action": "exercise_completed",
+      "points": "5",
+      "relatedId": "NULL",
+      "createdAt": "2025-12-24 19:34:17"
+    },
+    {
+      "id": "570001",
+      "userId": "1",
+      "action": "exercise_completed",
+      "points": "5",
+      "relatedId": "NULL",
+      "createdAt": "2025-12-24 19:29:38"
+    },
+    {
+      "id": "540001",
+      "userId": "1",
+      "action": "exercise_completed",
+      "points": "5",
+      "relatedId": "1",
+      "createdAt": "2025-12-24 18:55:50"
+    },
+    {
+      "id": "510029",
+      "userId": "1",
+      "action": "lesson_completed",
+      "points": "10",
+      "relatedId": "4",
+      "createdAt": "2025-12-24 18:11:28"
+    },
+    {
+      "id": "510003",
+      "userId": "1",
+      "action": "lesson_completed",
+      "points": "20",
+      "relatedId": "120011",
+      "createdAt": "2025-12-24 17:53:40"
+    },
+    {
+      "id": "510002",
+      "userId": "1",
+      "action": "lesson_completed",
+      "points": "20",
+      "relatedId": "120009",
+      "createdAt": "2025-12-24 17:51:50"
+    },
+    {
+      "id": "510001",
+      "userId": "1",
+      "action": "lesson_completed",
+      "points": "20",
+      "relatedId": "120009",
+      "createdAt": "2025-12-24 17:50:43"
+    },
+    {
+      "id": "420001",
+      "userId": "1",
+      "action": "daily_login",
+      "points": "10",
+      "relatedId": "NULL",
+      "createdAt": "2025-12-24 15:25:47"
+    },
+    {
+      "id": "240002",
+      "userId": "1",
+      "action": "lesson_completed",
+      "points": "10",
+      "relatedId": "1",
+      "createdAt": "2025-12-23 17:24:50"
+    },
+    {
+      "id": "240001",
+      "userId": "1",
+      "action": "daily_login",
+      "points": "10",
+      "relatedId": "NULL",
+      "createdAt": "2025-12-23 17:20:01"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\taction\tpoints\trelatedId\tcreatedAt\n570003\t1\texercise_completed\t5\t2\t2025-12-24 19:35:27\n570002\t1\texercise_completed\t5\tNULL\t2025-12-24 19:34:17\n570001\t1\texercise_completed\t5\tNULL\t2025-12-24 19:29:38\n540001\t1\texercise_completed\t5\t1\t2025-12-24 18:55:50\n510029\t1\tlesson_completed\t10\t4\t2025-12-24 18:11:28\n510003\t1\tlesson_completed\t20\t120011\t2025-12-24 17:53:40\n510002\t1\tlesson_completed\t20\t120009\t2025-12-24 17:51:50\n510001\t1\tlesson_completed\t20\t120009\t2025-12-24 17:50:43\n420001\t1\tdaily_login\t10\tNULL\t2025-12-24 15:25:47\n240002\t1\tlesson_completed\t10\t1\t2025-12-23 17:24:50\n240001\t1\tdaily_login\t10\tNULL\t2025-12-23 17:20:01\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

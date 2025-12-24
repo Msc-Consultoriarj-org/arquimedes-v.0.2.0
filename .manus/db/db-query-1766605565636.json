@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, email, createdAt FROM users ORDER BY createdAt DESC LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, email, createdAt FROM users ORDER BY createdAt DESC LIMIT 10;",
+  "rows": [
+    {
+      "id": "1560012",
+      "name": "Test Auto Enroll User 2",
+      "email": "test-auto-enroll-2@example.com",
+      "createdAt": "2025-12-24 00:23:13"
+    },
+    {
+      "id": "1560010",
+      "name": "Test Auto Enroll User",
+      "email": "test-auto-enroll@example.com",
+      "createdAt": "2025-12-24 00:23:13"
+    },
+    {
+      "id": "1140009",
+      "name": "Gleice Naiara",
+      "email": "monteiroglice@gmail.com",
+      "createdAt": "2025-12-23 18:20:59"
+    },
+    {
+      "id": "1080082",
+      "name": "Wm Esport",
+      "email": "wmesportes1@gmail.com",
+      "createdAt": "2025-12-23 17:36:09"
+    },
+    {
+      "id": "960092",
+      "name": "Gabriel Oliveira",
+      "email": "gabrielol2035@gmail.com",
+      "createdAt": "2025-12-23 16:14:13"
+    },
+    {
+      "id": "930125",
+      "name": "Test Auto Enroll User 2",
+      "email": "test-auto-enroll-2@example.com",
+      "createdAt": "2025-12-23 15:02:39"
+    },
+    {
+      "id": "930123",
+      "name": "Test Auto Enroll User",
+      "email": "test-auto-enroll@example.com",
+      "createdAt": "2025-12-23 15:02:38"
+    },
+    {
+      "id": "930049",
+      "name": "Test Auto Enroll User",
+      "email": "test-auto-enroll@example.com",
+      "createdAt": "2025-12-23 14:53:26"
+    },
+    {
+      "id": "930050",
+      "name": "Test Auto Enroll User 2",
+      "email": "test-auto-enroll-2@example.com",
+      "createdAt": "2025-12-23 14:53:26"
+    },
+    {
+      "id": "720285",
+      "name": "Test Auto Enroll User",
+      "email": "test-auto-enroll@example.com",
+      "createdAt": "2025-12-23 13:04:20"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\tcreatedAt\n1560012\tTest Auto Enroll User 2\ttest-auto-enroll-2@example.com\t2025-12-24 00:23:13\n1560010\tTest Auto Enroll User\ttest-auto-enroll@example.com\t2025-12-24 00:23:13\n1140009\tGleice Naiara\tmonteiroglice@gmail.com\t2025-12-23 18:20:59\n1080082\tWm Esport\twmesportes1@gmail.com\t2025-12-23 17:36:09\n960092\tGabriel Oliveira\tgabrielol2035@gmail.com\t2025-12-23 16:14:13\n930125\tTest Auto Enroll User 2\ttest-auto-enroll-2@example.com\t2025-12-23 15:02:39\n930123\tTest Auto Enroll User\ttest-auto-enroll@example.com\t2025-12-23 15:02:38\n930049\tTest Auto Enroll User\ttest-auto-enroll@example.com\t2025-12-23 14:53:26\n930050\tTest Auto Enroll User 2\ttest-auto-enroll-2@example.com\t2025-12-23 14:53:26\n720285\tTest Auto Enroll User\ttest-auto-enroll@example.com\t2025-12-23 13:04:20\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

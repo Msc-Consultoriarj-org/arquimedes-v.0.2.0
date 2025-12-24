@@ -1148,3 +1148,21 @@
 - [x] Atualizar InteractiveExerciseRoomPage para calcular total de pontos ao carregar
 - [x] Testar persistência após F5 (Exercícios Interativos: 100% funcional)
 - [x] Testar persistência após F5 (Sala de Exercícios: badges funcionam, pontos precisam de novos exercícios)
+
+
+## ✅ Resolvido (24/12/2024 - 16:48)
+
+### 🐛 BUG CRÍTICO - Pontos Não Salvam (Usuário Moisés.Costa12345) - RESOLVIDO
+- [x] Investigar dados do usuário no banco de dados
+- [x] Verificar tabela exercise_completions para este usuário
+- [x] Verificar tabela userPointsLog para este usuário
+- [x] Analisar por que pontos resetam para zero
+- [x] Identificar se é problema de query, mutation ou lógica frontend
+- [x] **CAUSA RAIZ:** Contadores hardcoded em zero na UnifiedExerciseRoomPage.tsx (linha 68-72)
+- [x] **SOLUÇÃO:** Implementar cálculo real com useMemo buscando dados do banco
+- [x] Corrigir causa raiz do bug
+- [x] Testar com usuário real Moisés.Costa12345
+- [x] Validar que pontos persistem após F5, logout, navegação
+- [x] **RESULTADO:** Sala de Exercícios: 2 exercícios, 10 pontos, 100% acerto
+- [x] **RESULTADO:** Exercícios Interativos: 2 exercícios, 5 pontos, 100% acerto
+- [x] **RESULTADO:** Dashboard: 100 pontos totais, 260 XP, tudo sincronizado

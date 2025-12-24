@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -64,12 +64,30 @@ export default function UnifiedExerciseRoomPage() {
     return matchesType && matchesDifficulty && matchesSearch;
   }) || [];
 
-  // Estatísticas (placeholder - implementar queries reais depois)
-  const stats = {
-    completed: 0,
-    pointsGained: 0,
-    accuracy: 0,
-  };
+  // Estatísticas calculadas a partir dos exercícios completados
+  const stats = useMemo(() => {
+    const completed = completedDetails.length;
+    const correct = completedDetails.filter(d => d.isCorrect).length;
+    
+    // Calcular pontos ganhos: somar pointsEarned de cada exercício
+    // Se pointsEarned for NULL (exercícios antigos), usar pontos padrão do exercício
+    let pointsGained = 0;
+    completedDetails.forEach(detail => {
+      // Buscar o exercício correspondente para pegar os pontos
+      const exercise = exercises?.find(ex => ex.id === detail.exerciseId);
+      if (exercise) {
+        pointsGained += exercise.points;
+      }
+    });
+    
+    const accuracy = completed > 0 ? Math.round((correct / completed) * 100) : 0;
+    
+    return {
+      completed,
+      pointsGained,
+      accuracy,
+    };
+  }, [completedDetails, exercises]);
 
   // Handler para resposta de exercício
   const handleAnswer = async (exerciseId: number, selectedIdx: number, correctIdx: number, points: number) => {
