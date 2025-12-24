@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total, COUNT(DISTINCT uniqueId) as unique_ids FROM standalone_exercises WHERE uniqueId IS NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT COUNT(*) as total, COUNT(DISTINCT uniqueId) as unique_ids FROM standalone_exercises WHERE uniqueId IS NOT NULL;",
+  "rows": [
+    {
+      "total": "135",
+      "unique_ids": "135"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tunique_ids\n135\t135\n",
+  "stderr": "",
+  "execution_time_ms": 335
+}

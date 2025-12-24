@@ -1,0 +1,70 @@
+{
+  "query": "SELECT uniqueId, title, difficulty, points FROM standalone_exercises WHERE uniqueId IS NOT NULL LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT uniqueId, title, difficulty, points FROM standalone_exercises WHERE uniqueId IS NOT NULL LIMIT 10;",
+  "rows": [
+    {
+      "uniqueId": "EX-ARIT-DIV-001",
+      "title": "Dividir Balas Igualmente",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-002",
+      "title": "Pacotes de Biscoitos",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-003",
+      "title": "Divisão de Dinheiro",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-004",
+      "title": "Páginas por Dia",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-005",
+      "title": "Dividir em Grupos",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-006",
+      "title": "Caixas de Ovos",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-007",
+      "title": "Tempo de Trabalho",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-008",
+      "title": "Divisão de Lucro",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-009",
+      "title": "Divisão com Resto",
+      "difficulty": "hard",
+      "points": "15"
+    },
+    {
+      "uniqueId": "EX-ARIT-DIV-010",
+      "title": "Divisão de Números Maiores",
+      "difficulty": "hard",
+      "points": "15"
+    }
+  ],
+  "messages": [],
+  "stdout": "uniqueId\ttitle\tdifficulty\tpoints\nEX-ARIT-DIV-001\tDividir Balas Igualmente\thard\t15\nEX-ARIT-DIV-002\tPacotes de Biscoitos\thard\t15\nEX-ARIT-DIV-003\tDivisão de Dinheiro\thard\t15\nEX-ARIT-DIV-004\tPáginas por Dia\thard\t15\nEX-ARIT-DIV-005\tDividir em Grupos\thard\t15\nEX-ARIT-DIV-006\tCaixas de Ovos\thard\t15\nEX-ARIT-DIV-007\tTempo de Trabalho\thard\t15\nEX-ARIT-DIV-008\tDivisão de Lucro\thard\t15\nEX-ARIT-DIV-009\tDivisão com Resto\thard\t15\nEX-ARIT-DIV-010\tDivisão de Números Maiores\thard\t15\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

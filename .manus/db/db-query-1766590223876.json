@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, name, slug FROM modules WHERE disciplineId = 1 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug FROM modules WHERE disciplineId = 1 ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao"
+    },
+    {
+      "id": "120001",
+      "name": "Frações",
+      "slug": "fracoes"
+    },
+    {
+      "id": "120002",
+      "name": "Números Decimais",
+      "slug": "numeros-decimais"
+    },
+    {
+      "id": "120003",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao"
+    },
+    {
+      "id": "120004",
+      "name": "Potenciação e Radiciação",
+      "slug": "potenciacao-radiciacao"
+    },
+    {
+      "id": "120005",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros"
+    },
+    {
+      "id": "120006",
+      "name": "Porcentagem",
+      "slug": "porcentagem"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tAdição\tadicao\n2\tMultiplicação\tmultiplicacao\n3\tDivisão\tdivisao\n90002\tSubtração\tsubtracao\n120001\tFrações\tfracoes\n120002\tNúmeros Decimais\tnumeros-decimais\n120003\tRazão e Proporção\trazao-proporcao\n120004\tPotenciação e Radiciação\tpotenciacao-radiciacao\n120005\tNúmeros Inteiros\tnumeros-inteiros\n120006\tPorcentagem\tporcentagem\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

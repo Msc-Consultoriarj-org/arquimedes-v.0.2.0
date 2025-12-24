@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE standalone_exercises SET \n  moduleId = CASE \n    WHEN uniqueId LIKE 'EX-ARIT-SUB-%' THEN 90002\n    WHEN uniqueId LIKE 'EX-ARIT-DIV-%' THEN 3\n    WHEN uniqueId LIKE 'EX-ARIT-POR-%' THEN 120006\n    WHEN uniqueId LIKE 'EX-ARIT-FRA-%' THEN 120001\n    WHEN uniqueId LIKE 'EX-ARIT-PRO-%' THEN 120003\n    WHEN uniqueId LIKE 'EX-ARIT-POT-%' OR uniqueId LIKE 'EX-ARIT-RAD-%' THEN 120004\n    WHEN uniqueId LIKE 'EX-ARIT-INT-%' THEN 120005\n    WHEN uniqueId LIKE 'EX-ARIT-MUL-%' OR uniqueId LIKE 'EX-ARIT-EXP-%' THEN 120005\n    ELSE moduleId\n  END\nWHERE uniqueId LIKE 'EX-ARIT-%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE standalone_exercises SET \n  moduleId = CASE \n    WHEN uniqueId LIKE 'EX-ARIT-SUB-%' THEN 90002\n    WHEN uniqueId LIKE 'EX-ARIT-DIV-%' THEN 3\n    WHEN uniqueId LIKE 'EX-ARIT-POR-%' THEN 120006\n    WHEN uniqueId LIKE 'EX-ARIT-FRA-%' THEN 120001\n    WHEN uniqueId LIKE 'EX-ARIT-PRO-%' THEN 120003\n    WHEN uniqueId LIKE 'EX-ARIT-POT-%' OR uniqueId LIKE 'EX-ARIT-RAD-%' THEN 120004\n    WHEN uniqueId LIKE 'EX-ARIT-INT-%' THEN 120005\n    WHEN uniqueId LIKE 'EX-ARIT-MUL-%' OR uniqueId LIKE 'EX-ARIT-EXP-%' THEN 120005\n    ELSE moduleId\n  END\nWHERE uniqueId LIKE 'EX-ARIT-%';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 63
+}
