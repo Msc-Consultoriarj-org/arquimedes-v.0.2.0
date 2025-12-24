@@ -143,7 +143,15 @@ export async function getModulesByDiscipline(disciplineId: number): Promise<Modu
   const db = await getDb();
   if (!db) return [];
   
-  return await db.select().from(modules).where(eq(modules.disciplineId, disciplineId)).orderBy(asc(modules.order));
+  // Temporarily hide modules 6+ from Aritmética (disciplineId 1) - will be part of "Aritmética Intermediária" in future
+  const allModules = await db.select().from(modules).where(eq(modules.disciplineId, disciplineId)).orderBy(asc(modules.order));
+  
+  // Filter: show only first 5 modules for Aritmética (disciplineId 1)
+  if (disciplineId === 1) {
+    return allModules.filter(m => m.order <= 5);
+  }
+  
+  return allModules;
 }
 
 export async function getModuleBySlug(disciplineId: number, slug: string): Promise<Module | undefined> {

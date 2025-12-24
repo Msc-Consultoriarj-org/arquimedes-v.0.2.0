@@ -6,6 +6,8 @@ import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import * as db from "./db";
+import { modules } from "../drizzle/schema";
+import { eq } from "drizzle-orm";
 
 export const appRouter = router({
   system: systemRouter,
@@ -269,11 +271,15 @@ Retorne APENAS um JSON com:
             );
             
             if (moduleCompleted) {
+              // Get module details for notification
+              const dbInstance = await db.getDb();
+              const moduleDetails = dbInstance ? await dbInstance.select().from(modules).where(eq(modules.id, page.moduleId)).limit(1) : [];
+              const moduleName = moduleDetails[0]?.name || 'Módulo';
+              
               // Notify owner about module completion
-              const module = await db.getModulesByDiscipline(page.moduleId);
               await notifyOwner({
                 title: "Aluno completou módulo",
-                content: `${ctx.user.name || ctx.user.email} completou o módulo "${page.title}"`
+                content: `${ctx.user.name || ctx.user.email} completou o módulo "${moduleName}"`
               });
               
               // Create achievement
@@ -281,7 +287,7 @@ Retorne APENAS um JSON com:
                 userId: ctx.user.id,
                 type: "module_completed",
                 title: "Módulo Completo!",
-                description: `Você completou o módulo com sucesso!`,
+                description: `Você completou o módulo "${moduleName}" com sucesso!`,
                 relatedId: page.moduleId,
               });
             }

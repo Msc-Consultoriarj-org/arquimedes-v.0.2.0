@@ -1,0 +1,58 @@
+{
+  "query": "SELECT p.id, p.title, p.slug, p.moduleId, p.order, m.name as moduleName\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.slug, p.moduleId, p.order, m.name as moduleName\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "rows": [
+    {
+      "id": "120009",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair",
+      "moduleId": "90002",
+      "order": "1",
+      "moduleName": "Subtração"
+    },
+    {
+      "id": "120010",
+      "title": "Subtração na Reta Numérica",
+      "slug": "subtracao-com-emprestimo",
+      "moduleId": "90002",
+      "order": "2",
+      "moduleName": "Subtração"
+    },
+    {
+      "id": "120011",
+      "title": "Subtração com Empréstimo",
+      "slug": "aplicacoes-praticas-subtracao",
+      "moduleId": "90002",
+      "order": "3",
+      "moduleName": "Subtração"
+    },
+    {
+      "id": "120015",
+      "title": "Subtração de Números Maiores",
+      "slug": "o-que-e-subtrair",
+      "moduleId": "90002",
+      "order": "4",
+      "moduleName": "Subtração"
+    },
+    {
+      "id": "120016",
+      "title": "Relação entre Adição e Subtração",
+      "slug": "subtracao-com-emprestimo",
+      "moduleId": "90002",
+      "order": "5",
+      "moduleName": "Subtração"
+    },
+    {
+      "id": "120017",
+      "title": "Aplicações Práticas da Subtração",
+      "slug": "aplicacoes-praticas-subtracao",
+      "moduleId": "90002",
+      "order": "6",
+      "moduleName": "Subtração"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tmoduleId\torder\tmoduleName\n120009\tO que é Subtrair?\to-que-e-subtrair\t90002\t1\tSubtração\n120010\tSubtração na Reta Numérica\tsubtracao-com-emprestimo\t90002\t2\tSubtração\n120011\tSubtração com Empréstimo\taplicacoes-praticas-subtracao\t90002\t3\tSubtração\n120015\tSubtração de Números Maiores\to-que-e-subtrair\t90002\t4\tSubtração\n120016\tRelação entre Adição e Subtração\tsubtracao-com-emprestimo\t90002\t5\tSubtração\n120017\tAplicações Práticas da Subtração\taplicacoes-praticas-subtracao\t90002\t6\tSubtração\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

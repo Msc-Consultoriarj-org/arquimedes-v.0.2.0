@@ -1,0 +1,80 @@
+{
+  "query": "SELECT m.id, m.name, m.slug, m.order, d.name as disciplineName\nFROM modules m\nJOIN disciplines d ON m.disciplineId = d.id\nWHERE d.slug = 'aritmetica'\nORDER BY m.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT m.id, m.name, m.slug, m.order, d.name as disciplineName\nFROM modules m\nJOIN disciplines d ON m.disciplineId = d.id\nWHERE d.slug = 'aritmetica'\nORDER BY m.order;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao",
+      "order": "1",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao",
+      "order": "2",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao",
+      "order": "3",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120006",
+      "name": "Porcentagem",
+      "slug": "porcentagem",
+      "order": "5",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120001",
+      "name": "Frações",
+      "slug": "fracoes",
+      "order": "6",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120002",
+      "name": "Números Decimais",
+      "slug": "numeros-decimais",
+      "order": "7",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120003",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "order": "8",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120004",
+      "name": "Potenciação e Radiciação",
+      "slug": "potenciacao-radiciacao",
+      "order": "9",
+      "disciplineName": "Aritmética"
+    },
+    {
+      "id": "120005",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros",
+      "order": "10",
+      "disciplineName": "Aritmética"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\torder\tdisciplineName\n1\tAdição\tadicao\t1\tAritmética\n90002\tSubtração\tsubtracao\t2\tAritmética\n2\tMultiplicação\tmultiplicacao\t3\tAritmética\n3\tDivisão\tdivisao\t4\tAritmética\n120006\tPorcentagem\tporcentagem\t5\tAritmética\n120001\tFrações\tfracoes\t6\tAritmética\n120002\tNúmeros Decimais\tnumeros-decimais\t7\tAritmética\n120003\tRazão e Proporção\trazao-proporcao\t8\tAritmética\n120004\tPotenciação e Radiciação\tpotenciacao-radiciacao\t9\tAritmética\n120005\tNúmeros Inteiros\tnumeros-inteiros\t10\tAritmética\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}
