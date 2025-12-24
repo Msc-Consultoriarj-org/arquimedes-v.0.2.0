@@ -651,3 +651,70 @@
 - [x] Configurar geração dinâmica de sitemap
 
 **Total:** 3 sistemas completos, 6 medalhas premium, 11 componentes novos
+
+
+### 🔧 Refatoração Completa do Sistema de Exercícios (Em Andamento - 23/12/2025)
+
+#### 🔍 Análise e Diagnóstico (Concluído)
+- [x] Analisar ExerciseRoomPage.tsx (Sala de Exercícios)
+- [x] Analisar InteractiveExerciseRoomPage.tsx (Exercícios Interativos)
+- [x] Identificar exercícios existentes por tópico (64 Adição, 27 Mult, 0 outros)
+- [x] Mapear problemas de interatividade (lacunas, sliders, drag&drop)
+- [x] Documentar layout atual e pontos de poluição visual (EXERCISE_ANALYSIS.md)
+
+#### ✅ Correções Implementadas (Concluído - 23/12/2025)
+- [x] Corrigir formato de lacunas: [blank] → {blank1}
+- [x] Adicionar showFeedback=true em todos FillInBlanks
+- [x] Adicionar showFeedback=true em todos InteractiveSlider
+- [x] Adicionar correctAnswer em todos blanks
+- [x] Testar lacunas editáveis no navegador
+- [x] Testar botão "Verificar Resposta" em sliders
+- [x] Validar botão "Dica" funcional
+
+#### 🗄️ Schema e Estrutura de Dados
+- [ ] Criar schema de exercícios com ID único (UUID)
+- [ ] Adicionar campo de explicação passo-a-passo
+- [ ] Adicionar campos de metadados (tópico, dificuldade, tempo estimado)
+- [ ] Migrar exercícios existentes para novo schema
+- [ ] Criar índices para busca eficiente
+
+#### 🔎 Sistema de Busca e Filtros
+- [ ] Implementar barra de busca por texto
+- [ ] Criar filtro por tópico (Adição, Subtração, Multiplicação, etc.)
+- [ ] Criar filtro por dificuldade (Fácil, Médio, Difícil)
+- [ ] Criar filtro por tempo estimado (<5min, 5-10min, >10min)
+- [ ] Implementar ordenação (recentes, dificuldade, progresso)
+- [ ] Adicionar contador de resultados filtrados
+
+#### 🎨 Layout Limpo Mobile-First
+- [ ] Unificar duas abas em uma única página organizada
+- [ ] Criar cards de exercícios minimalistas
+- [ ] Implementar grid responsivo (1 col mobile, 2-3 cols desktop)
+- [ ] Remover informações irrelevantes do layout
+- [ ] Adicionar estados visuais claros (não iniciado/em progresso/concluído)
+- [ ] Implementar skeleton loading para melhor UX
+
+#### ✅ Interatividade e Explicações
+- [ ] Corrigir exercícios interativos quebrados
+- [ ] Implementar feedback visual imediato (certo/errado)
+- [ ] Criar componente de explicação passo-a-passo
+- [ ] Adicionar botão "Ver Explicação" quando errar
+- [ ] Implementar animações de feedback (confete/erro)
+- [ ] Adicionar dicas progressivas antes da resposta
+
+#### 📊 Tracking e Performance
+- [ ] Implementar sistema de IDs únicos (UUID v4)
+- [ ] Criar tabela de histórico de tentativas
+- [ ] Registrar tempo gasto por exercício
+- [ ] Calcular taxa de acerto por tópico
+- [ ] Criar dashboard de desempenho individual
+- [ ] Implementar recomendações baseadas em performance
+
+#### 🎯 Distribuição Equilibrada
+- [ ] Criar 20 exercícios de Subtração
+- [ ] Criar 20 exercícios de Multiplicação
+- [ ] Criar 20 exercícios de Divisão
+- [ ] Criar 15 exercícios de Porcentagem
+- [ ] Criar 15 exercícios de Frações
+- [ ] Balancear dificuldades (40% fácil, 40% médio, 20% difícil)
+- [ ] Adicionar tags de tópico a todos os exercícios

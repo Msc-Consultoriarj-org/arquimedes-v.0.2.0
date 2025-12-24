@@ -179,8 +179,9 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
-                    text="João tinha R$ [blank] e ganhou R$ 15. Agora ele tem R$ 35. Quanto João tinha inicialmente?"
-                    blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["20", "vinte"] }]}
+                    showFeedback={true}
+                    text="João tinha R$ {blank1} e ganhou R$ 15. Agora ele tem R$ 35. Quanto João tinha inicialmente?"
+                    blanks={[{ id: "blank1", correctAnswer: "20", acceptableAnswers: ["vinte"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("adicao-fill-1", 5, isCorrect)}
                   />
                 </CardContent>
@@ -200,8 +201,9 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
-                    text="No supermercado, Maria comprou arroz por R$ 12, feijão por R$ [blank] e óleo por R$ 8. O total foi R$ 27. Quanto custou o feijão?"
-                    blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["7", "sete"] }]}
+                    showFeedback={true}
+                    text="No supermercado, Maria comprou arroz por R$ 12, feijão por R$ {blank1} e óleo por R$ 8. O total foi R$ 27. Quanto custou o feijão?"
+                    blanks={[{ id: "blank1", correctAnswer: "7", acceptableAnswers: ["sete"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("adicao-fill-2", 5, isCorrect)}
                   />
                 </CardContent>
@@ -221,8 +223,9 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
-                    text="Pedro correu 3 km pela manhã e [blank] km à tarde. No total, ele correu 8 km. Quantos km Pedro correu à tarde?"
-                    blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["5", "cinco"] }]}
+                    showFeedback={true}
+                    text="Pedro correu 3 km pela manhã e {blank1} km à tarde. No total, ele correu 8 km. Quantos km Pedro correu à tarde?"
+                    blanks={[{ id: "blank1", correctAnswer: "5", acceptableAnswers: ["cinco"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("adicao-fill-3", 5, isCorrect)}
                   />
                 </CardContent>
@@ -249,6 +252,7 @@ export default function InteractiveExerciseRoomPage() {
                     correctValue={245}
                     hint="Dica: Some os preços dos 3 itens que você quer comprar. Não precisa considerar o R$ 150 que você tem, apenas calcule o total da compra."
                     unit="R$"
+                    showFeedback={true}
                     onSubmit={(value: number, isCorrect: boolean) => handleExerciseComplete("adicao-slider-1", 10, isCorrect)}
                   />
                 </CardContent>
@@ -272,8 +276,8 @@ export default function InteractiveExerciseRoomPage() {
                     min={0}
                     max={50}
                     correctValue={30}
-                    // tolerance={2}
                     unit="h"
+                    showFeedback={true}
                     onSubmit={(value: number, isCorrect: boolean) => handleExerciseComplete("adicao-slider-2", 10, isCorrect)}
                   />
                 </CardContent>
@@ -325,6 +329,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Carlos pagou R$ 50 por uma compra de R$ 37. Ele recebeu R$ [blank] de troco."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["13", "treze"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("subtracao-fill-1", 5, isCorrect)}
@@ -346,6 +351,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Luís tem 28 anos e sua irmã tem 19 anos. A diferença de idade entre eles é de [blank] anos."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["9", "nove"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("subtracao-fill-2", 5, isCorrect)}
@@ -425,6 +431,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Se cada caixa tem 6 ovos e você comprou 4 caixas, você tem [blank] ovos no total."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["24", "vinte e quatro"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("multiplicacao-fill-1", 5, isCorrect)}
@@ -446,6 +453,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Cada caneta custa R$ 3. Se você comprar 7 canetas, vai gastar R$ [blank]."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["21", "vinte e um"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("multiplicacao-fill-2", 5, isCorrect)}
@@ -525,6 +533,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="12 chocolates serão divididos igualmente entre 3 crianças. Cada criança receberá [blank] chocolates."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["4", "quatro"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("divisao-fill-1", 5, isCorrect)}
@@ -546,6 +555,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Um pacote com 5 canetas custa R$ 15. Cada caneta custa R$ [blank]."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["3", "três"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("divisao-fill-2", 5, isCorrect)}
@@ -625,6 +635,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Uma pizza foi dividida em 8 fatias. Você comeu 4 fatias. Você comeu [blank]/8 da pizza, que é o mesmo que 1/2."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["4", "quatro"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("fracoes-fill-1", 5, isCorrect)}
@@ -704,6 +715,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Se 2 kg de arroz custam R$ 10, então 6 kg custam R$ [blank]."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["30", "trinta"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("proporcao-fill-1", 5, isCorrect)}
@@ -783,6 +795,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Uma camisa de R$ 100 está com 10% de desconto. O desconto é de R$ [blank]."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["10", "dez"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("porcentagem-fill-1", 5, isCorrect)}
@@ -804,6 +817,7 @@ export default function InteractiveExerciseRoomPage() {
                 </CardHeader>
                 <CardContent>
                   <FillInBlanks
+                    showFeedback={true}
                     text="Um produto de R$ 50 com 20% de desconto custa R$ [blank]."
                     blanks={[{ id: "1", correctAnswer: "", acceptableAnswers: ["40", "quarenta"] }]}
                     onComplete={(isCorrect) => handleExerciseComplete("porcentagem-fill-2", 5, isCorrect)}
