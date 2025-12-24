@@ -606,10 +606,10 @@ Retorne APENAS um JSON com:
       const unlocked = await db.getUserUnlockedAchievements(ctx.user.id);
       const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
 
-      return definitions.map((def: any) => ({
+      return definitions.map((def) => ({
         ...def,
         unlocked: unlockedIds.has(def.id),
-        unlockedAt: unlocked.find((u: any) => u.achievementId === def.id)?.unlockedAt || null,
+        unlockedAt: unlocked.find((u) => u.achievementId === def.id)?.unlockedAt || null,
       }));
     }),
 
