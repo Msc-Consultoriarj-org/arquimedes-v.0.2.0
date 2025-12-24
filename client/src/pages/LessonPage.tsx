@@ -67,7 +67,10 @@ export default function LessonPage() {
 
   const updateProgressMutation = trpc.moduleProgress.updatePage.useMutation({
     onSuccess: () => {
-      toast.success("Progresso salvo!");
+      toast.success("Progresso salvo!", {
+        position: "top-center",
+        duration: 5000, // Auto-dismiss em 5 segundos
+      });
     },
   });
 
@@ -113,12 +116,16 @@ export default function LessonPage() {
         fireConfetti();
         toast.success('Parabéns! Aula concluída! 🎉', {
           description: `Você ganhou ${score} pontos!`,
+          position: "top-center",
+          duration: 5000,
         });
       },
       onError: (error) => {
         console.error('[DEBUG] Mutation error:', error);
         toast.error('Erro ao salvar progresso', {
           description: error.message || 'Tente novamente',
+          position: "top-center",
+          duration: 5000,
         });
       },
     });

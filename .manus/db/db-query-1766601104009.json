@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE pages SET \nmainText = '# 💼 Aplicações de Porcentagem\n\nPorcentagem no dia a dia: compras (descontos), finanças (juros, investimentos), trabalho (aumentos, comissões), impostos, saúde (metas) e educação (notas).\n\n## Compras\nTV R$ 2.500 com 35% desconto = R$ 1.625\n\n## Finanças\nInvestimento R$ 5.000 com 12% rendimento = R$ 5.600\n\n## Trabalho\nSalário R$ 2.500 com 12% aumento = R$ 2.800\n\n## Impostos\nSalário R$ 4.000 com 15% IR = R$ 3.400 líquido\n\n## Saúde\nPerda de 6kg de 85kg = 7% de redução\n\n## Educação\n70% de 100 pontos = 70 pontos para passar',\nconceptSummary = 'Aplicações práticas: compras, finanças, trabalho, impostos, saúde e educação.'\nWHERE slug = 'aplicacoes-porcentagem';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE pages SET \nmainText = '# 💼 Aplicações de Porcentagem\n\nPorcentagem no dia a dia: compras (descontos), finanças (juros, investimentos), trabalho (aumentos, comissões), impostos, saúde (metas) e educação (notas).\n\n## Compras\nTV R$ 2.500 com 35% desconto = R$ 1.625\n\n## Finanças\nInvestimento R$ 5.000 com 12% rendimento = R$ 5.600\n\n## Trabalho\nSalário R$ 2.500 com 12% aumento = R$ 2.800\n\n## Impostos\nSalário R$ 4.000 com 15% IR = R$ 3.400 líquido\n\n## Saúde\nPerda de 6kg de 85kg = 7% de redução\n\n## Educação\n70% de 100 pontos = 70 pontos para passar',\nconceptSummary = 'Aplicações práticas: compras, finanças, trabalho, impostos, saúde e educação.'\nWHERE slug = 'aplicacoes-porcentagem';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 57
+}

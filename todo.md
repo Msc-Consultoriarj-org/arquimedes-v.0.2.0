@@ -853,3 +853,16 @@
 
 **Status:** ✅ CORRIGIDO - Migration aplicada, progresso salvando corretamente
 **Data:** 24/12/2024
+
+
+#### ✅ Bug #7: Aulas 1, 2, 3 de Porcentagem Sem Conteúdo (RESOLVIDO)
+- [x] Verificar quais páginas do módulo Porcentagem estão vazias
+- [x] Criar conteúdo completo para Aula 1: Conceito de Porcentagem (3.400+ palavras)
+- [x] Criar conteúdo completo para Aula 2: Cálculos de Porcentagem (resumido)
+- [x] Criar conteúdo completo para Aula 3: Aplicações de Porcentagem (resumido)
+- [x] Testar navegação completa do módulo
+
+#### ✅ Bug #8: Toast "Progresso salvo!" Cobrindo Botões de Navegação (RESOLVIDO)
+- [x] Reposicionar toast do rodapé para o topo da página (position: "top-center")
+- [x] Adicionar auto-dismiss em 5 segundos (duration: 5000)
+- [x] Testar em mobile e desktop

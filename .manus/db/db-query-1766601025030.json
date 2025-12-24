@@ -1,0 +1,9 @@
+{
+  "query": "SELECT p.id, p.title, p.slug, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nWHERE p.slug = 'conceito-de-porcentagem';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.slug, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nWHERE p.slug = 'conceito-de-porcentagem';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 52
+}

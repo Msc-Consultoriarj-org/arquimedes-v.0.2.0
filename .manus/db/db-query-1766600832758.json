@@ -1,0 +1,52 @@
+{
+  "query": "SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'porcentagem'\nORDER BY p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'porcentagem'\nORDER BY p.order;",
+  "rows": [
+    {
+      "id": "120018",
+      "title": "Conceito de Porcentagem",
+      "slug": "conceito-porcentagem",
+      "order": "1",
+      "mainText_status": "32 chars"
+    },
+    {
+      "id": "120019",
+      "title": "Cálculos de Porcentagem",
+      "slug": "calculos-porcentagem",
+      "order": "2",
+      "mainText_status": "22 chars"
+    },
+    {
+      "id": "120020",
+      "title": "Aplicações de Porcentagem",
+      "slug": "aplicacoes-porcentagem",
+      "order": "3",
+      "mainText_status": "25 chars"
+    },
+    {
+      "id": "120021",
+      "title": "Regra de Três Simples",
+      "slug": "regra-de-tres-simples",
+      "order": "4",
+      "mainText_status": "6232 chars"
+    },
+    {
+      "id": "120022",
+      "title": "Proporções e Razões",
+      "slug": "proporcoes-e-razoes",
+      "order": "5",
+      "mainText_status": "6729 chars"
+    },
+    {
+      "id": "120023",
+      "title": "Porcentagem em Situações Reais",
+      "slug": "porcentagem-situacoes-reais",
+      "order": "6",
+      "mainText_status": "7275 chars"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\torder\tmainText_status\n120018\tConceito de Porcentagem\tconceito-porcentagem\t1\t32 chars\n120019\tCálculos de Porcentagem\tcalculos-porcentagem\t2\t22 chars\n120020\tAplicações de Porcentagem\taplicacoes-porcentagem\t3\t25 chars\n120021\tRegra de Três Simples\tregra-de-tres-simples\t4\t6232 chars\n120022\tProporções e Razões\tproporcoes-e-razoes\t5\t6729 chars\n120023\tPorcentagem em Situações Reais\tporcentagem-situacoes-reais\t6\t7275 chars\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}
