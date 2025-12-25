@@ -1,4 +1,4 @@
-import { eq, and, desc, asc, sql, gte, isNotNull, or } from "drizzle-orm";
+import { eq, and, desc, asc, sql, gte, isNotNull, or, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { 
   InsertUser, users,
@@ -373,12 +373,17 @@ export async function getModuleProgress(userId: number, moduleId: number): Promi
   
   // Get completed pages for this user in this module
   const pageIds = modulePages.map(p => p.id);
+
+  if (pageIds.length === 0) {
+    return { completed: 0, total, percentage: 0 };
+  }
+
   const completedPages = await db.select().from(pageProgress)
     .where(
       and(
         eq(pageProgress.userId, userId),
         eq(pageProgress.completed, true),
-        sql`${pageProgress.pageId} IN (${pageIds.join(',')})`
+        inArray(pageProgress.pageId, pageIds)
       )
     );
   
