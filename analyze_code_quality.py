@@ -41,29 +41,15 @@ class CodeQualityAnalyzer:
         return self.results
     
     def find_dead_files(self):
-        """Identifica arquivos que podem não estar sendo usados"""
-        print("📁 Procurando arquivos não utilizados...")
-        
-        # Páginas que existem mas podem ser obsoletas
-        pages_dir = self.project_root / "client/src/pages"
-        if pages_dir.exists():
-            all_pages = list(pages_dir.glob("*.tsx"))
-            
-            # Ler App.tsx para ver quais páginas são importadas
-            app_file = self.project_root / "client/src/App.tsx"
-            if app_file.exists():
-                app_content = app_file.read_text()
-                
-                for page in all_pages:
-                    page_name = page.stem
-                    # Verificar se o arquivo é importado
-                    if f"from \"@/pages/{page_name}\"" not in app_content and \
-                       f"from './pages/{page_name}'" not in app_content:
-                        self.results["dead_files"].append({
-                            "file": str(page.relative_to(self.project_root)),
-                            "reason": "Não importado em App.tsx",
-                            "lines": self.count_lines(page)
-                        })
+        """Adiciona uma nota sobre a complexidade da detecção de arquivos não utilizados"""
+        print("📝 Adicionando nota sobre detecção de arquivos não utilizados...")
+        self.results["dead_files_note"] = (
+            "A detecção automática de arquivos não utilizados (dead code) é complexa neste projeto "
+            "devido ao uso de um sistema de roteamento dinâmico (`wouter`). Uma análise superficial "
+            "anterior indicou incorretamente que páginas essenciais como `Dashboard.tsx` e `LoginPage.tsx` "
+            "estavam sem uso. Uma análise mais aprofundada, que inclua a análise da configuração do roteador, "
+            "é necessária para identificar com segurança os arquivos que podem ser removidos."
+        )
     
     def find_large_files(self):
         """Identifica arquivos muito grandes (>500 linhas)"""
@@ -140,14 +126,10 @@ class CodeQualityAnalyzer:
         report.append(f"**Data:** {os.popen('date').read().strip()}\n")
         report.append("---\n")
         
-        # Dead Files
-        if self.results["dead_files"]:
-            report.append(f"## 🗑️ Arquivos Não Utilizados ({len(self.results['dead_files'])})\n")
-            total_lines = sum(f["lines"] for f in self.results["dead_files"])
-            report.append(f"**Total de linhas que podem ser removidas:** {total_lines}\n")
-            for item in self.results["dead_files"]:
-                report.append(f"- `{item['file']}` ({item['lines']} linhas) - {item['reason']}")
-            report.append("\n")
+        # Dead Files Note
+        if "dead_files_note" in self.results:
+            report.append("## 🗑️ Análise de Arquivos Não Utilizados\n")
+            report.append(f"_{self.results['dead_files_note']}_\n")
         
         # Large Files
         if self.results["large_files"]:
@@ -180,7 +162,6 @@ class CodeQualityAnalyzer:
         
         # Summary
         report.append("## 📊 Resumo\n")
-        report.append(f"- **Arquivos não utilizados:** {len(self.results['dead_files'])}")
         report.append(f"- **Arquivos muito grandes:** {len(self.results['large_files'])}")
         report.append(f"- **Problemas de tipagem:** {len(self.results['weak_typing'])}")
         report.append(f"- **Componentes obsoletos:** {len(self.results['obsolete_components'])}")
@@ -194,12 +175,12 @@ class CodeQualityAnalyzer:
         return "\n".join(report)
 
 if __name__ == "__main__":
-    analyzer = CodeQualityAnalyzer("/home/ubuntu/arquimedes")
+    analyzer = CodeQualityAnalyzer("/app")
     analyzer.analyze()
     report = analyzer.generate_report()
     
     # Salvar relatório
-    output_file = "/home/ubuntu/arquimedes/CODE_QUALITY_ANALYSIS.md"
+    output_file = "/app/CODE_QUALITY_ANALYSIS.md"
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(report)
     
