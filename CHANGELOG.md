@@ -7,6 +7,33 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [2.46.0] - 2024-12-25
+
+### ✨ Adicionado
+- **Sala de Vídeos Educacionais**: 20 vídeos em português do Brasil (1 por módulo de Aritmética)
+- Canais brasileiros: Professor Ferretto, Prof. Gis, Matemática Rio, Marcos Aba, Dicas de Mat, Professora Angela
+- **Sistema de Favoritos para Vídeos**: Botão de coração em cada card de vídeo
+- Seção "Meus Vídeos Favoritos" com filtro clicável
+- Contador de favoritos nas estatísticas
+- Tabela `video_favorites` no banco de dados
+- **Validador de Exercícios**: Sistema automático de validação de respostas
+- Auditoria completa de 500+ exercícios
+- Correção de 61 exercícios com respostas erradas
+- Scripts de auditoria: `audit-exercises.mjs`, `full-exercise-audit.mjs`
+
+### 🔧 Modificado
+- VideoRoomPage.tsx refatorado com sistema de favoritos
+- db.ts expandido com funções de favoritos (toggleVideoFavorite, getUserFavoriteVideos, isVideoFavorited)
+- routers.ts com endpoints de favoritos (toggleFavorite, getFavorites, getFavoriteIds)
+- schema.ts com tabela video_favorites
+
+### 📝 Documentação
+- README.md atualizado com Sala de Vídeos e Sistema de Favoritos
+- VIDEOS_PTBR_VERIFICADOS.md com lista completa de vídeos
+- AUDITORIA_EXERCICIOS.md com relatório de correções
+
+---
+
 ## [2.45.0] - 2024-12-24
 
 ### ✨ Adicionado

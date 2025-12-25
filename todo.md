@@ -1839,3 +1839,11 @@
 - [x] Criar seção "Meus Favoritos" no topo da Sala de Vídeos
 - [x] Mostrar contador de favoritos nas estatísticas
 - [x] Testar funcionalidade de favoritos
+
+## 📚 Atualização de Documentação (Dez 2024)
+
+- [x] Atualizar README.md com novas funcionalidades (v2.46.0)
+- [x] Atualizar CHANGELOG.md com versão atual
+- [x] Documentar sistema de favoritos para vídeos
+- [x] Documentar Sala de Vídeos refatorada
+- [ ] Fazer commit da documentação no GitHub

@@ -42,7 +42,7 @@ Proporcionar educação matemática de qualidade, acessível e contextualizada p
 
 ## 🚀 Funcionalidades
 
-### ✅ Implementadas (v2.45.0)
+### ✅ Implementadas (v2.46.0)
 
 #### 📚 Estrutura de Conteúdo
 - **4 Grandes Áreas de Conhecimento**
@@ -137,6 +137,27 @@ Proporcionar educação matemática de qualidade, acessível e contextualizada p
 - Ranking de desempenho (tempo + acertos)
 - Histórico de desafios completados
 - Badges especiais para desafios
+
+#### 🎬 Sala de Vídeos Educacionais 🆕
+- **20 vídeos em português do Brasil** (1 por módulo de Aritmética)
+- Canais brasileiros de qualidade:
+  - Professor Ferretto (ENEM e Vestibulares)
+  - Prof. Gis (Gis com Giz)
+  - Matemática Rio (Prof. Rafael Procopio)
+  - Marcos Aba (MABA)
+  - Dicas de Mat (Sandro Curió)
+  - Professora Angela
+- **Sistema de Favoritos**: Botão de coração para salvar vídeos
+- Seção "Meus Vídeos Favoritos" com acesso rápido
+- Contador de favoritos nas estatísticas
+- Organização por nível (Básica, Intermediária, Avançada)
+- Pontuação: +3 XP por vídeo assistido
+
+#### ✅ Validador de Exercícios 🆕
+- Sistema automático de validação de respostas
+- Auditoria completa de 500+ exercícios
+- Correção de 61 exercícios com respostas erradas
+- Scripts de auditoria para manutenção contínua
 
 #### 📊 Gestão de Progresso
 - **Dashboard Personalizado**
