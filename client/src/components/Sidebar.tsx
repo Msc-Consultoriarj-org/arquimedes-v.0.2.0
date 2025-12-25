@@ -130,6 +130,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label={isMobileOpen ? "Fechar menu" : "Abrir menu"}
           >
             {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
