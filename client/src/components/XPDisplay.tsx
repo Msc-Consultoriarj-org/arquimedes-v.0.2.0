@@ -1,11 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 import { Star, TrendingUp } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useSounds } from "@/lib/sounds";
 
-export default function XPDisplay() {
+// O componente é envolvido com React.memo para evitar re-renderizações desnecessárias.
+// Como o componente não recebe props e busca seus próprios dados, ele só deve ser
+// renderizado novamente quando seu estado interno ou os dados de trpc mudarem.
+// Isso melhora o desempenho ao evitar que re-renderizações do componente pai o afetem.
+const XPDisplay = memo(function XPDisplay() {
   const { data: xp, isLoading } = trpc.gamification.xp.useQuery();
   const { playLevelUp } = useSounds();
   const previousLevel = useRef<number | null>(null);
@@ -63,4 +67,6 @@ export default function XPDisplay() {
       </div>
     </Card>
   );
-}
+});
+
+export default XPDisplay;
