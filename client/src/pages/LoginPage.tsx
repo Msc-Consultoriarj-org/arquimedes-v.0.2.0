@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, Code } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
   const { data: user, isLoading } = trpc.auth.me.useQuery();
+  const [isGoogleLoginLoading, setGoogleLoginLoading] = useState(false);
 
   // Se já estiver autenticado, redireciona para dashboard
   useEffect(() => {
@@ -18,6 +20,7 @@ export default function LoginPage() {
   }, [user, isLoading, setLocation]);
 
   const handleGoogleLogin = () => {
+    setGoogleLoginLoading(true);
     // Redireciona para o fluxo OAuth do Manus (que suporta Google)
     // Após login bem-sucedido, o callback redirecionará para /dashboard
     window.location.href = getLoginUrl();
@@ -82,10 +85,17 @@ export default function LoginPage() {
             <Button
               type="button"
               onClick={handleGoogleLogin}
+              disabled={isGoogleLoginLoading}
               className="w-full h-14 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-300 hover:border-[#6A0DAD] font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-base"
             >
-              <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
-              Continuar com Google
+              {isGoogleLoginLoading ? (
+                <Spinner className="w-5 h-5 mr-3 text-gray-700" />
+              ) : (
+                <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
+              )}
+              {isGoogleLoginLoading
+                ? "Redirecionando..."
+                : "Continuar com Google"}
             </Button>
 
             {/* Botão de Login para Desenvolvimento */}
