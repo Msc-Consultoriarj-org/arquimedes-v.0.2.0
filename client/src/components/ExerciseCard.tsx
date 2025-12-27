@@ -24,6 +24,10 @@ interface ExerciseCardProps {
   onComplete?: (exerciseId: number, isCorrect: boolean) => void;
 }
 
+// ⚡ Optimization: Using React.memo to prevent unnecessary re-renders of the exercise card.
+// This is beneficial when ExerciseCard is part of a list that might re-render (like in LessonPage),
+// ensuring this component only re-renders if its specific props change.
+// This avoids costly re-renders when parent state changes but this card's data remains the same.
 export const ExerciseCard = memo(function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
   const { playSuccess, playError } = useSounds();
   const { fireEmojiConfetti } = useConfetti();
