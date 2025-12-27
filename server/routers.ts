@@ -2,7 +2,7 @@ import { z } from "zod";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
+import { publicProcedure, protectedProcedure, router, adminProcedure } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import * as db from "./db";
@@ -728,7 +728,7 @@ Retorne APENAS um JSON com:
 
   // ============= ADMIN =============
   admin: router({
-    resetUserProgress: protectedProcedure
+    resetUserProgress: adminProcedure
       .input(z.object({ userId: z.number().optional() }))
       .mutation(async ({ ctx, input }) => {
         // TODO: Implement resetUserProgress function
